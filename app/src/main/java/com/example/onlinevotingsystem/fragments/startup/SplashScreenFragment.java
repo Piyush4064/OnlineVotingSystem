@@ -1,6 +1,5 @@
 package com.example.onlinevotingsystem.fragments.startup;
 
-import android.app.ActivityOptions;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,6 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
 import android.os.Handler;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +22,6 @@ import android.widget.Toast;
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.database.ConnectionEstablisher;
 import com.example.onlinevotingsystem.utils.ProgressIndicatorFragment;
-
-
 
 public class SplashScreenFragment extends Fragment implements ConnectionEstablisher.ConnectionInterface {
 
@@ -47,8 +43,6 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
         return inflater.inflate(R.layout.fragment_splash_screen, container, false);
     }
 
-    //private static int SPLASH_SCREEN = 5000;
-
     private Animation topAnimation, bottomAnimation;
     private ImageView imgLogo;
     private TextView tvName, tvSlogan;
@@ -64,9 +58,9 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
         tvName=view.findViewById(R.id.tvSplashScreenName);
         tvSlogan=view.findViewById(R.id.tvSplashScreenSlogan);
 
-        imgLogo.setAnimation(topAnimation);
-        tvName.setAnimation(bottomAnimation);
-        tvSlogan.setAnimation(bottomAnimation);
+        imgLogo.setAnimation(bottomAnimation);
+        tvName.setAnimation(topAnimation);
+        tvSlogan.setAnimation(topAnimation);
 
         new Handler().postDelayed(() -> {
             progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Connecting","Establishing Connection");
@@ -80,14 +74,6 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
         progressIndicatorFragment.dismiss();
         if(result){
             Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.userLoginFragment);
-
-            /*Pair[] pairs = new Pair[2];
-            pairs[0] = new Pair<View,String>(imgLogo, "logo_Img");
-            pairs[1] = new Pair<View,String>(tvName, "logo_name");
-
-            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashScreenFragment.this,pairs);
-            startActivity(intent,options.toBundle()); */
-
         }
         else {
             Toast.makeText(requireActivity(),"Error in establishing connection: "+error,Toast.LENGTH_LONG).show();
