@@ -50,7 +50,7 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
     public void onConnectionResult(boolean result, String error) {
         progressIndicatorFragment.dismiss();
         if(result){
-            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.userLoginFragment);
+            //Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.userLoginFragment);
         }
         else {
             Toast.makeText(requireActivity(),"Error in establishing connection: "+error,Toast.LENGTH_LONG).show();
