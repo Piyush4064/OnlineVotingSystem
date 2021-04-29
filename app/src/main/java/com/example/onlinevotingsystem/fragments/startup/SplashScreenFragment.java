@@ -9,9 +9,14 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinevotingsystem.R;
@@ -38,19 +43,37 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
         return inflater.inflate(R.layout.fragment_splash_screen, container, false);
     }
 
+    private Animation topAnimation, bottomAnimation;
+    private ImageView imgLogo;
+    private TextView tvName, tvSlogan;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Connecting","Establishing Connection");
-        progressIndicatorFragment.show(getParentFragmentManager(),"StartupConnectionProgress");
-        new ConnectionEstablisher(this).execute();
+
+        topAnimation= AnimationUtils.loadAnimation(requireActivity(),R.anim.top_animation);
+        bottomAnimation=AnimationUtils.loadAnimation(requireActivity(),R.anim.bottom_animation);
+
+        imgLogo=view.findViewById(R.id.imgSplashScreenLogo);
+        tvName=view.findViewById(R.id.tvSplashScreenName);
+        tvSlogan=view.findViewById(R.id.tvSplashScreenSlogan);
+
+        imgLogo.setAnimation(bottomAnimation);
+        tvName.setAnimation(topAnimation);
+        tvSlogan.setAnimation(topAnimation);
+
+        new Handler().postDelayed(() -> {
+            progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Connecting","Establishing Connection");
+            progressIndicatorFragment.show(getParentFragmentManager(),"StartupConnectionProgress");
+            new ConnectionEstablisher(SplashScreenFragment.this).execute();
+        },3000);
     }
 
     @Override
     public void onConnectionResult(boolean result, String error) {
         progressIndicatorFragment.dismiss();
         if(result){
-            //Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.userLoginFragment);
+            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.userLoginFragment);
         }
         else {
             Toast.makeText(requireActivity(),"Error in establishing connection: "+error,Toast.LENGTH_LONG).show();
