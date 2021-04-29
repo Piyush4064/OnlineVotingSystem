@@ -13,12 +13,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
 public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
 
     public interface ConnectionInterface{
         void onConnectionResult(boolean result, String error);
-
     }
 
     private final String ClassName,URL,Username,Password;
