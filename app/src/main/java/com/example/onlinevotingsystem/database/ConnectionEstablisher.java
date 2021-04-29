@@ -3,10 +3,15 @@ package com.example.onlinevotingsystem.database;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.onlinevotingsystem.classes.Admin;
 import com.example.onlinevotingsystem.constants.ConnectionConstants;
+import com.example.onlinevotingsystem.constants.TableKeys;
 
+import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
