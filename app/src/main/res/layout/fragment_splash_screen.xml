@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.startup.SplashScreenFragment"
-    android:background="#ef7f1b">
+    android:background="#fece2f">
 
 
     <ImageView
@@ -18,7 +18,7 @@
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="32dp"
         android:transitionName="logo_Img"
-        android:src="@drawable/vote"
+        android:src="@drawable/loo2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

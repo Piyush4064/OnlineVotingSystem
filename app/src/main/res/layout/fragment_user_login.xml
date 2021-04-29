@@ -14,13 +14,14 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:transitionName="logo_Img"
-        android:src="@drawable/vote"/>
+        android:src="@drawable/loo"/>
 
     <TextView
         android:id="@+id/logo_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello !! Welcome back"
+        android:textStyle="bold"
         android:textSize="40sp"
         android:transitionName="logo_name"
         android:fontFamily="@font/montserrat"
@@ -85,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="GO"
-            android:background="#000"
+            android:background="#000000"
             android:textColor="#fff"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"/>
