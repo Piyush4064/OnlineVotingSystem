@@ -5,10 +5,8 @@ import android.util.Log;
 
 import com.example.onlinevotingsystem.constants.ConnectionConstants;
 
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
 
@@ -35,7 +33,7 @@ public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
         try {
             Class.forName(ClassName).newInstance();
             Log.d(TAG,"Class " + ClassName + " Loaded Successfully!");
-            Connection connection=DriverManager.getConnection(URL,Username,Password);
+            DriverManager.getConnection(URL,Username,Password);
             Log.d(TAG,"Connection Successful!");
             return true;
         } catch (IllegalAccessException | InstantiationException | ClassNotFoundException | SQLException e) {
