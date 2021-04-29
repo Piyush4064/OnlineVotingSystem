@@ -8,10 +8,12 @@ import com.example.onlinevotingsystem.constants.ConnectionConstants;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
 
     public interface ConnectionInterface{
         void onConnectionResult(boolean result, String error);
+
     }
 
     private final String ClassName,URL,Username,Password;
