@@ -68,7 +68,7 @@ public class GetSqlCreateTableString {
         "`"+TableKeys.KEY_POLL_NO_VOTERS+"` int NOT NULL," +
         "`"+TableKeys.KEY_POLL_ELEC_START_TIME+"` varchar(50) NOT NULL," +       
         "`"+TableKeys.KEY_POLL_ELEC_END_TIME+"` varchar(50) NOT NULL," +
-        "`"+TableKeys.KEY_POLL_NO_VOTES_CASTED+"` int NOT NULL," +
+        "`"+TableKeys.KEY_POLL_NO_VOTES_CASTED+"` int DEFAULT 0," +
         "PRIMARY KEY (`"+TableKeys.KEY_POLL_NUMBER+"`))";
     }
 }
