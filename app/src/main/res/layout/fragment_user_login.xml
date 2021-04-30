@@ -92,15 +92,16 @@
             android:layout_marginBottom="5dp"/>
 
         <Button
+            android:id="@+id/btnLoginToRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:text="New User? SIGN UP"
             android:layout_gravity="right"
-            android:elevation="0dp"
             android:layout_margin="5dp"
+            android:background="#00000000"
+            android:elevation="0dp"
             android:fontFamily="@font/montserrat"
-            android:textColor="#000"/>
+            android:text="New User? SIGN UP"
+            android:textColor="#000" />
 
 
 
