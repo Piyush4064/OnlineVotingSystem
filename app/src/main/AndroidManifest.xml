@@ -11,15 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVotingSystem">
-        <activity android:name=".activities.OfficerActivity"/>
-        <activity android:name=".activities.AdminActivity" />
-        <activity android:name=".activities.UserActivity" />
-        <activity android:name=".activities.StartupActivity">
+        <activity android:name=".activities.OfficerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".activities.AdminActivity">
+        </activity>
+        <activity android:name=".activities.UserActivity" />
+        <activity android:name=".activities.StartupActivity">
         </activity>
     </application>
 
