@@ -53,7 +53,9 @@ public class TableKeys {
     public static final String KEY_POLL_NO_VOTERS="no_voters";
     public static final String KEY_POLL_ELEC_START_TIME="elec_start_time";
     public static final String KEY_POLL_ELEC_END_TIME="elec_end_time";
-    public static final String KEY_POLL_NO_VOTES_CASTED="no_votes_casted";    
+    public static final String KEY_POLL_NO_VOTES_CASTED="no_votes_casted";
 
+
+    public static final String GIT_CHECK="check";
 
 }
