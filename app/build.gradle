@@ -40,6 +40,10 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
     implementation "androidx.navigation:navigation-compose:1.0.0-alpha10"
 
+
+    //earth gif
+    implementation "pl.droidsonroids.gif:android-gif-drawable:1.2.19"
+
     implementation 'mysql:mysql-connector-java:5.1.46'
     implementation 'com.squareup.picasso:picasso:2.71828'
 

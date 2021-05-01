@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="8dp"
+    android:layout_margin="10dp">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:padding="10dp">
+
+
+        <ImageView
+            android:id="@+id/voter_img"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:src="@drawable/user1"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/voter_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mridul Mittal"
+            android:layout_toRightOf="@+id/voter_img"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat"
+            android:lineHeight="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/voter_img"/>
+
+<!--        <RatingBar-->
+<!--            android:id="@+id/rates"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/Widget.AppCompat.RatingBar.Small"-->
+<!--            android:layout_below="@id/voter_name"-->
+<!--            android:layout_toRightOf="@id/voter_img"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:rating="2"/>-->
+
+        <TextView
+            android:id="@+id/voter_data1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age: 20 Ward: 2 Voted: no"
+            android:layout_below="@id/voter_name"
+            android:layout_toRightOf="@id/voter_img"
+            android:padding="10dp"/>
+
+
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
