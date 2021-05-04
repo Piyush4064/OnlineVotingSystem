@@ -33,5 +33,19 @@ public class GetSqlExistingVoterQuery {
         return " SELECT * FROM" + TableKeys.TABLE_NAME_EXISTING_VOTERS + "WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
     }
 
+    public static String GetUpdatePhoneNoQuery(String voterId, String phoneno){
+        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_PHONE_NUM  + " = " + phoneno +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+    }
 
+    public static String GetUpdatDobQuery(String voterId, String dob){
+        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_DOB  + " = " + dob +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+    }
+
+    public static String GetUpdatPollNoQuery(String voterId, String pollno){
+        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_POLL_NUM  + " = " + pollno +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+    }
+
+    public static String GetVoterListAccToPollNoQuery(int pollno){
+        return " SELECT * FROM" + TableKeys.TABLE_NAME_EXISTING_VOTERS + "WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_POLL_NUM+ " = " + pollno ;
+    }
 }

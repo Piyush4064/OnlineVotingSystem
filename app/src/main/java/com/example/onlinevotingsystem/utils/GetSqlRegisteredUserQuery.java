@@ -33,4 +33,16 @@ public class GetSqlRegisteredUserQuery {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_REGISTERED_USERS + " WHERE " + TableKeys.KEY_REGISTERED_USER_USERNAME + " = " + username +  " )";
     }
 
+    public static String GetUpdatePasswordQuery(String username , String password){
+        return " UPDATE " + TableKeys.TABLE_NAME_REGISTERED_USERS + " SET " + TableKeys.KEY_REGISTERED_USER_PASSWORD  + " = " + password +  " WHERE "+ TableKeys.KEY_REGISTERED_USER_USERNAME + " = " + username ;
+    }
+
+    public static String GetUpdatePhotoUrlQuery(String username , String photourl){
+        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_REGISTERED_USER_PHOTO_URL  + " = " + photourl +  " WHERE "+ TableKeys.KEY_REGISTERED_USER_USERNAME + " = " + username ;
+    }
+
+    public static String GetUpdateHasVotedQuery(String username){
+        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_REGISTERED_USER_HAS_VOTED + " = " + 1 +  " WHERE "+ TableKeys.KEY_REGISTERED_USER_USERNAME + " = " + username ;
+    }
+
 }

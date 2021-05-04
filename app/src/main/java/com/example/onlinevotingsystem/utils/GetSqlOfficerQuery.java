@@ -24,7 +24,7 @@ public class GetSqlOfficerQuery {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username + " and " + TableKeys.KEY_OFFICER_PASSWORD + " = " + password + " )";
     }
 
-    public static String GetCheckUsenNameExistsQuery(String username){
+    public static String GetCheckUserNameExistsQuery(String username){
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username +  " )";
     }
 
@@ -41,7 +41,15 @@ public class GetSqlOfficerQuery {
     }
 
     public static String GetDeleteOfficeQuery(String username){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username +  " )";
+        return " DELETE FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username +  " )";
+    }
+
+    public static String GetUpdatePasswordQuery(String username , String password){
+        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PASSWORD  + " = " + password +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
+    }
+
+    public static String GetUpdatePhotoUrlQuery(String username , String photourl){
+        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = " + photourl +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
     }
 
 }
