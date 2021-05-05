@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineVotingSystem">
         <activity android:name=".activities.OfficerActivity">
+
+
+        </activity>
+        <activity android:name=".activities.AdminActivity" />
+        <activity android:name=".activities.UserActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,18 +26,10 @@
 
 
         </activity>
-        <activity android:name=".activities.AdminActivity" />
-        <activity android:name=".activities.UserActivity" />
         <activity android:name=".activities.StartupActivity">
 
 
 
-
-        </activity>
-        <activity android:name=".activities.AdminActivity">
-        </activity>
-        <activity android:name=".activities.UserActivity" />
-        <activity android:name=".activities.StartupActivity">
         </activity>
     </application>
 

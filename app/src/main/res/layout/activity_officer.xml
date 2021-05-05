@@ -15,6 +15,15 @@
         android:layout_height="wrap_content"
         android:padding="20dp">
 
+        <TextView
+            android:id="@+id/head_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Digi8 Vote"
+            android:textSize="28dp"
+            android:fontFamily="@font/montserrat"
+            android:layout_centerHorizontal="true"/>
+
         <ImageView
             android:background="@color/banner_background"
             android:layout_centerVertical="true"
@@ -52,7 +61,7 @@
                     android:id="@+id/app_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Digi8 Vote"
+                    android:text="Welcome Officer "
                     android:textSize="28dp"
                     android:fontFamily="@font/montserrat"
                     android:layout_centerHorizontal="true"/>

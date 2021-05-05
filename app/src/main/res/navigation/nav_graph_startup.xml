@@ -11,17 +11,14 @@
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/actionStartupToLogin"
-            app:destination="@id/userLoginFragment" />
+            android:id="@+id/action_splashScreenFragment_to_home2"
+            app:destination="@id/home2" />
     </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
         android:name="com.example.onlinevotingsystem.fragments.startup.UserLoginFragment"
         android:label="fragment_user_login"
         tools:layout="@layout/fragment_user_login" >
-        <action
-            android:id="@+id/actionLoginToAdminLogin"
-            app:destination="@id/adminOfficerLoginFragment" />
         <action
             android:id="@+id/actionLoginToRegister"
             app:destination="@id/registerFragment" />
@@ -36,4 +33,12 @@
         android:name="com.example.onlinevotingsystem.fragments.startup.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.onlinevotingsystem.fragments.startup.Home"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_home2_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
 </navigation>
