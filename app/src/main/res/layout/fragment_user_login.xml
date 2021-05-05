@@ -10,6 +10,7 @@
     android:padding="20dp"
     >
 
+
     <ImageView
         android:id="@+id/logo_Img"
         android:layout_width="150dp"
