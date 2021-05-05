@@ -7,14 +7,30 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#ec1c24</color>
+
 
     //official background
 
     <color name="official">#fece2f</color>
+    <color name="official2">#f469a9</color>
 
 
 
+    //Circle Menu Button
+    <color name="b1">#CDCDCD</color>
+    <color name="b2">#88bef5</color>
+    <color name="b3">#83e85a</color>
+    <color name="b4">#FF4B32</color>
+    <color name="b5">#ba53de</color>
+    <color name="b6">#ff8a5c</color>
 
+    //Background acc to circle buttons
+    <color name="bg1">#ecfffb</color>
+    <color name="bg2">#96f7d2</color>
+    <color name="bg3">#fac4a2</color>
+    <color name="bg4">#d3cde6</color>
+    <color name="bg5">#fff591</color>
 
     //Officer Dashboard
 

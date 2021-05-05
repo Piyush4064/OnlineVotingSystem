@@ -5,10 +5,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-
+import androidx.viewpager.widget.ViewPager;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,11 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
+
+
     }
 
     @Override
@@ -67,17 +73,22 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
             progressIndicatorFragment.show(getParentFragmentManager(),"StartupConnectionProgress");
             new ConnectionEstablisher(SplashScreenFragment.this).execute();
         },3000);
+
+
+
     }
 
     @Override
     public void onConnectionResult(boolean result, String error) {
         progressIndicatorFragment.dismiss();
         if(result){
-            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.userLoginFragment);
+            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.home2);
         }
         else {
             Toast.makeText(requireActivity(),"Error in establishing connection: "+error,Toast.LENGTH_LONG).show();
             requireActivity().finish();
         }
     }
+
+
 }
