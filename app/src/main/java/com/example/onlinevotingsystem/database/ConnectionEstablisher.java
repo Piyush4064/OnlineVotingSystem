@@ -5,7 +5,12 @@ import android.util.Log;
 
 import com.example.onlinevotingsystem.constants.ConnectionConstants;
 import com.example.onlinevotingsystem.constants.TableKeys;
-import com.example.onlinevotingsystem.utils.GetSqlCreateTableString;
+import com.example.onlinevotingsystem.utils.GetSqlAdminQuery;
+import com.example.onlinevotingsystem.utils.GetSqlCandidateQuery;
+import com.example.onlinevotingsystem.utils.GetSqlExistingVoterQuery;
+import com.example.onlinevotingsystem.utils.GetSqlOfficerQuery;
+import com.example.onlinevotingsystem.utils.GetSqlPollQuery;
+import com.example.onlinevotingsystem.utils.GetSqlRegisteredUserQuery;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -43,22 +48,22 @@ public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
             
             Statement statement=connection.createStatement();
 
-            statement.execute(GetSqlCreateTableString.getExistingVotersCreateQuery());
+            statement.execute(GetSqlExistingVoterQuery.getCreateQuery());
             Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_EXISTING_VOTERS);
 
-            statement.execute(GetSqlCreateTableString.getRegisteredUserCreateQuery());
+            statement.execute(GetSqlRegisteredUserQuery.getCreateQuery());
             Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_REGISTERED_USERS);
 
-            statement.execute(GetSqlCreateTableString.getAdminCreateQuery());
+            statement.execute(GetSqlAdminQuery.getCreateQuery());
             Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_ADMIN);
 
-            statement.execute(GetSqlCreateTableString.getCandidateCreateQuery());
+            statement.execute(GetSqlCandidateQuery.getCreateQuery());
             Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_CANDIDATE);
 
-            statement.execute(GetSqlCreateTableString.getOfficerCreateQuery());
+            statement.execute(GetSqlOfficerQuery.getCreateQuery());
             Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_OFFICER);
 
-            statement.execute(GetSqlCreateTableString.getPollCreateQuery());
+            statement.execute(GetSqlPollQuery.getCreateQuery());
             Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_POLL);
 
             return true;
@@ -73,8 +78,8 @@ public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
     protected void onPostExecute(Boolean aBoolean) {
         super.onPostExecute(aBoolean);
         if(aBoolean)
-            connectionInterface.onConnectionResult(aBoolean,null);
+            connectionInterface.onConnectionResult(true,null);
         else
-            connectionInterface.onConnectionResult(aBoolean,errorResult);
+            connectionInterface.onConnectionResult(false,errorResult);
     }
 }

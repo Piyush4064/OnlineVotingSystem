@@ -22,30 +22,30 @@ public class GetSqlExistingVoterQuery {
     }
 
     public static String GetCheckVoterIdQuery(String voterId){
-        return " SELECT * FROM" + TableKeys.TABLE_NAME_EXISTING_VOTERS + "WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_EXISTING_VOTERS + " WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = '" + voterId + "'";
     }
 
     public static String GetUpdateMobileRegisteredQuery(String voterId){
-        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_IS_MOBILE_REGISTERED  + "= 1 WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + " SET " + TableKeys.KEY_EXISTING_VOTERS_IS_MOBILE_REGISTERED  + "= 1 WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
     }
 
     public static String GetVoterIdDataQuery(String voterId){
         return " SELECT * FROM" + TableKeys.TABLE_NAME_EXISTING_VOTERS + "WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
     }
 
-    public static String GetUpdatePhoneNoQuery(String voterId, String phoneno){
-        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_PHONE_NUM  + " = " + phoneno +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+    public static String GetUpdatePhoneNoQuery(String voterId, String phoneNo){
+        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_PHONE_NUM  + " = " + phoneNo +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
     }
 
-    public static String GetUpdatDobQuery(String voterId, String dob){
+    public static String GetUpdateDobQuery(String voterId, String dob){
         return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_DOB  + " = " + dob +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
     }
 
-    public static String GetUpdatPollNoQuery(String voterId, String pollno){
-        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_POLL_NUM  + " = " + pollno +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
+    public static String GetUpdatePollNoQuery(String voterId, String pollNo){
+        return " UPDATE " + TableKeys.TABLE_NAME_EXISTING_VOTERS + "SET " + TableKeys.KEY_EXISTING_VOTERS_POLL_NUM  + " = " + pollNo +  " WHERE "+ TableKeys.KEY_EXISTING_VOTERS_ID + " = " + voterId ;
     }
 
-    public static String GetVoterListAccToPollNoQuery(int pollno){
-        return " SELECT * FROM" + TableKeys.TABLE_NAME_EXISTING_VOTERS + "WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_POLL_NUM+ " = " + pollno ;
+    public static String GetVoterListAccToPollNoQuery(int pollNo){
+        return " SELECT * FROM" + TableKeys.TABLE_NAME_EXISTING_VOTERS + "WHERE  "+ TableKeys.KEY_EXISTING_VOTERS_POLL_NUM+ " = " + pollNo ;
     }
 }

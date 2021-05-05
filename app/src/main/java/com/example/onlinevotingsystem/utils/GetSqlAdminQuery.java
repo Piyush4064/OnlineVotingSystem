@@ -27,8 +27,8 @@ public class GetSqlAdminQuery {
         return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PASSWORD  + " = " + password +  " WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = " + username ;
     }
 
-    public static String GetUpdatePhotoUrlQuery(String username , String photourl){
-        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHOTO_URL  + " = " + photourl +  " WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = " + username ;
+    public static String GetUpdatePhotoUrlQuery(String username , String photoUrl){
+        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHOTO_URL  + " = " + photoUrl +  " WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = " + username ;
     }
 
     public static String GetCheckUserNameExistsQuery(String username){
