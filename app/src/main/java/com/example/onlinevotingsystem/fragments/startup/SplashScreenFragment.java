@@ -74,15 +74,13 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
             new ConnectionEstablisher(SplashScreenFragment.this).execute();
         },3000);
 
-
-
     }
 
     @Override
     public void onConnectionResult(boolean result, String error) {
         progressIndicatorFragment.dismiss();
         if(result){
-            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.home2);
+            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.onBoardingFragment);
         }
         else {
             Toast.makeText(requireActivity(),"Error in establishing connection: "+error,Toast.LENGTH_LONG).show();

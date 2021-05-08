@@ -1,5 +1,6 @@
 package com.example.onlinevotingsystem.fragments.startup;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.onlinevotingsystem.R;
+import com.example.onlinevotingsystem.activities.UserActivity;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 import com.example.onlinevotingsystem.utils.ProgressIndicatorFragment;
@@ -58,14 +60,10 @@ public class UserLoginFragment extends Fragment implements FetchFromDatabase.Fet
             String username=inputLayoutUsername.getEditText().getText().toString();
             String password=inputLayoutPassword.getEditText().getText().toString();
 
-            HashMap<String,Object> inputHash=new HashMap<>();
-            inputHash.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_LOGIN_USER);
-            inputHash.put(HashMapConstants.FETCH_PARAM_LOGIN_USERNAME_KEY,username);
-            inputHash.put(HashMapConstants.FETCH_PARAM_LOGIN_PASSWORD_KEY,password);
+            Intent intent=new Intent(requireActivity(), UserActivity.class);
+            startActivity(intent);
+            requireActivity().finish();
 
-            progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Authenticating","Signing in with the Given Credentials");
-            progressIndicatorFragment.show(getParentFragmentManager(),"AuthProgress");
-            new FetchFromDatabase(this,inputHash).execute();
         });
 
         btnOpenRegister.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +76,6 @@ public class UserLoginFragment extends Fragment implements FetchFromDatabase.Fet
 
     @Override
     public void onFetchCompleted(HashMap<String, Object> resultHashMap) {
-        if(resultHashMap.get(HashMapConstants.FETCH_RESULT_TYPE_KEY).equals(HashMapConstants.FETCH_TYPE_LOGIN_USER)){
-            progressIndicatorFragment.dismiss();
-            Log.d("UserLogin",resultHashMap.toString());
-        }
 
     }
 }

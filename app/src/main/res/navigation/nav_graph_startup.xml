@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_splash_screen" >
         <action
             android:id="@+id/action_splashScreenFragment_to_home2"
-            app:destination="@id/home2" />
+            app:destination="@id/onBoardingFragment" />
     </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
@@ -22,6 +22,9 @@
         <action
             android:id="@+id/actionLoginToRegister"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_adminOfficerLoginFragment"
+            app:destination="@id/adminOfficerLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminOfficerLoginFragment"
@@ -32,13 +35,25 @@
         android:id="@+id/registerFragment"
         android:name="com.example.onlinevotingsystem.fragments.startup.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_userLoginFragment"
+            app:destination="@id/userLoginFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/home2"
+        android:id="@+id/onBoardingFragment"
         android:name="com.example.onlinevotingsystem.fragments.startup.Home"
         android:label="Home" >
         <action
             android:id="@+id/action_home2_to_userLoginFragment"
             app:destination="@id/userLoginFragment" />
+        <action
+            android:id="@+id/action_home2_to_candidateListFragment"
+            app:destination="@id/candidateListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/candidateListFragment"
+        android:name="com.example.onlinevotingsystem.fragments.shared.CandidateListFragment"
+        android:label="fragment_candidate_list"
+        tools:layout="@layout/fragment_candidate_list" />
 </navigation>

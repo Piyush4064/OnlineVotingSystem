@@ -3,25 +3,25 @@ package com.example.onlinevotingsystem.classes;
 public class User {
 
     private String VoterID;
-    private String Username;
     private String Name;
     private String PhoneNumber;
     private int PollNumber;
     private long DateOfBirth;
+    private boolean IsMobileRegistered;
     private long TimeOfRegistration;
     private String PhotoURL;
-    private boolean hasVoted;
+    private boolean HasVoted;
 
-    public User(String voterID, String username, String name, String phoneNumber, int pollNumber, long dateOfBirth, long timeOfRegistration, String photoURL, boolean hasVoted) {
+    public User(String voterID, String name, String phoneNumber, int pollNumber, long dateOfBirth, boolean isMobileRegistered, long timeOfRegistration, String photoURL, boolean hasVoted) {
         VoterID = voterID;
-        Username = username;
         Name = name;
         PhoneNumber = phoneNumber;
         PollNumber = pollNumber;
         DateOfBirth = dateOfBirth;
+        IsMobileRegistered = isMobileRegistered;
         TimeOfRegistration = timeOfRegistration;
         PhotoURL = photoURL;
-        this.hasVoted = hasVoted;
+        HasVoted = hasVoted;
     }
 
     public String getVoterID() {
@@ -30,14 +30,6 @@ public class User {
 
     public void setVoterID(String voterID) {
         VoterID = voterID;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String username) {
-        Username = username;
     }
 
     public String getName() {
@@ -72,6 +64,14 @@ public class User {
         DateOfBirth = dateOfBirth;
     }
 
+    public boolean isMobileRegistered() {
+        return IsMobileRegistered;
+    }
+
+    public void setMobileRegistered(boolean mobileRegistered) {
+        IsMobileRegistered = mobileRegistered;
+    }
+
     public long getTimeOfRegistration() {
         return TimeOfRegistration;
     }
@@ -89,10 +89,10 @@ public class User {
     }
 
     public boolean isHasVoted() {
-        return hasVoted;
+        return HasVoted;
     }
 
     public void setHasVoted(boolean hasVoted) {
-        this.hasVoted = hasVoted;
+        HasVoted = hasVoted;
     }
 }
