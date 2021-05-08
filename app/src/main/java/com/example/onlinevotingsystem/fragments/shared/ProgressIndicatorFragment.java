@@ -1,4 +1,4 @@
-package com.example.onlinevotingsystem.utils;
+package com.example.onlinevotingsystem.fragments.shared;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

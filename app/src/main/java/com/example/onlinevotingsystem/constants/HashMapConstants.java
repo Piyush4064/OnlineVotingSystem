@@ -14,9 +14,6 @@ public class HashMapConstants {
     public static final String FETCH_PARAM_LOGIN_PASSWORD_KEY="Password";
 
     public static final String FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY="IsLoginSuccessful";
-    public static final String FETCH_RESULT_LOGIN_USER_KEY="ResultUser";
-    public static final String FETCH_RESULT_LOGIN_ADMIN_KEY="ResultAdmin";
-    public static final String FETCH_RESULT_LOGIN_OFFICER_KEY="ResultOfficer";
 
     //For Checking if Voter ID Exists or Not
     public static final String FETCH_TYPE_CHECK_VOTER_ID="CheckVoterID";

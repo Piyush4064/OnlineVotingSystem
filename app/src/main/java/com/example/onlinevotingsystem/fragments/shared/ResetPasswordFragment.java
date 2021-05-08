@@ -1,4 +1,4 @@
-package com.example.onlinevotingsystem.fragments.startup;
+package com.example.onlinevotingsystem.fragments.shared;
 
 import android.os.Bundle;
 
@@ -14,7 +14,7 @@ import com.example.onlinevotingsystem.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class RegisterFragment extends Fragment {
+public class ResetPasswordFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,14 @@ public class RegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        return inflater.inflate(R.layout.fragment_reset_password, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
     }
 }

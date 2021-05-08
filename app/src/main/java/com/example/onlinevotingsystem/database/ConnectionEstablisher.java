@@ -5,10 +5,13 @@ import android.util.Log;
 
 import com.example.onlinevotingsystem.constants.ConnectionConstants;
 import com.example.onlinevotingsystem.constants.TableKeys;
-import com.example.onlinevotingsystem.utils.GetSqlAdminQuery;
-import com.example.onlinevotingsystem.utils.GetSqlCandidateQuery;
-import com.example.onlinevotingsystem.utils.GetSqlOfficerQuery;
-import com.example.onlinevotingsystem.utils.GetSqlPollQuery;
+import com.example.onlinevotingsystem.queries.AdminQuery;
+import com.example.onlinevotingsystem.queries.CandidateQuery;
+import com.example.onlinevotingsystem.queries.OfficerPollNumQuery;
+import com.example.onlinevotingsystem.queries.OfficerQuery;
+import com.example.onlinevotingsystem.queries.PollAddressQuery;
+import com.example.onlinevotingsystem.queries.PollQuery;
+import com.example.onlinevotingsystem.queries.VotersQuery;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,48 +24,47 @@ public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
         void onConnectionResult(boolean result, String error);
     }
 
-    private final String ClassName,URL,Username,Password;
+    private final String TAG = "ConnectionEstablisher";
     private final ConnectionInterface connectionInterface;
     private String errorResult;
 
     public ConnectionEstablisher(ConnectionInterface connectionInterface) {
         super();
-        ClassName=ConnectionConstants.JDBC_CLASS_NAME;
-        URL=ConnectionConstants.SERVER_URL;
-        Username=ConnectionConstants.USERNAME;
-        Password=ConnectionConstants.PASSWORD;
         this.connectionInterface=connectionInterface;
     }
 
     @Override
     protected Boolean doInBackground(Void... voids) {
-        String TAG = "ConnectionEstablisher";
-        try {
-            Class.forName(ClassName).newInstance();
-            Log.d(TAG,"Class " + ClassName + " Loaded Successfully!");
 
-            Connection connection=DriverManager.getConnection(URL,Username,Password);
+        try {
+            Class.forName(ConnectionConstants.JDBC_CLASS_NAME).newInstance();
+            Log.d(TAG,"Class " + ConnectionConstants.JDBC_CLASS_NAME + " Loaded Successfully!");
+
+            Connection connection=DriverManager.getConnection(ConnectionConstants.SERVER_URL,ConnectionConstants.USERNAME,ConnectionConstants.PASSWORD);
             Log.d(TAG,"Connection Successful!");
             
             Statement statement=connection.createStatement();
 
-            statement.execute(GetSqlExistingVoterQuery.getCreateQuery());
-            Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_EXISTING_VOTERS);
+            showTableCheckLog(TableKeys.TABLE_NAME_ADMIN);
+            statement.execute(AdminQuery.getCreateQuery());
 
-            statement.execute(GetSqlRegisteredUserQuery.getCreateQuery());
-            Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_REGISTERED_USERS);
+            showTableCheckLog(TableKeys.TABLE_NAME_CANDIDATE);
+            statement.execute(CandidateQuery.getCreateQuery());
 
-            statement.execute(GetSqlAdminQuery.getCreateQuery());
-            Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_ADMIN);
+            showTableCheckLog(TableKeys.TABLE_NAME_OFFICER);
+            statement.execute(OfficerQuery.getCreateQuery());
 
-            statement.execute(GetSqlCandidateQuery.getCreateQuery());
-            Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_CANDIDATE);
+            showTableCheckLog(TableKeys.TABLE_NAME_OFFICER_POLL_NO);
+            statement.execute(OfficerPollNumQuery.getCreateQuery());
 
-            statement.execute(GetSqlOfficerQuery.getCreateQuery());
-            Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_OFFICER);
+            showTableCheckLog(TableKeys.TABLE_NAME_POLL);
+            statement.execute(PollQuery.getCreateQuery());
 
-            statement.execute(GetSqlPollQuery.getCreateQuery());
-            Log.d(TAG,"Checked Table - "+TableKeys.TABLE_NAME_POLL);
+            showTableCheckLog(TableKeys.TABLE_NAME_POLL_ADDRESS);
+            statement.execute(PollAddressQuery.getCreateQuery());
+
+            showTableCheckLog(TableKeys.TABLE_NAME_VOTERS);
+            statement.execute(VotersQuery.getCreateQuery());
 
             return true;
         } catch (IllegalAccessException | InstantiationException | ClassNotFoundException | SQLException e) {
@@ -70,6 +72,10 @@ public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
             errorResult=e.getLocalizedMessage();
             return false;
         }
+    }
+
+    private void showTableCheckLog(String tableName){
+        Log.d(TAG,"Checking Table - " + tableName);
     }
 
     @Override

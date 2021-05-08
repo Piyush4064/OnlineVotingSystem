@@ -1,8 +1,8 @@
-package com.example.onlinevotingsystem.utils;
+package com.example.onlinevotingsystem.queries;
 
 import com.example.onlinevotingsystem.constants.TableKeys;
 
-public class GetSqlPollAddressQuery {
+public class PollAddressQuery {
 
     public static String getCreateQuery(){
         return "CREATE TABLE  IF NOT EXISTS "+ TableKeys.TABLE_NAME_POLL_ADDRESS+
@@ -18,4 +18,5 @@ public class GetSqlPollAddressQuery {
     public static String GetPollDetailsQuery(int pollno) {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL_ADDRESS + " WHERE " + TableKeys.KEY_POLL_ADDRESS_NUMBER + " = " + pollno + " )";
     }
+
 }

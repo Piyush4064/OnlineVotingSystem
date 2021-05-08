@@ -1,8 +1,8 @@
-package com.example.onlinevotingsystem.utils;
+package com.example.onlinevotingsystem.queries;
 
 import com.example.onlinevotingsystem.constants.TableKeys;
 
-public class GetSqlOfficerPollNoQuery {
+public class OfficerPollNumQuery {
 
     public static String getCreateQuery(){
         return "CREATE TABLE  IF NOT EXISTS "+ TableKeys.TABLE_NAME_OFFICER_POLL_NO+

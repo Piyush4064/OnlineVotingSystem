@@ -1,11 +1,11 @@
-package com.example.onlinevotingsystem.utils;
+package com.example.onlinevotingsystem.queries;
 
 import com.example.onlinevotingsystem.constants.TableKeys;
 
-public class GetSqlVotersQuery {
+public class VotersQuery {
 
     public static String getCreateQuery(){
-        return "CREATE TABLE IF NOT EXISTS "+TableKeys.TABLE_NAME_VOTERS+
+        return "CREATE TABLE IF NOT EXISTS "+ TableKeys.TABLE_NAME_VOTERS+
                 "(`"+TableKeys.KEY_VOTERS_NAME+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_VOTERS_ID+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_VOTERS_PHONE_NUM+"`  varchar(50) NOT NULL," +
@@ -33,7 +33,7 @@ public class GetSqlVotersQuery {
 
     public static String GetUpdateMobileRegisteredQuery(String voterId , String password , String regtime , String photourl){
         return " UPDATE " + TableKeys.TABLE_NAME_VOTERS + " SET " + TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED  + "= 1 "+","+ TableKeys.KEY_VOTERS_PASSWORD + "= " + password + "," +
-        TableKeys.KEY_VOTERS_REG_TIME  + "= " + regtime + "," + TableKeys.KEY_VOTERS_PHOTO_URL + "= " + photourl + " WHERE "+ TableKeys.KEY_VOTERS_ID + " = " + voterId ;
+                TableKeys.KEY_VOTERS_REG_TIME  + "= " + regtime + "," + TableKeys.KEY_VOTERS_PHOTO_URL + "= " + photourl + " WHERE "+ TableKeys.KEY_VOTERS_ID + " = " + voterId ;
     }
 
     public static String GetVoterIdDataQuery(String voterId){

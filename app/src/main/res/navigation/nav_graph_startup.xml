@@ -42,7 +42,8 @@
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
-        android:name="com.example.onlinevotingsystem.fragments.startup.Home"
+        android:name="com.example.onlinevotingsystem.fragments.startup.OnBoardingFragmentHolder"
+        tools:layout="@layout/fragment_on_boarding_holder"
         android:label="Home" >
         <action
             android:id="@+id/action_home2_to_userLoginFragment"

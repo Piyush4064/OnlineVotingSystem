@@ -5,12 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
-import androidx.viewpager.widget.ViewPager;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,23 +18,13 @@ import android.widget.Toast;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.database.ConnectionEstablisher;
-import com.example.onlinevotingsystem.utils.ProgressIndicatorFragment;
+import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 
 public class SplashScreenFragment extends Fragment implements ConnectionEstablisher.ConnectionInterface {
 
-    private ProgressIndicatorFragment progressIndicatorFragment;
-
-    public SplashScreenFragment() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -52,6 +37,7 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
     private Animation topAnimation, bottomAnimation;
     private ImageView imgLogo;
     private TextView tvName, tvSlogan;
+    private ProgressIndicatorFragment progressIndicatorFragment;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -69,8 +55,8 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
         tvSlogan.setAnimation(topAnimation);
 
         new Handler().postDelayed(() -> {
-            progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Connecting","Establishing Connection");
-            progressIndicatorFragment.show(getParentFragmentManager(),"StartupConnectionProgress");
+            progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Syncing","Establishing connection with the Server");
+            progressIndicatorFragment.show(getParentFragmentManager(),"ConnectionProgress");
             new ConnectionEstablisher(SplashScreenFragment.this).execute();
         },3000);
 

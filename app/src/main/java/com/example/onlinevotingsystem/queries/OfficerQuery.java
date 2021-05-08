@@ -1,11 +1,11 @@
-package com.example.onlinevotingsystem.utils;
+package com.example.onlinevotingsystem.queries;
 
 import com.example.onlinevotingsystem.constants.TableKeys;
 
-public class GetSqlOfficerQuery {
+public class OfficerQuery {
 
     public static String getCreateQuery(){
-        return "CREATE TABLE  IF NOT EXISTS "+TableKeys.TABLE_NAME_OFFICER+
+        return "CREATE TABLE  IF NOT EXISTS "+ TableKeys.TABLE_NAME_OFFICER+
                 "(`"+TableKeys.KEY_OFFICER_USERNAME+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_OFFICER_PASSWORD+"`  varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_OFFICER_PHOTO_URL+"` varchar(50) NOT NULL," +
@@ -20,7 +20,7 @@ public class GetSqlOfficerQuery {
     }
 
     public static String GetAuthenticateQuery(String username , String password){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username + " and " + TableKeys.KEY_OFFICER_PASSWORD + " = " + password + " )";
+        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "' and " + TableKeys.KEY_OFFICER_PASSWORD + " = '" + password + "'";
     }
 
     public static String GetCheckUserNameExistsQuery(String username){
