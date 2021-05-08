@@ -7,10 +7,8 @@ import com.example.onlinevotingsystem.constants.ConnectionConstants;
 import com.example.onlinevotingsystem.constants.TableKeys;
 import com.example.onlinevotingsystem.utils.GetSqlAdminQuery;
 import com.example.onlinevotingsystem.utils.GetSqlCandidateQuery;
-import com.example.onlinevotingsystem.utils.GetSqlExistingVoterQuery;
 import com.example.onlinevotingsystem.utils.GetSqlOfficerQuery;
 import com.example.onlinevotingsystem.utils.GetSqlPollQuery;
-import com.example.onlinevotingsystem.utils.GetSqlRegisteredUserQuery;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
