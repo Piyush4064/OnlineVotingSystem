@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.example.onlinevotingsystem.constants.ConnectionConstants;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
+import com.example.onlinevotingsystem.constants.TableKeys;
 import com.example.onlinevotingsystem.queries.AdminQuery;
 import com.example.onlinevotingsystem.queries.OfficerQuery;
 import com.example.onlinevotingsystem.queries.VotersQuery;
@@ -95,6 +96,28 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                     resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
                     resultHashMap.put(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY,resultSet.first());
+                    break;
+                }
+                case HashMapConstants.FETCH_TYPE_VERIFY_PHONE_NUM:{
+                    String voterId, phoneNum;
+
+                    voterId=inputHashMap.get(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY).toString();
+                    phoneNum=inputHashMap.get(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY).toString();
+
+                    Log.d(TAG,"Verifying Phone Number for "+voterId+" with Number "+phoneNum);
+
+                    ResultSet resultSet=statement.executeQuery(VotersQuery.GetVerifyPhoneNumQuery(voterId,phoneNum));
+
+                    Log.d(TAG,"Phone Verification Status for "+voterId+" - "+resultSet.first());
+
+                    resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
+                    resultHashMap.put(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_KEY,resultSet.first());
+
+                    if(resultSet.first()){
+                        boolean isRegistered= resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED) == 1;
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_IS_REG_KEY,isRegistered);
+                    }
+
                     break;
                 }
             }

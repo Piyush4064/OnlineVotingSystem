@@ -15,6 +15,15 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY="IsLoginSuccessful";
 
+    //For Verifying the Phone Number of the User
+    public static final String FETCH_TYPE_VERIFY_PHONE_NUM="VerifyPhoneNum";
+
+    public static final String FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY="VoterID";
+    public static final String FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY="PhoneNumber";
+
+    public static final String FETCH_RESULT_VERIFY_PHONE_NUM_KEY="IsNumberVerified";
+    public static final String FETCH_RESULT_VERIFY_PHONE_NUM_IS_REG_KEY="IsRegistered";
+
     //For Checking if Voter ID Exists or Not
     public static final String FETCH_TYPE_CHECK_VOTER_ID="CheckVoterID";
 
@@ -77,5 +86,13 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_SUCCESS_KEY="IsFetchSuccess";
     public static final String FETCH_RESULT_ERROR_KEY="ResultError";
+
+    public static final String UPDATE_TYPE_KEY="UpdateType";
+
+    //For Updating Voters Table while Registering User
+    public static final String UPDATE_TYPE_REGISTER_USER="RegisterUser";
+
+    public static final String UPDATE_PARAM_REGISTER_USER_VOTER_ID="VoterID";
+    public static final String UPDATE_PARAM_REGISTER_USER_PASSWORD="Password";
 
 }

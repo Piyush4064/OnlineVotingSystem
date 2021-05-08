@@ -31,9 +31,13 @@ public class VotersQuery {
         return " SELECT * FROM " + TableKeys.TABLE_NAME_VOTERS + " WHERE  "+ TableKeys.KEY_VOTERS_ID + " = '" + voterId + "'";
     }
 
+    public static String GetVerifyPhoneNumQuery(String voterId, String phoneNum){
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_VOTERS + " WHERE " + TableKeys.KEY_VOTERS_ID + " = '" + voterId + "' AND " + TableKeys.KEY_VOTERS_PHONE_NUM + " = '" + phoneNum + "'";
+    }
+
     public static String GetUpdateMobileRegisteredQuery(String voterId , String password , String regtime , String photourl){
-        return " UPDATE " + TableKeys.TABLE_NAME_VOTERS + " SET " + TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED  + "= 1 "+","+ TableKeys.KEY_VOTERS_PASSWORD + "= " + password + "," +
-                TableKeys.KEY_VOTERS_REG_TIME  + "= " + regtime + "," + TableKeys.KEY_VOTERS_PHOTO_URL + "= " + photourl + " WHERE "+ TableKeys.KEY_VOTERS_ID + " = " + voterId ;
+        return " UPDATE " + TableKeys.TABLE_NAME_VOTERS + " SET " + TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED  + " = 1 " + " , "+ TableKeys.KEY_VOTERS_PASSWORD + " = '" + password + "' ," +
+                TableKeys.KEY_VOTERS_REG_TIME  + " = '" + regtime + "' , " + TableKeys.KEY_VOTERS_PHOTO_URL + " = '" + photourl + "' WHERE "+ TableKeys.KEY_VOTERS_ID + " = '" + voterId + "'";
     }
 
     public static String GetVoterIdDataQuery(String voterId){
