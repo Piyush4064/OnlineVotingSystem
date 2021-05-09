@@ -95,7 +95,7 @@
         app:layout_constraintWidth_percent=".5" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnOnboarding2ViewCandidates"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintVertical_bias="0"
@@ -132,7 +132,7 @@
         android:layout_marginLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/button1"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        app:layout_constraintStart_toStartOf="@+id/btnOnboarding2ViewCandidates"
+        app:layout_constraintTop_toBottomOf="@+id/btnOnboarding2ViewCandidates" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

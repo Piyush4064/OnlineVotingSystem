@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
 
 import com.example.onlinevotingsystem.R;
-import com.example.onlinevotingsystem.viewModels.StartupViewModel;
+import com.example.onlinevotingsystem.viewModels.CandidateListViewModel;
 
 public class StartupActivity extends AppCompatActivity{
 
@@ -15,7 +15,7 @@ public class StartupActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startup);
 
-        StartupViewModel viewModel=new ViewModelProvider(this).get(StartupViewModel.class);
+        CandidateListViewModel viewModel=new ViewModelProvider(this).get(CandidateListViewModel.class);
 
     }
 

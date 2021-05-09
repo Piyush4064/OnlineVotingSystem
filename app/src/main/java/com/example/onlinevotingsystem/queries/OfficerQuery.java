@@ -23,6 +23,10 @@ public class OfficerQuery {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "' and " + TableKeys.KEY_OFFICER_PASSWORD + " = '" + password + "'";
     }
 
+    public static String GetOfficerDataQuery(String username){
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
+    }
+
     public static String GetCheckUserNameExistsQuery(String username){
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username +  " )";
     }

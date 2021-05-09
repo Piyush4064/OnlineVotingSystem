@@ -1,5 +1,7 @@
 package com.example.onlinevotingsystem.classes;
 
+import java.util.ArrayList;
+
 public class Poll {
 
     private int PollNumber;
@@ -10,6 +12,17 @@ public class Poll {
     private long ElectionStartTime;
     private long ElectionEndTime;
     private int NumberOfVotesCasted;
+
+    private ArrayList<Candidate> candidateList;
+
+    public Poll(int pollNumber, int numberOfCandidates, int numberOfVoters, long electionStartTime, long electionEndTime, int numberOfVotesCasted) {
+        PollNumber = pollNumber;
+        NumberOfCandidates = numberOfCandidates;
+        NumberOfVoters = numberOfVoters;
+        ElectionStartTime = electionStartTime;
+        ElectionEndTime = electionEndTime;
+        NumberOfVotesCasted = numberOfVotesCasted;
+    }
 
     public Poll(int pollNumber, String address, String officerUsername, int numberOfCandidates, int numberOfVoters, long electionStartTime, long electionEndTime, int numberOfVotesCasted) {
         PollNumber = pollNumber;
@@ -84,5 +97,13 @@ public class Poll {
 
     public void setNumberOfVotesCasted(int numberOfVotesCasted) {
         NumberOfVotesCasted = numberOfVotesCasted;
+    }
+
+    public ArrayList<Candidate> getCandidateList() {
+        return candidateList;
+    }
+
+    public void setCandidateList(ArrayList<Candidate> candidateList) {
+        this.candidateList = candidateList;
     }
 }

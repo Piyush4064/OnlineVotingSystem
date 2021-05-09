@@ -25,8 +25,13 @@ public class PollQuery {
     }
 
     public static String GetPollDetailsQuery(int pollno) {
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL + " WHERE " + TableKeys.KEY_POLL_NUMBER + " = " + pollno + " )";
+        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL + " WHERE " + TableKeys.KEY_POLL_NUMBER + " = " + pollno;
     }
+
+    public static String GetPollListQuery(){
+        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL;
+    }
+
     public static String GetUpdateElecTimeQuery(int pollno , String elecendtime ,  String elecstarttime){
         return " UPDATE " + TableKeys.TABLE_NAME_POLL + " SET " + TableKeys.KEY_POLL_ELEC_END_TIME  + " = " + elecendtime + " AND " + TableKeys.KEY_POLL_ELEC_START_TIME  + " = " + elecstarttime+  " WHERE "+ TableKeys.KEY_POLL_NUMBER + " = " + pollno ;
     }

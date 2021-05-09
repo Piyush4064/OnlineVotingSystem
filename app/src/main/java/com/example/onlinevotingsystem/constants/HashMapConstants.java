@@ -48,6 +48,13 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_CHECK_UNIQUE_USERNAME_KEY="IsUsernameUnique";
 
+    //For Fetching Details of a Particular Officer
+    public static final String FETCH_TYPE_OFFICER_DETAILS="OfficerDetails";
+
+    public static final String FETCH_PARAM_OFFICER_DETAILS_USERNAME_KEY="OfficerUsername";
+
+    public static final String FETCH_RESULT_OFFICER_DETAILS_KEY="OfficerDetails";
+
     //For Fetching List of Officers
     public static final String FETCH_TYPE_OFFICER_LIST="GetOfficersList";
 

@@ -16,7 +16,7 @@ public class PollAddressQuery {
     }
 
     public static String GetPollDetailsQuery(int pollno) {
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL_ADDRESS + " WHERE " + TableKeys.KEY_POLL_ADDRESS_NUMBER + " = " + pollno + " )";
+        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL_ADDRESS + " WHERE " + TableKeys.KEY_POLL_ADDRESS_NUMBER + " = " + pollno;
     }
 
 }

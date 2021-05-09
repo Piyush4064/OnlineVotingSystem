@@ -34,7 +34,7 @@ public class CandidateQuery {
     }
 
     public static String GetPollWiseCandidateQuery(int pollno){
-        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_POLL_NO + " = " + pollno + ")";
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_POLL_NO + " = " + pollno;
     }
 
     public static String GetIncreaseCandidateVoteQuery(String candid) {

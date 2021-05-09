@@ -37,7 +37,7 @@ public class OfficerPollNumQuery {
     }
 
     public static String GetPollDetailsQuery(int pollno) {
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER_POLL_NO + " WHERE " + TableKeys.KEY_OFFICER_POLL_NO_POLL_NO + " = " + pollno + " )";
+        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER_POLL_NO + " WHERE " + TableKeys.KEY_OFFICER_POLL_NO_POLL_NO + " = " + pollno;
     }
 
 }
