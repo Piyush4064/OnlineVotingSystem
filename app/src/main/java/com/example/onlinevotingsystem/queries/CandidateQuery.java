@@ -10,7 +10,7 @@ public class CandidateQuery {
                 "`"+TableKeys.KEY_CANDIDATE_CAND_ID+"`  varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_CANDIDATE_PHONE_NO+"`  varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_CANDIDATE_DOB+"` varchar(50) NOT NULL," +
-                "`"+TableKeys.KEY_CANDIDATE_PHOTO_URL+"` varchar(50) NOT NULL," +
+                "`"+TableKeys.KEY_CANDIDATE_PHOTO_URL+"` varchar(50) ," +
                 "`"+TableKeys.KEY_CANDIDATE_POLL_NO+"` tinyint NOT NULL," +
                 "`"+TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO+"` varchar(50) NOT NULL," +
@@ -39,6 +39,10 @@ public class CandidateQuery {
 
     public static String GetIncreaseCandidateVoteQuery(String candid) {
         return " UPDATE " + TableKeys.TABLE_NAME_CANDIDATE + " SET " + TableKeys.KEY_CANDIDATE_NO_VOTES  + " = " + TableKeys.KEY_CANDIDATE_NO_VOTES +  " + 1  WHERE "+ TableKeys.KEY_CANDIDATE_CAND_ID + " = " + candid + " )" ;
+    }
+
+    public static String GetAllCandidatesQuery(){
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE ;
     }
 
 }
