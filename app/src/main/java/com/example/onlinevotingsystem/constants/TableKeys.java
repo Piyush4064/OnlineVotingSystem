@@ -26,11 +26,13 @@ public class TableKeys {
     public static final String KEY_ADMIN_NAME="name";
     public static final String KEY_ADMIN_PASSWORD="password";
     public static final String KEY_ADMIN_PHOTO_URL="photo_url";
+    public static final String KEY_ADMIN_PHONE_NO="phone_no";
 
     public static final String KEY_OFFICER_USERNAME="username";
     public static final String KEY_OFFICER_PASSWORD="password";
     public static final String KEY_OFFICER_PHOTO_URL="photo_url";
     public static final String KEY_OFFICER_NAME="name";
+    public static final String KEY_OFFICER_PHONE_NO="phone_no";
 
     public static final String KEY_OFFICER_POLL_NO_USERNAME="username";
     public static final String KEY_OFFICER_POLL_NO_POLL_NO="poll_no";
