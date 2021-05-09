@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.onlinevotingsystem.classes.Candidate;
 import com.example.onlinevotingsystem.classes.Poll;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
@@ -65,5 +66,9 @@ public class CandidateListViewModel extends ViewModel implements FetchFromDataba
                 ExceptionError.setValue(new Pair<>(HashMapConstants.FETCH_TYPE_POLL_LIST,error));
             }
         }
+    }
+
+    private ArrayList<Candidate> GetPollCandidateList(int position){
+        return PollList.getValue().get(position).getCandidateList();
     }
 }

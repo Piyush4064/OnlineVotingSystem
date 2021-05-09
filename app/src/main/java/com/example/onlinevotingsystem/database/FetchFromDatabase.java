@@ -2,6 +2,7 @@ package com.example.onlinevotingsystem.database;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.util.Pair;
 
 import com.example.onlinevotingsystem.classes.Candidate;
 import com.example.onlinevotingsystem.classes.Officer;
@@ -52,8 +53,6 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
             Connection connection= DriverManager.getConnection(ConnectionConstants.SERVER_URL,ConnectionConstants.USERNAME,ConnectionConstants.PASSWORD);
             Log.d(TAG,"Connection Successful");
 
-            Statement statement=connection.createStatement();
-
             String fetchType=inputHashMap.get(HashMapConstants.FETCH_PARAM_TYPE_KEY).toString();
             Log.d(TAG,"Fetch Type - "+fetchType);
 
@@ -66,6 +65,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                     Log.d(TAG,"Authenticating User with Voter ID: "+voterId);
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(VotersQuery.GetAuthenticateQuery(voterId,password));
 
                     Log.d(TAG,"Authentication Status for "+voterId+" - "+resultSet.first());
@@ -82,6 +82,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                     Log.d(TAG,"Authenticating Admin with Username: "+username);
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(AdminQuery.GetAuthenticateQuery(username,password));
 
                     Log.d(TAG,"Authentication Status for "+username+" - "+resultSet.first());
@@ -98,6 +99,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                     Log.d(TAG,"Authenticating Officer with Username: "+username);
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(OfficerQuery.GetAuthenticateQuery(username,password));
 
                     Log.d(TAG,"Authentication Status for "+username+" - "+resultSet.first());
@@ -114,6 +116,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                     Log.d(TAG,"Verifying Phone Number for "+voterId+" with Number "+phoneNum);
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(VotersQuery.GetVerifyPhoneNumQuery(voterId,phoneNum));
 
                     Log.d(TAG,"Phone Verification Status for "+voterId+" - "+resultSet.first());
@@ -130,11 +133,14 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                 }
                 case HashMapConstants.FETCH_TYPE_POLL_LIST:{
                     Log.d(TAG,"Fetching the Details of Each Poll");
+
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(PollQuery.GetPollListQuery());
                     Log.d(TAG,"List Fetched Successfully");
 
                     ArrayList<Poll> pollArrayList=new ArrayList<>();
-                    if(resultSet.first()){
+
+                    while (resultSet.next()){
                         int pollNum=resultSet.getInt(TableKeys.KEY_POLL_NUMBER);
                         int numOfCandidates=resultSet.getInt(TableKeys.KEY_POLL_NO_CANDIDATES);
                         int numOfVoters=resultSet.getInt(TableKeys.KEY_POLL_NO_VOTERS);
@@ -144,24 +150,24 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                         Poll poll=new Poll(pollNum,numOfCandidates,numOfVoters,electionStartTime,electionEndTime,numOfCastedVotes);
 
-                        ResultSet addressResult=statement.executeQuery(PollAddressQuery.GetPollDetailsQuery(pollNum));
+                        Statement statement1=connection.createStatement();
+                        ResultSet addressResult=statement1.executeQuery(PollAddressQuery.GetPollDetailsQuery(pollNum));
                         if(addressResult.first())
                             poll.setAddress(addressResult.getString(TableKeys.KEY_POLL_ADDRESS_ADDRESS));
 
-                        ResultSet officerResult=statement.executeQuery(OfficerPollNumQuery.GetPollDetailsQuery(pollNum));
+                        ResultSet officerResult=statement1.executeQuery(OfficerPollNumQuery.GetPollDetailsQuery(pollNum));
                         if(officerResult.first())
                             poll.setOfficerUsername(officerResult.getString(TableKeys.KEY_OFFICER_POLL_NO_USERNAME));
 
-                        ResultSet candidateListResult=statement.executeQuery(CandidateQuery.GetPollWiseCandidateQuery(pollNum));
+                        ResultSet candidateListResult=statement1.executeQuery(CandidateQuery.GetPollWiseCandidateQuery(pollNum));
 
                         ArrayList<Candidate> candidateArrayList=new ArrayList<>();
 
-                        if(candidateListResult.first()){
-
+                        while (candidateListResult.next()){
                             String name=candidateListResult.getString(TableKeys.KEY_CANDIDATE_NAME);
                             String id=candidateListResult.getString(TableKeys.KEY_CANDIDATE_CAND_ID);
                             String phoneNum=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHONE_NO);
-                            Long dob=Long.parseLong(candidateListResult.getString(TableKeys.KEY_CANDIDATE_DOB));
+                            long dob=Long.parseLong(candidateListResult.getString(TableKeys.KEY_CANDIDATE_DOB));
                             String photoUrl=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHOTO_URL);
                             String symbolName=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME);
                             String symbolPhoto=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO);
@@ -169,81 +175,11 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                             Candidate candidate=new Candidate(id,name,dob,photoUrl,phoneNum,symbolName,symbolPhoto,pollNum,numOfVotes);
                             candidateArrayList.add(candidate);
-
-                            while (candidateListResult.next()){
-                                name=candidateListResult.getString(TableKeys.KEY_CANDIDATE_NAME);
-                                id=candidateListResult.getString(TableKeys.KEY_CANDIDATE_CAND_ID);
-                                phoneNum=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHONE_NO);
-                                dob=Long.parseLong(candidateListResult.getString(TableKeys.KEY_CANDIDATE_DOB));
-                                photoUrl=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHOTO_URL);
-                                symbolName=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME);
-                                symbolPhoto=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO);
-                                numOfVotes=candidateListResult.getInt(TableKeys.KEY_CANDIDATE_NO_VOTES);
-
-                                candidate=new Candidate(id,name,dob,photoUrl,phoneNum,symbolName,symbolPhoto,pollNum,numOfVotes);
-                                candidateArrayList.add(candidate);
-                            }
                         }
 
                         poll.setCandidateList(candidateArrayList);
 
                         pollArrayList.add(poll);
-
-                        while (resultSet.next()){
-                            pollNum=resultSet.getInt(TableKeys.KEY_POLL_NUMBER);
-                            numOfCandidates=resultSet.getInt(TableKeys.KEY_POLL_NO_CANDIDATES);
-                            numOfVoters=resultSet.getInt(TableKeys.KEY_POLL_NO_VOTERS);
-                            electionStartTime=Long.parseLong(resultSet.getString(TableKeys.KEY_POLL_ELEC_START_TIME));
-                            electionEndTime=Long.parseLong(resultSet.getString(TableKeys.KEY_POLL_ELEC_END_TIME));
-                            numOfCastedVotes=resultSet.getInt(TableKeys.KEY_POLL_NO_VOTES_CASTED);
-
-                            poll=new Poll(pollNum,numOfCandidates,numOfVoters,electionStartTime,electionEndTime,numOfCastedVotes);
-
-                            addressResult=statement.executeQuery(PollAddressQuery.GetPollDetailsQuery(pollNum));
-                            if(addressResult.first())
-                                poll.setAddress(addressResult.getString(TableKeys.KEY_POLL_ADDRESS_ADDRESS));
-
-                            officerResult=statement.executeQuery(OfficerPollNumQuery.GetPollDetailsQuery(pollNum));
-                            if(officerResult.first())
-                                poll.setOfficerUsername(officerResult.getString(TableKeys.KEY_OFFICER_POLL_NO_USERNAME));
-
-                            candidateListResult=statement.executeQuery(CandidateQuery.GetPollWiseCandidateQuery(pollNum));
-
-                            candidateArrayList=new ArrayList<>();
-
-                            if(candidateListResult.first()){
-
-                                String name=candidateListResult.getString(TableKeys.KEY_CANDIDATE_NAME);
-                                String id=candidateListResult.getString(TableKeys.KEY_CANDIDATE_CAND_ID);
-                                String phoneNum=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHONE_NO);
-                                Long dob=Long.parseLong(candidateListResult.getString(TableKeys.KEY_CANDIDATE_DOB));
-                                String photoUrl=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHOTO_URL);
-                                String symbolName=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME);
-                                String symbolPhoto=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO);
-                                int numOfVotes=candidateListResult.getInt(TableKeys.KEY_CANDIDATE_NO_VOTES);
-
-                                Candidate candidate=new Candidate(id,name,dob,photoUrl,phoneNum,symbolName,symbolPhoto,pollNum,numOfVotes);
-                                candidateArrayList.add(candidate);
-
-                                while (candidateListResult.next()){
-                                    name=candidateListResult.getString(TableKeys.KEY_CANDIDATE_NAME);
-                                    id=candidateListResult.getString(TableKeys.KEY_CANDIDATE_CAND_ID);
-                                    phoneNum=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHONE_NO);
-                                    dob=Long.parseLong(candidateListResult.getString(TableKeys.KEY_CANDIDATE_DOB));
-                                    photoUrl=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHOTO_URL);
-                                    symbolName=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME);
-                                    symbolPhoto=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO);
-                                    numOfVotes=candidateListResult.getInt(TableKeys.KEY_CANDIDATE_NO_VOTES);
-
-                                    candidate=new Candidate(id,name,dob,photoUrl,phoneNum,symbolName,symbolPhoto,pollNum,numOfVotes);
-                                    candidateArrayList.add(candidate);
-                                }
-                            }
-
-                            poll.setCandidateList(candidateArrayList);
-
-                            pollArrayList.add(poll);
-                        }
                     }
 
                     resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
@@ -256,6 +192,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                     Log.d(TAG,"Checking If Voter ID Exists or not for id "+voterId);
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(VotersQuery.GetCheckVoterIdQuery(voterId));
 
                     Log.d(TAG,"Verification Completed, Status - "+resultSet.first());
@@ -267,6 +204,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                 case HashMapConstants.FETCH_TYPE_EXISTING_DATA_FROM_ID:{
                     String voterId=inputHashMap.get(HashMapConstants.FETCH_PARAM_EXISTING_DATA_FROM_ID_KEY).toString();
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(VotersQuery.GetVoterIdDataQuery(voterId));
 
                     if(resultSet.first()){
@@ -285,6 +223,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                 case HashMapConstants.FETCH_TYPE_OFFICER_DETAILS:{
                     String username=inputHashMap.get(HashMapConstants.FETCH_PARAM_OFFICER_DETAILS_USERNAME_KEY).toString();
 
+                    Statement statement=connection.createStatement();
                     ResultSet resultSet=statement.executeQuery(OfficerQuery.GetOfficerDataQuery(username));
 
                     if(resultSet.first()){
