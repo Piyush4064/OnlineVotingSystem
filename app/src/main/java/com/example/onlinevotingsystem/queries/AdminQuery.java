@@ -14,14 +14,16 @@ public class AdminQuery {
                 "PRIMARY KEY (`"+TableKeys.KEY_ADMIN_USERNAME+"`))";
     }
 
-    public static String GetInsertQuery(String username, String password, String name, String photourl, String phoneno){
-
-        return "INSERT INTO `" + TableKeys.TABLE_NAME_ADMIN +
-                "` VALUES ('" + username + "','"  + password + "','" + name + "','" + photourl + "','" + phoneno +")";
+    public static String GetAddAdminQuery(String username, String password, String name, String phoneNum){
+        return "INSERT INTO `" + TableKeys.TABLE_NAME_ADMIN + "` VALUES ('" + username + "','"  + name + "','" + password + "',NULL ,'" + phoneNum + "')";
     }
 
     public static String GetAuthenticateQuery(String username , String password){
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_ADMIN + " WHERE " + TableKeys.KEY_ADMIN_USERNAME + " = '" + username + "' and " + TableKeys.KEY_ADMIN_PASSWORD + " = '" + password + "'";
+    }
+
+    public static String GetCheckUserNameExistsQuery(String username){
+        return " SELECT *  FROM " + TableKeys.TABLE_NAME_ADMIN + " WHERE " + TableKeys.KEY_ADMIN_USERNAME + " = '" + username +  "'";
     }
 
     public static String GetUpdatePasswordQuery(String username , String password){
@@ -30,19 +32,5 @@ public class AdminQuery {
 
     public static String GetUpdatePhotoUrlQuery(String username , String photoUrl){
         return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHOTO_URL  + " = " + photoUrl +  " WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = " + username ;
-    }
-
-    public static String GetCheckUserNameExistsQuery(String username){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_ADMIN + " WHERE " + TableKeys.KEY_ADMIN_USERNAME + " = " + username +  " )";
-    }
-
-    public static String GetAddAdminQuery(String username, String password, String name, String photourl){
-
-        return "INSERT INTO `" + TableKeys.TABLE_NAME_ADMIN +
-                "` VALUES ('" + username + "','"  + password + "','" + name + "','" + photourl + "','" + photourl +")";
-    }
-
-    public static String GetUpdatePhoneNoQuery(String username , String phoneno){
-        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHONE_NO  + " = " + phoneno +  " WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = " + username ;
     }
 }

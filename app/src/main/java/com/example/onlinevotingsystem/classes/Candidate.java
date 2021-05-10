@@ -4,7 +4,7 @@ public class Candidate {
 
     private String ID;
     private String Name;
-    private String DateOfBirth;
+    private long DateOfBirth;
     private String PhotoURL;
     private String PhoneNumber;
     private String ElectionSymbolName;
@@ -12,7 +12,7 @@ public class Candidate {
     private int PollNumber;
     private int NumberOfVotesReceived;
 
-    public Candidate(String ID, String name, String dateOfBirth, String photoURL, String phoneNumber, String electionSymbolName, String electionSymbolPhotoURL, int pollNumber, int numberOfVotesReceived) {
+    public Candidate(String ID, String name, long dateOfBirth, String photoURL, String phoneNumber, String electionSymbolName, String electionSymbolPhotoURL, int pollNumber, int numberOfVotesReceived) {
         this.ID = ID;
         Name = name;
         DateOfBirth = dateOfBirth;
@@ -22,6 +22,14 @@ public class Candidate {
         ElectionSymbolPhotoURL = electionSymbolPhotoURL;
         PollNumber = pollNumber;
         NumberOfVotesReceived = numberOfVotesReceived;
+    }
+
+    public Candidate(String name, long dateOfBirth, String phoneNumber, String electionSymbolName, int pollNumber) {
+        Name = name;
+        DateOfBirth = dateOfBirth;
+        PhoneNumber = phoneNumber;
+        ElectionSymbolName = electionSymbolName;
+        PollNumber = pollNumber;
     }
 
     public String getID() {
@@ -40,11 +48,11 @@ public class Candidate {
         Name = name;
     }
 
-    public String getDateOfBirth() {
+    public long getDateOfBirth() {
         return DateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(long dateOfBirth) {
         DateOfBirth = dateOfBirth;
     }
 

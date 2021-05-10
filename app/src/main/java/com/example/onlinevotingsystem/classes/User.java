@@ -24,6 +24,13 @@ public class User {
         HasVoted = hasVoted;
     }
 
+    public User(String name, String phoneNumber, int pollNumber, long dateOfBirth) {
+        Name = name;
+        PhoneNumber = phoneNumber;
+        PollNumber = pollNumber;
+        DateOfBirth = dateOfBirth;
+    }
+
     public String getVoterID() {
         return VoterID;
     }

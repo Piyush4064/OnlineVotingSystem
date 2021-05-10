@@ -13,20 +13,17 @@ public class CandidateQuery {
                 "`"+TableKeys.KEY_CANDIDATE_PHOTO_URL+"` varchar(50) ," +
                 "`"+TableKeys.KEY_CANDIDATE_POLL_NO+"` tinyint NOT NULL," +
                 "`"+TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME+"` varchar(50) NOT NULL," +
-                "`"+TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO+"` varchar(50) NOT NULL," +
+                "`"+TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO+"` varchar(50) ," +
                 "`"+TableKeys.KEY_CANDIDATE_NO_VOTES+"` tinyint NOT NULL," +
                 "PRIMARY KEY (`"+TableKeys.KEY_CANDIDATE_CAND_ID+"`))";
     }
 
-    public static String GetAddCandidateQuery(String name, String candid, String phoneno, String dob , String photourl ,  String elecsymbolname ,  String elecsymbolphoto , int Pollnum ,int novote){
-
-        return "INSERT INTO `" + TableKeys.TABLE_NAME_CANDIDATE +
-                "` VALUES ('" + name + "','"  + candid + "','" + phoneno + "','" + dob + "','" + photourl + "','" + elecsymbolname  + "','" + elecsymbolphoto + "','" + Pollnum + "','" + novote + ")";
+    public static String GetAddCandidateQuery(String name, String candid, String phoneno, long dob ,  String elecsymbolname , int Pollnum){
+        return "INSERT INTO `" + TableKeys.TABLE_NAME_CANDIDATE + "` VALUES ('" + name + "','"  + candid + "','" + phoneno + "','" + dob + "', null," + Pollnum + ", '" + elecsymbolname  + "', null, 0)";
     }
 
-
     public static String GetDeleteCandidateQuery(String candid){
-        return " DELETE FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_CAND_ID + " = " + candid +  " )";
+        return " DELETE FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_CAND_ID + " = '" + candid +  "'";
     }
 
     public static String GetPollWiseResultQuery(int pollno){
@@ -38,11 +35,7 @@ public class CandidateQuery {
     }
 
     public static String GetIncreaseCandidateVoteQuery(String candid) {
-        return " UPDATE " + TableKeys.TABLE_NAME_CANDIDATE + " SET " + TableKeys.KEY_CANDIDATE_NO_VOTES  + " = " + TableKeys.KEY_CANDIDATE_NO_VOTES +  " + 1  WHERE "+ TableKeys.KEY_CANDIDATE_CAND_ID + " = " + candid + " )" ;
-    }
-
-    public static String GetAllCandidatesQuery(){
-        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE ;
+        return " UPDATE " + TableKeys.TABLE_NAME_CANDIDATE + " SET " + TableKeys.KEY_CANDIDATE_NO_VOTES  + " = " + TableKeys.KEY_CANDIDATE_NO_VOTES +  " + 1  WHERE "+ TableKeys.KEY_CANDIDATE_CAND_ID + " = '" + candid + "'" ;
     }
 
 }

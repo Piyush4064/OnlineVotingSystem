@@ -87,6 +87,37 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                     progressIndicatorFragment.show(getParentFragmentManager(),"RegisterUser");
                     new DatabaseUpdater(hashMap,this).execute();
                 }
+                else if(type.equals("ChangePassword") || type.equals("ResetPassword")){
+                    switch (role) {
+                        case "Admin":
+                            hashMap.put(HashMapConstants.UPDATE_TYPE_KEY, HashMapConstants.UPDATE_TYPE_ADMIN_PASSWORD);
+                            hashMap.put(HashMapConstants.UPDATE_PARAM_ADMIN_USERNAME_KEY, id);
+                            hashMap.put(HashMapConstants.UPDATE_PARAM_ADMIN_PASSWORD_KEY, password);
+
+                            progressIndicatorFragment = ProgressIndicatorFragment.newInstance("Syncing with Server", "Updating Password");
+                            progressIndicatorFragment.show(getParentFragmentManager(), "UpdateAdminPassword");
+                            new DatabaseUpdater(hashMap, this).execute();
+                            break;
+                        case "Officer":
+                            hashMap.put(HashMapConstants.UPDATE_TYPE_KEY, HashMapConstants.UPDATE_TYPE_OFFICER_PASSWORD);
+                            hashMap.put(HashMapConstants.UPDATE_PARAM_OFFICER_USERNAME_KEY, id);
+                            hashMap.put(HashMapConstants.UPDATE_PARAM_OFFICER_PASSWORD_KEY, password);
+
+                            progressIndicatorFragment = ProgressIndicatorFragment.newInstance("Syncing with Server", "Updating Password");
+                            progressIndicatorFragment.show(getParentFragmentManager(), "UpdateOfficerPassword");
+                            new DatabaseUpdater(hashMap, this).execute();
+                            break;
+                        case "Voter":
+                            hashMap.put(HashMapConstants.UPDATE_TYPE_KEY, HashMapConstants.UPDATE_TYPE_VOTER_PASSWORD);
+                            hashMap.put(HashMapConstants.UPDATE_PARAM_VOTER_ID_KEY, id);
+                            hashMap.put(HashMapConstants.UPDATE_PARAM_VOTER_PASSWORD_KEY, password);
+
+                            progressIndicatorFragment = ProgressIndicatorFragment.newInstance("Syncing with Server", "Updating Password");
+                            progressIndicatorFragment.show(getParentFragmentManager(), "UpdateVoterPassword");
+                            new DatabaseUpdater(hashMap, this).execute();
+                            break;
+                    }
+                }
             }
 
         });
@@ -95,19 +126,51 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
 
     @Override
     public void onDataUpdated(String type, boolean result, String error) {
-        if(type.equals(HashMapConstants.UPDATE_TYPE_REGISTER_USER)){
-            progressIndicatorFragment.dismiss();
-            if(result){
-                Toast.makeText(requireActivity(),"User Registered Successfully, Now signing in",Toast.LENGTH_LONG).show();
-                Intent intent=new Intent(requireActivity(), UserActivity.class);
-                intent.putExtra("UserVoterID",id);
-                startActivity(intent);
-                requireActivity().finish();
+        switch (type){
+            case HashMapConstants.UPDATE_TYPE_REGISTER_USER:{
+                progressIndicatorFragment.dismiss();
+                if(result){
+                    Toast.makeText(requireActivity(),"User Registered Successfully, Now signing in",Toast.LENGTH_LONG).show();
+                    Intent intent=new Intent(requireActivity(), UserActivity.class);
+                    intent.putExtra("UserVoterID",id);
+                    startActivity(intent);
+                    requireActivity().finish();
+                }
+                else {
+                    Toast.makeText(requireActivity(),"Error in Registering User: "+error,Toast.LENGTH_LONG).show();
+                }
+                break;
             }
-            else {
-                Toast.makeText(requireActivity(),"Error in Registering User: "+error,Toast.LENGTH_LONG).show();
+            case HashMapConstants.UPDATE_TYPE_ADMIN_PASSWORD:{
+                progressIndicatorFragment.dismiss();
+                if(result){
+                    Toast.makeText(requireActivity(),"Password Changed Successfully for Admin",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(requireActivity(),"Error in Updating Password",Toast.LENGTH_SHORT).show();
+                }
+                break;
             }
-
+            case HashMapConstants.UPDATE_TYPE_OFFICER_PASSWORD:{
+                progressIndicatorFragment.dismiss();
+                if(result){
+                    Toast.makeText(requireActivity(),"Password Changed Successfully for Officer",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(requireActivity(),"Error in Updating Password",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
+            case HashMapConstants.UPDATE_TYPE_VOTER_PASSWORD:{
+                progressIndicatorFragment.dismiss();
+                if(result){
+                    Toast.makeText(requireActivity(),"Password Changed Successfully for Voter",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(requireActivity(),"Error in Updating Password",Toast.LENGTH_SHORT).show();
+                }
+                break;
+            }
         }
     }
 }

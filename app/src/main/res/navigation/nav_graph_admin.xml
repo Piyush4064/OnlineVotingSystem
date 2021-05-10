@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_admin"
+    app:startDestination="@id/addCandidateFragment">
+
+    <fragment
+        android:id="@+id/addAdminFragment"
+        android:name="com.example.onlinevotingsystem.fragments.admin.AddAdminFragment"
+        android:label="fragment_add_admin"
+        tools:layout="@layout/fragment_add_admin" />
+    <fragment
+        android:id="@+id/addPollFragment"
+        android:name="com.example.onlinevotingsystem.fragments.admin.AddPollFragment"
+        android:label="fragment_add_poll"
+        tools:layout="@layout/fragment_add_poll" />
+    <fragment
+        android:id="@+id/addOfficerFragment"
+        android:name="com.example.onlinevotingsystem.fragments.admin.AddOfficerFragment"
+        android:label="AddOfficerFragment"
+        tools:layout="@layout/fragment_add_officer"/>
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.example.onlinevotingsystem.fragments.admin.AddUserFragment"
+        android:label="fragment_add_user"
+        tools:layout="@layout/fragment_add_user" />
+    <fragment
+        android:id="@+id/addCandidateFragment"
+        android:name="com.example.onlinevotingsystem.fragments.officer.AddCandidateFragment"
+        android:label="fragment_add_candidate"
+        tools:layout="@layout/fragment_add_candidate" />
+</navigation>

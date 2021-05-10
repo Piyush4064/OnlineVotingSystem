@@ -15,13 +15,8 @@ public class PollQuery {
                 "PRIMARY KEY (`"+TableKeys.KEY_POLL_NUMBER+"`))";
     }
 
-    public static String GetInsertQuery(int Pollnum, String address, String elecendtime ,  String elecstarttime){
-        return "INSERT INTO `" + TableKeys.TABLE_NAME_POLL +
-                "`  ( " + TableKeys.KEY_POLL_NUMBER +","  + TableKeys.KEY_POLL_ELEC_START_TIME +"," + TableKeys.KEY_POLL_ELEC_END_TIME +" ) VALUES ('" + Pollnum + "','"  + address + "','"  + elecendtime  + "','" + elecstarttime + ")";
-    }
-
-    public static String GetCheckPollNoExistsQuery(int pollno){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL + " WHERE " + TableKeys.KEY_POLL_NUMBER + " = " + pollno +  " )";
+    public static String GetInsertQuery(int Pollnum, long elecendtime , long elecstarttime){
+        return "INSERT INTO `" + TableKeys.TABLE_NAME_POLL + "`  ( " + TableKeys.KEY_POLL_NUMBER +","  + TableKeys.KEY_POLL_ELEC_START_TIME +"," + TableKeys.KEY_POLL_ELEC_END_TIME +" ) VALUES ('" + Pollnum + "','"  + elecendtime  + "','" + elecstarttime + "')";
     }
 
     public static String GetPollDetailsQuery(int pollno) {
@@ -32,7 +27,7 @@ public class PollQuery {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL;
     }
 
-    public static String GetUpdateElecTimeQuery(int pollno , String elecendtime ,  String elecstarttime){
+    public static String GetUpdateElecTimeQuery(int pollno , long elecendtime ,  long elecstarttime){
         return " UPDATE " + TableKeys.TABLE_NAME_POLL + " SET " + TableKeys.KEY_POLL_ELEC_END_TIME  + " = " + elecendtime + " AND " + TableKeys.KEY_POLL_ELEC_START_TIME  + " = " + elecstarttime+  " WHERE "+ TableKeys.KEY_POLL_NUMBER + " = " + pollno ;
     }
 

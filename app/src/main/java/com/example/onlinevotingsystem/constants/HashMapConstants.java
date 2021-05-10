@@ -36,8 +36,7 @@ public class HashMapConstants {
 
     public static final String FETCH_PARAM_EXISTING_DATA_FROM_ID_KEY="VoterID";
 
-    public static final String FETCH_RESULT_EXISTING_DATA_FROM_ID_IS_SUCCESS_KEY="IsExistingDataFetchSuccessful";
-    public static final String FETCH_RESULT_EXISTING_DATA_FROM_ID_USER_KEY="ResultExistingDataUser";
+    public static final String FETCH_RESULT_EXISTING_DATA_FROM_ID_USER_KEY="ResultUser";
 
     //For Checking If Username is Unique or Not
     public static final String FETCH_TYPE_USER_CHECK_UNIQUE_USERNAME="CheckUserUniqueUsername";
@@ -47,6 +46,13 @@ public class HashMapConstants {
     public static final String FETCH_PARAM_CHECK_UNIQUE_USERNAME_KEY="UniqueUsername";
 
     public static final String FETCH_RESULT_CHECK_UNIQUE_USERNAME_KEY="IsUsernameUnique";
+
+    //For Fetching Details of a Particular Admin
+    public static final String FETCH_TYPE_ADMIN_DETAILS="AdminDetails";
+
+    public static final String FETCH_PARAM_ADMIN_DETAILS_USERNAME_KEY="AdminUsername";
+
+    public static final String FETCH_RESULT_ADMIN_DETAILS_KEY="AdminDetails";
 
     //For Fetching Details of a Particular Officer
     public static final String FETCH_TYPE_OFFICER_DETAILS="OfficerDetails";
@@ -72,34 +78,113 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_POLL_DETAILS_KEY="PollDetails";
 
-    //For Fetching List of Candidates
-    public static final String FETCH_TYPE_CANDIDATE_LIST="GetCandidateList";
+    //For Fetching List of Unassigned Polls
+    public static final String FETCH_TYPE_UNASSIGNED_POLLS="GetUnassignedPolls";
 
-    public static final String FETCH_RESULT_CANDIDATE_LIST_KEY="AllCandidatesList";
+    public static final String FETCH_RESULT_UNASSIGNED_POLLS_KEY="UnassignedPollsList";
 
-    //For Fetching List of Candidates of a Particular Ward
-    public static final String FETCH_TYPE_WARD_CANDIDATE_LIST="GetWardCandidateList";
+    //For Fetching Addresses of all the Polls
+    public static final String FETCH_TYPE_POLLS_ADDRESS="GetPollsAddressList";
 
-    public static final String FETCH_PARAM_WARD_CANDIDATE_LIST_WARD_NUM_KEY="WardNumber";
-
-    public static final String FETCH_RESULT_WARD_CANDIDATE_LIST_KEY="WardCandidatesList";
-
-    //For Fetching List of Mobile Registered Voters of a Particular Ward
-    public static final String FETCH_TYPE_WARD_REGISTERED_USERS_LIST="GetWardRegisteredUsersList";
-
-    public static final String FETCH_PARAM_WARD_REGISTERED_USERS_LIST_KEY="WardNumber";
-
-    public static final String FETCH_RESULT_WARD_REGISTERED_USERS_LIST_KEY="WardRegisteredUsersList";
+    public static final String FETCH_RESULT_POLLS_ADDRESS_KEY="PollsAddressList";
 
     public static final String FETCH_RESULT_SUCCESS_KEY="IsFetchSuccess";
     public static final String FETCH_RESULT_ERROR_KEY="ResultError";
 
     public static final String UPDATE_TYPE_KEY="UpdateType";
 
+    //For Adding a New Admin
+    public static final String UPDATE_TYPE_ADD_ADMIN="AddAdmin";
+
+    public static final String UPDATE_PARAM_ADMIN_KEY="InputAdmin";
+
+    //For Updating Admin Password
+    public static final String UPDATE_TYPE_ADMIN_PASSWORD="UpdateAdminPassword";
+
+    public static final String UPDATE_PARAM_ADMIN_USERNAME_KEY="AdminUsername";
+    public static final String UPDATE_PARAM_ADMIN_PASSWORD_KEY="AdminPassword";
+
+    //For Updating Admin Photo
+    public static final String UPDATE_TYPE_ADMIN_PHOTO="UpdateAdminPhoto";
+
+    public static final String UPDATE_PARAM_ADMIN_PHOTO_USERNAME_KEY="AdminUsername";
+    public static final String UPDATE_PARAM_ADMIN_PHOTO_KEY="AdminPhoto";
+
+    //For Adding a New Officer
+    public static final String UPDATE_TYPE_ADD_OFFICER="AddOfficer";
+
+    public static final String UPDATE_PARAM_OFFICER_KEY="InputOfficer";
+
+    //For Updating Officer Password
+    public static final String UPDATE_TYPE_OFFICER_PASSWORD="UpdateOfficerPassword";
+
+    public static final String UPDATE_PARAM_OFFICER_USERNAME_KEY="OfficerUsername";
+    public static final String UPDATE_PARAM_OFFICER_PASSWORD_KEY="OfficerPassword";
+
+    //For Updating Officer Photo
+    public static final String UPDATE_TYPE_OFFICER_PHOTO="UpdateOfficerPhoto";
+
+    public static final String UPDATE_PARAM_OFFICER_PHOTO_USERNAME_KEY="OfficerUsername";
+    public static final String UPDATE_PARAM_OFFICER_PHOTO_KEY="OfficerPhoto";
+
+    //For Assigning a Particular Poll to an Officer
+    public static final String UPDATE_TYPE_OFFICER_POLL="UpdateOfficerPoll";
+
+    public static final String UPDATE_PARAM_OFFICER_POLL_USERNAME_KEY="OfficerUsername";
+    public static final String UPDATE_PARAM_OFFICER_POLL_KEY="OfficerPoll";
+
+    //For Adding a new Poll
+    public static final String UPDATE_TYPE_ADD_POLL="AddPoll";
+
+    public static final String UPDATE_PARAM_POLL_ADDRESS_KEY="PollAddress";
+    public static final String UPDATE_PARAM_POLL_ELECTION_START_TIME_KEY="ElectionStartTime";
+    public static final String UPDATE_PARAM_POLL_ELECTION_END_TIME_KEY="ElectionEndTime";
+
+    //For Updating the Election Time of a Poll
+    public static final String UPDATE_TYPE_POLL_ELECTION_TIME="ElectionTime";
+
+    public static final String UPDATE_PARAM_POLL_ELECTION_TIME_POLL_NUM_KEY="PollNumber";
+    public static final String UPDATE_PARAM_POLL_ELECTION_TIME_START_KEY="ElectionStartTime";
+    public static final String UPDATE_PARAM_POLL_ELECTION_TIME_END_KEY="ElectionEndTime";
+
+    //For Adding a New User
+    public static final String UPDATE_TYPE_ADD_USER="AddUser";
+
+    public static final String UPDATE_PARAM_ADD_USER_KEY="InputUser";
+
+    //For Updating Password of a Given User
+    public static final String UPDATE_TYPE_VOTER_PASSWORD="UpdateVoterPassword";
+
+    public static final String UPDATE_PARAM_VOTER_ID_KEY="VoterID";
+    public static final String UPDATE_PARAM_VOTER_PASSWORD_KEY="VoterPassword";
+
+    //For Updating Photo of a Given User
+    public static final String UPDATE_TYPE_VOTER_PHOTO="UpdateVoterPhoto";
+
+    public static final String UPDATE_PARAM_VOTER_PHOTO_ID_KEY="VoterID";
+    public static final String UPDATE_PARAM_VOTER_PHOTO_KEY="VoterPhoto";
+
+    //For Casting a Vote
+    public static final String UPDATE_TYPE_CAST_VOTE="CastVote";
+
+    public static final String UPDATE_PARAM_CAST_VOTE_VOTER_ID_KEY="VoterId";
+    public static final String UPDATE_PARAM_CAST_VOTE_CANDIDATE_ID_KEY="CandidateId";
+    public static final String UPDATE_PARAM_CAST_VOTE_POLL_NUM_KEY="PollNum";
+
+    //For Adding a New Candidate
+    public static final String UPDATE_TYPE_ADD_CANDIDATE="AddCandidate";
+
+    public static final String UPDATE_PARAM_CANDIDATE_KEY="InputCandidate";
+
+    //For Deleting an Existing Candidate
+    public static final String UPDATE_TYPE_DELETE_CANDIDATE="DeleteCandidate";
+
+    public static final String UPDATE_PARAM_DELETE_CANDIDATE_ID_KEY="CandidateId";
+    public static final String UPDATE_PARAM_DELETE_CANDIDATE_POLL_NUM_KEY="PollNum";
+
     //For Updating Voters Table while Registering User
     public static final String UPDATE_TYPE_REGISTER_USER="RegisterUser";
 
     public static final String UPDATE_PARAM_REGISTER_USER_VOTER_ID="VoterID";
     public static final String UPDATE_PARAM_REGISTER_USER_PASSWORD="Password";
-
 }

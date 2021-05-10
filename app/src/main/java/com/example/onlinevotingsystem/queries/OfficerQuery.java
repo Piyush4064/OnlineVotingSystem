@@ -14,10 +14,8 @@ public class OfficerQuery {
                 "PRIMARY KEY (`"+TableKeys.KEY_OFFICER_USERNAME+"`))";
     }
 
-    public static String GetInsertQuery(String username, String password, String name, String photourl, String phoneno){
-
-        return "INSERT INTO `" + TableKeys.TABLE_NAME_OFFICER +
-                "` VALUES ('" + username + "','"  + password + "','" + name + "','" + photourl + "','" + phoneno +")";
+    public static String GetInsertQuery(String username, String password, String name, String phoneNo){
+        return "INSERT INTO `" + TableKeys.TABLE_NAME_OFFICER + "` VALUES ('" + username + "','"  + password + "', null, '" + name + "','" + phoneNo +"')";
     }
 
     public static String GetAuthenticateQuery(String username , String password){
@@ -28,28 +26,16 @@ public class OfficerQuery {
         return " SELECT * FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }
 
-    public static String GetCheckUserNameExistsQuery(String username){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
-    }
-
-    public static String GetUserNameDataQuery(String username){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username;
-    }
-
     public static String GetDeleteOfficeQuery(String username){
-        return " DELETE FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
+        return " DELETE FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }
 
     public static String GetUpdatePasswordQuery(String username , String password){
         return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PASSWORD  + " = " + password +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
     }
 
-    public static String GetUpdatePhotoUrlQuery(String username , String photourl){
-        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = " + photourl +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
-    }
-
-    public static String GetUpdatePhoneNoQuery(String username , String phoneno){
-        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHONE_NO  + " = " + phoneno +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
+    public static String GetUpdatePhotoUrlQuery(String username , String photoUrl){
+        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = " + photoUrl +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
     }
 
     public static String GetAllOfficerDataQuery(){

@@ -5,13 +5,22 @@ public class Officer {
     private String Username;
     private String Name;
     private String PhotoURL;
+    private String PhoneNum;
     private int PollNumber;
 
-    public Officer(String username, String name, String photoURL, int pollNumber) {
+    public Officer(String username, String name, String phoneNum, int pollNumber) {
+        Username = username;
+        Name = name;
+        PhoneNum = phoneNum;
+        PollNumber = pollNumber;
+    }
+
+    public Officer(String username, String name, String photoURL, String phoneNum, int pollNumber) {
         Username = username;
         Name = name;
         PhotoURL = photoURL;
         PollNumber = pollNumber;
+        PhoneNum=phoneNum;
     }
 
     public String getUsername() {
@@ -44,5 +53,13 @@ public class Officer {
 
     public void setPollNumber(int pollNumber) {
         PollNumber = pollNumber;
+    }
+
+    public String getPhoneNum() {
+        return PhoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        PhoneNum = phoneNum;
     }
 }

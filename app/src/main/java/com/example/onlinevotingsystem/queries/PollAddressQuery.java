@@ -11,12 +11,15 @@ public class PollAddressQuery {
                 "PRIMARY KEY (`"+TableKeys.KEY_POLL_ADDRESS_NUMBER+"`))";
     }
 
-    public static String GetCheckPollNoExistsQuery(int pollno){
-        return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL_ADDRESS + " WHERE " + TableKeys.KEY_POLL_ADDRESS_NUMBER + " = " + pollno +  " )";
+    public static String GetInsertQuery(int pollNum, String address){
+        return "INSERT INTO `" + TableKeys.TABLE_NAME_POLL_ADDRESS + "` VALUES (" + pollNum + ",'"  + address + "')";
     }
 
     public static String GetPollDetailsQuery(int pollno) {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_POLL_ADDRESS + " WHERE " + TableKeys.KEY_POLL_ADDRESS_NUMBER + " = " + pollno;
     }
 
+    public static String GetAllPollAddress(){
+        return "SELECT * FROM " + TableKeys.TABLE_NAME_POLL_ADDRESS;
+    }
 }
