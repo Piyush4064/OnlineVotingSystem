@@ -4,8 +4,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.startup.AdminOfficerLoginFragment">
+
+    <ImageView
+        android:id="@+id/logo_Img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:transitionName="logo_Img"
+        android:src="@drawable/loo"/>
+
+    <TextView
+        android:id="@+id/logo_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello !! Welcome back"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:transitionName="logo_name"
+        android:fontFamily="@font/montserrat"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/slogan_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In to Continue"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAdminOfficerUsername"
@@ -56,7 +83,7 @@
         <Button
             android:id="@+id/btnAdminLoginSubmit"
             style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
@@ -67,7 +94,7 @@
         <Button
             android:id="@+id/btnOfficerLoginSubmit"
             style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
