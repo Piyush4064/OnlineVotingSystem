@@ -25,12 +25,19 @@
         <action
             android:id="@+id/action_userLoginFragment_to_adminOfficerLoginFragment"
             app:destination="@id/adminOfficerLoginFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminOfficerLoginFragment"
         android:name="com.example.onlinevotingsystem.fragments.startup.AdminOfficerLoginFragment"
         android:label="fragment_admin_officer_login"
-        tools:layout="@layout/fragment_admin_officer_login" />
+        tools:layout="@layout/fragment_admin_officer_login" >
+        <action
+            android:id="@+id/action_adminOfficerLoginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.onlinevotingsystem.fragments.startup.RegisterFragment"
@@ -52,14 +59,9 @@
             android:id="@+id/action_home2_to_userLoginFragment"
             app:destination="@id/userLoginFragment" />
         <action
-            android:id="@+id/action_home2_to_candidateListFragment"
-            app:destination="@id/candidateListFragment" />
+            android:id="@+id/action_onBoardingFragment_to_pollListFragment"
+            app:destination="@id/pollListFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/candidateListFragment"
-        android:name="com.example.onlinevotingsystem.fragments.shared.CandidateListFragment"
-        android:label="fragment_candidate_list"
-        tools:layout="@layout/fragment_candidate_list" />
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.example.onlinevotingsystem.fragments.shared.ResetPasswordFragment"
@@ -74,5 +76,32 @@
         <argument
             android:name="ID"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/pollListFragment"
+        android:name="com.example.onlinevotingsystem.fragments.shared.PollListFragment"
+        android:label="fragment_poll_list"
+        tools:layout="@layout/fragment_poll_list" >
+        <action
+            android:id="@+id/action_pollListFragment_to_candidateListFragment"
+            app:destination="@id/candidateListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/candidateListFragment"
+        android:name="com.example.onlinevotingsystem.fragments.shared.CandidateListFragment"
+        android:label="fragment_candidate_list"
+        tools:layout="@layout/fragment_candidate_list" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.example.onlinevotingsystem.fragments.startup.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
 </navigation>

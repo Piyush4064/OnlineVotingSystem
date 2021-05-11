@@ -1,88 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="8dp"
-    android:layout_margin="10dp">
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/b3"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/featured_img1"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:id="@+id/imgCandidateList"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/user1"
-            tools:layout_editor_absoluteX="-2dp"
-            tools:layout_editor_absoluteY="-7dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvCandidateItemName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/montserrat"
             android:text="Varun Tiwari"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            tools:layout_editor_absoluteX="5dp"
-            tools:layout_editor_absoluteY="148dp" />
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView13"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView13"
+            app:layout_constraintTop_toTopOf="@+id/textView13" />
 
         <TextView
-            android:id="@+id/tvPollitemNumber"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvCandidateItemId"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:text="ID"
-            tools:layout_editor_absoluteX="57dp"
-            tools:layout_editor_absoluteY="190dp" />
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
+            app:layout_constraintTop_toTopOf="@+id/textView19" />
 
         <TextView
-            android:id="@+id/tvAddCandidateDOB"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvCandidateItemDOB"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:text="dob"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="238dp" />
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView20"
+            app:layout_constraintTop_toTopOf="@+id/textView20" />
 
         <TextView
-            android:id="@+id/tvPollitemCandidateNo"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvCandidateItemPollNum"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:text="Poll"
-            tools:layout_editor_absoluteX="271dp"
-            tools:layout_editor_absoluteY="233dp" />
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView17"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintTop_toTopOf="@+id/textView17" />
 
         <TextView
-            android:id="@+id/tvPollitemAddress"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvCandidateItemPhoneNum"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
             android:text="7878787878787"
-            tools:layout_editor_absoluteX="222dp"
-            tools:layout_editor_absoluteY="190dp" />
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView18"
+            app:layout_constraintTop_toTopOf="@+id/textView18" />
 
         <TextView
-            android:id="@+id/tvAddCandidateSymbolName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/tvCandidateItemSymbolName"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
             android:text="Symbol Name"
-            tools:layout_editor_absoluteX="232dp"
-            tools:layout_editor_absoluteY="148dp" />
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCandidateItemSymbol"
+            app:layout_constraintEnd_toEndOf="@+id/textView11"
+            app:layout_constraintStart_toStartOf="@+id/textView11"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
         <ImageView
-            android:id="@+id/tvAddCandidatePartySymbol"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
+            android:id="@+id/imgCandidateItemSymbol"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="8dp"
             android:scaleType="centerCrop"
             android:src="@color/banner_background"
-            tools:layout_editor_absoluteX="207dp"
-            tools:layout_editor_absoluteY="-4dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgCandidateList"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgCandidateList" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="bottom"
+            android:text="Election Symbol"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvCandidateItemSymbolName"
+            app:layout_constraintEnd_toStartOf="@+id/imgCandidateItemSymbol"
+            app:layout_constraintStart_toEndOf="@+id/imgCandidateList"
+            app:layout_constraintTop_toTopOf="@+id/imgCandidateItemSymbol" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView19"
+            app:layout_constraintEnd_toStartOf="@+id/tvCandidateItemName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgCandidateList" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Poll Number"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView18"
+            app:layout_constraintEnd_toStartOf="@+id/tvCandidateItemPollNum"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Phone Number"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView20"
+            app:layout_constraintEnd_toStartOf="@+id/tvCandidateItemPhoneNum"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Candidate ID"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView17"
+            app:layout_constraintEnd_toStartOf="@+id/tvCandidateItemId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="Date of Birth"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvCandidateItemDOB"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.onlinevotingsystem.R;
+import com.example.onlinevotingsystem.activities.AdminActivity;
+import com.example.onlinevotingsystem.activities.OfficerActivity;
 import com.example.onlinevotingsystem.activities.UserActivity;
+import com.example.onlinevotingsystem.classes.Officer;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.startup.RegisterFragmentDirections;
@@ -87,7 +90,7 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                     progressIndicatorFragment.show(getParentFragmentManager(),"RegisterUser");
                     new DatabaseUpdater(hashMap,this).execute();
                 }
-                else if(type.equals("ChangePassword") || type.equals("ResetPassword")){
+                else if(type.equals("ChangePassword") || type.equals("Forget")){
                     switch (role) {
                         case "Admin":
                             hashMap.put(HashMapConstants.UPDATE_TYPE_KEY, HashMapConstants.UPDATE_TYPE_ADMIN_PASSWORD);
@@ -125,8 +128,8 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
     }
 
     @Override
-    public void onDataUpdated(String type, boolean result, String error) {
-        switch (type){
+    public void onDataUpdated(String Type, boolean result, String error) {
+        switch (Type){
             case HashMapConstants.UPDATE_TYPE_REGISTER_USER:{
                 progressIndicatorFragment.dismiss();
                 if(result){
@@ -145,6 +148,15 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Password Changed Successfully for Admin",Toast.LENGTH_SHORT).show();
+                    if(type.equals("Forget")){
+                        Intent intent=new Intent(requireActivity(), AdminActivity.class);
+                        intent.putExtra("username",id);
+                        startActivity(intent);
+                        requireActivity().finish();
+                    }
+                    else {
+
+                    }
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Password",Toast.LENGTH_SHORT).show();
@@ -155,6 +167,15 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Password Changed Successfully for Officer",Toast.LENGTH_SHORT).show();
+                    if(type.equals("Forget")){
+                        Intent intent=new Intent(requireActivity(), OfficerActivity.class);
+                        intent.putExtra("username",id);
+                        startActivity(intent);
+                        requireActivity().finish();
+                    }
+                    else {
+
+                    }
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Password",Toast.LENGTH_SHORT).show();
@@ -165,6 +186,15 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Password Changed Successfully for Voter",Toast.LENGTH_SHORT).show();
+                    if(type.equals("Forget")){
+                        Intent intent=new Intent(requireActivity(), UserActivity.class);
+                        intent.putExtra("UserVoterID",id);
+                        startActivity(intent);
+                        requireActivity().finish();
+                    }
+                    else {
+
+                    }
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Password",Toast.LENGTH_SHORT).show();

@@ -34,7 +34,7 @@ public class VoteFragment extends Fragment implements AdapterView.OnItemSelected
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Spinner spinner = view.findViewById(R.id.spinner1);
+        Spinner spinner = view.findViewById(R.id.spinnerCandidateListVoter);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireActivity(), R.array.vote, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

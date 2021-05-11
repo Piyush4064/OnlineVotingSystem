@@ -1,79 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="8dp"
-    android:layout_margin="10dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvPollitemCandidateNo3"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvVoterItemIsMobileReg"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="Mobile Registered: "
-            tools:layout_editor_absoluteX="203dp"
-            tools:layout_editor_absoluteY="169dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgVoterItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvVoterItemHasVoted" />
 
         <TextView
-            android:id="@+id/tvPollitemCandidateNo2"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvVoterItemHasVoted"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:text="Voted: "
-            tools:layout_editor_absoluteX="273dp"
-            tools:layout_editor_absoluteY="135dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tvVoterItemIsMobileReg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgVoterItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvVoterItemPollNum" />
 
         <ImageView
-            android:id="@+id/VoterItemImg"
-            android:layout_width="177dp"
-            android:layout_height="199dp"
+            android:id="@+id/imgVoterItem"
+            android:layout_width="140dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/user1"
-            tools:layout_editor_absoluteX="-8dp"
-            tools:layout_editor_absoluteY="-7dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/VoterItemname"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvVoterItemName"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/montserrat"
             android:text="Varun Tiwari"
             android:textColor="@color/black"
             android:textSize="20sp"
-            tools:layout_editor_absoluteX="214dp"
-            tools:layout_editor_absoluteY="-7dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tvVoterItemId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgVoterItem"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvPollitemNumber"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvVoterItemId"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:text="ID"
-            tools:layout_editor_absoluteX="270dp"
-            tools:layout_editor_absoluteY="34dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tvVoterItemDOB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgVoterItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvVoterItemName" />
 
         <TextView
-            android:id="@+id/tvAddCandidateDOB"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvVoterItemDOB"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:text="dob"
-            tools:layout_editor_absoluteX="260dp"
-            tools:layout_editor_absoluteY="68dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tvVoterItemPollNum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgVoterItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvVoterItemId" />
 
         <TextView
-            android:id="@+id/tvPollitemCandidateNo"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvVoterItemPollNum"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:text="Poll"
-            tools:layout_editor_absoluteX="273dp"
-            tools:layout_editor_absoluteY="102dp" />
+            app:layout_constraintBottom_toTopOf="@+id/tvVoterItemHasVoted"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgVoterItem"
+            app:layout_constraintTop_toBottomOf="@+id/tvVoterItemDOB" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

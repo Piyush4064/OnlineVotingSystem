@@ -1,123 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="2dp"
-    app:cardElevation="8dp"
-    android:layout_margin="10dp">
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="@color/b2"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/abstract7"
-            android:layout_width="wrap_content"
+            android:id="@+id/abstract2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Election End Time"
-            tools:layout_editor_absoluteX="-1dp"
-            tools:layout_editor_absoluteY="121dp" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            android:text="Poll Number"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvPollItemNumber"
+            app:layout_constraintEnd_toStartOf="@+id/abstract5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvPollitemStartTime2"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvPollItemNumber"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="DD:HH:MM:SS"
-            tools:layout_editor_absoluteX="144dp"
-            tools:layout_editor_absoluteY="121dp" />
-
-        <TextView
-            android:id="@+id/tvPollitemStartTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DD:HH:MM:SS"
-            tools:layout_editor_absoluteX="144dp"
-            tools:layout_editor_absoluteY="87dp" />
-
-        <TextView
-            android:id="@+id/abstract3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Election Start Time"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="87dp" />
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:text="01"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/abstract1"
+            app:layout_constraintEnd_toEndOf="@+id/abstract2"
+            app:layout_constraintStart_toStartOf="@+id/abstract2"
+            app:layout_constraintTop_toBottomOf="@+id/abstract2" />
 
         <TextView
             android:id="@+id/abstract5"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Officer Username:"
-            tools:layout_editor_absoluteX="168dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="Officer Username"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/abstract2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/abstract2"
+            app:layout_constraintTop_toTopOf="@+id/abstract2" />
 
         <TextView
             android:id="@+id/tvPollitemOfficer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Officer1"
-            tools:layout_editor_absoluteX="306dp"
-            tools:layout_editor_absoluteY="8dp" />
-
-        <TextView
-            android:id="@+id/abstract4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="No. of Candidate:"
-            tools:layout_editor_absoluteX="191dp"
-            tools:layout_editor_absoluteY="49dp" />
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPollItemNumber"
+            app:layout_constraintEnd_toEndOf="@+id/abstract5"
+            app:layout_constraintHorizontal_bias="0.534"
+            app:layout_constraintStart_toStartOf="@+id/abstract5"
+            app:layout_constraintTop_toTopOf="@+id/tvPollItemNumber" />
 
         <TextView
             android:id="@+id/abstract1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Poll Address:"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="53dp" />
-
-        <TextView
-            android:id="@+id/abstract2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Poll Number: "
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="12dp" />
-
-        <TextView
-            android:id="@+id/tvPollitemNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="01"
-            tools:layout_editor_absoluteX="115dp"
-            tools:layout_editor_absoluteY="8dp" />
-
-        <TextView
-            android:id="@+id/tvPollitemCandidateNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5"
-            tools:layout_editor_absoluteX="336dp"
-            tools:layout_editor_absoluteY="49dp" />
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            android:text="Poll Address"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvPollitemAddress"
+            app:layout_constraintEnd_toStartOf="@+id/abstract4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPollItemNumber" />
 
         <TextView
             android:id="@+id/tvPollitemAddress"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
             android:text="Banaras"
-            tools:layout_editor_absoluteX="101dp"
-            tools:layout_editor_absoluteY="49dp" />
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/abstract3"
+            app:layout_constraintEnd_toEndOf="@+id/abstract1"
+            app:layout_constraintStart_toStartOf="@+id/abstract1"
+            app:layout_constraintTop_toBottomOf="@+id/abstract1" />
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="68dp"
-            android:layout_height="60dp"
-            app:srcCompat="@drawable/button_img1"
-            tools:layout_editor_absoluteX="289dp"
-            tools:layout_editor_absoluteY="83dp" />
+        <TextView
+            android:id="@+id/abstract4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="No. of Candidate"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/abstract1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/abstract1"
+            app:layout_constraintTop_toTopOf="@+id/abstract1" />
+
+        <TextView
+            android:id="@+id/tvPollitemCandidateNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPollitemAddress"
+            app:layout_constraintEnd_toEndOf="@+id/abstract4"
+            app:layout_constraintStart_toStartOf="@+id/abstract4"
+            app:layout_constraintTop_toTopOf="@+id/tvPollitemAddress" />
+
+        <TextView
+            android:id="@+id/abstract3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="2dp"
+            android:text="Election Start Time"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/tvPollitemStartTime"
+            app:layout_constraintEnd_toStartOf="@+id/abstract7"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPollitemAddress" />
+
+        <TextView
+            android:id="@+id/tvPollitemStartTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:text="DD:HH:MM:SS"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnPollListViewCandidates"
+            app:layout_constraintEnd_toEndOf="@+id/abstract3"
+            app:layout_constraintStart_toStartOf="@+id/abstract3"
+            app:layout_constraintTop_toBottomOf="@+id/abstract3" />
+
+        <TextView
+            android:id="@+id/abstract7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="Election End Time"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/abstract3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/abstract3"
+            app:layout_constraintTop_toTopOf="@+id/abstract3" />
+
+        <TextView
+            android:id="@+id/tvPollItemEndTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="DD:HH:MM:SS"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPollitemStartTime"
+            app:layout_constraintEnd_toEndOf="@+id/abstract7"
+            app:layout_constraintStart_toStartOf="@+id/abstract7"
+            app:layout_constraintTop_toTopOf="@+id/tvPollitemStartTime" />
+
+        <Button
+            android:id="@+id/btnPollListViewCandidates"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/b3"
+            android:text="View Candidates"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnPollListViewResult"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPollitemStartTime" />
+
+        <Button
+            android:id="@+id/btnPollListViewResult"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/b3"
+            android:text="View Result"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/btnPollListViewCandidates"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnPollListViewCandidates"
+            app:layout_constraintTop_toTopOf="@+id/btnPollListViewCandidates" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

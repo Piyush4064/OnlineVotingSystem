@@ -15,11 +15,12 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY="IsLoginSuccessful";
 
-    //For Verifying the Phone Number of the User
+    //For Verifying the Phone Number
     public static final String FETCH_TYPE_VERIFY_PHONE_NUM="VerifyPhoneNum";
 
     public static final String FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY="VoterID";
     public static final String FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY="PhoneNumber";
+    public static final String FETCH_PARAM_VERIFY_PHONE_NUM_ROLE_KEY="VerifyRole";
 
     public static final String FETCH_RESULT_VERIFY_PHONE_NUM_KEY="IsNumberVerified";
     public static final String FETCH_RESULT_VERIFY_PHONE_NUM_IS_REG_KEY="IsRegistered";

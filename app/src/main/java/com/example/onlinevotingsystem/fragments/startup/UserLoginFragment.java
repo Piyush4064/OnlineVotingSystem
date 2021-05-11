@@ -74,6 +74,8 @@ public class UserLoginFragment extends Fragment implements FetchFromDatabase.Fet
 
         });
 
+        btnForgotPassword.setOnClickListener(v -> Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.forgotPasswordFragment));
+
         btnOpenRegister.setOnClickListener(v -> Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.registerFragment));
 
         btnOpenAdminLogin.setOnClickListener(v -> Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.adminOfficerLoginFragment));

@@ -136,12 +136,12 @@
         android:backgroundTint="@color/b3"
         android:textColor="@color/black"
         android:text="Choose Date of Birth"
-        app:layout_constraintEnd_toStartOf="@+id/tvAddCandidateDOB"
+        app:layout_constraintEnd_toStartOf="@+id/tvCandidateItemDOB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ilAddCandidateSymbolName" />
 
     <TextView
-        android:id="@+id/tvAddCandidateDOB"
+        android:id="@+id/tvCandidateItemDOB"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"

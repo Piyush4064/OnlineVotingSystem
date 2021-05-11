@@ -66,6 +66,7 @@ public class RegisterFragment extends Fragment implements FetchFromDatabase.Fetc
                 hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_VERIFY_PHONE_NUM);
                 hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY,voterID);
                 hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY,phoneNum);
+                hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_ROLE_KEY,"VoterR");
 
                 progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Syncing","Verifying Given Credentials");
                 progressIndicatorFragment.show(getParentFragmentManager(),"VerifyPhoneProgress");

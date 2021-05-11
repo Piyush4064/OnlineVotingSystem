@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/featured_img1"
+            android:id="@+id/imgCandidateItem"
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:src="@drawable/user1"
@@ -31,29 +31,28 @@
             android:fontFamily="@font/montserrat"/>
 
         <TextView
-            android:id="@+id/tvPollitemNumber"
+            android:id="@+id/tvCandidateitemNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ID"/>
 
         <TextView
-            android:id="@+id/tvAddCandidateDOB"
+            android:id="@+id/tvCandidateItemDOB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="dob" />
 
         <TextView
-            android:id="@+id/tvPollitemAddress"
+            android:id="@+id/tvCandidateItemPhoneNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="7878787878787" />
 
         <TextView
-            android:id="@+id/tvAddCandidateSymbolName"
+            android:id="@+id/tvCandidateItemSymbolName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Symbol Name" />
-
 
     </LinearLayout>
 

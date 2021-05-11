@@ -26,6 +26,10 @@ public class OfficerQuery {
         return " SELECT * FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }
 
+    public static String GetVerifyPhoneNumQuery(String username, String phoneNum){
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "' AND " + TableKeys.KEY_OFFICER_PHONE_NO + " = '" + phoneNum + "'";
+    }
+
     public static String GetDeleteOfficeQuery(String username){
         return " DELETE FROM " + TableKeys.TABLE_NAME_OFFICER + " WHERE " + TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }

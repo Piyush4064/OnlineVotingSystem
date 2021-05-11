@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.classes.Candidate;
-import com.example.onlinevotingsystem.classes.User;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
@@ -64,7 +63,7 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
         inputSymbolName=view.findViewById(R.id.ilAddCandidateSymbolName);
         btnChooseDob=view.findViewById(R.id.btnAddCandidateChooseDOB);
         btnSubmit=view.findViewById(R.id.btnAddCandidateSubmit);
-        tvCandidateDob=view.findViewById(R.id.tvAddCandidateDOB);
+        tvCandidateDob=view.findViewById(R.id.tvCandidateItemDOB);
 
         dob=new Date().getTime();
 

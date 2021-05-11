@@ -111,21 +111,33 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                         break;
                     }
                     case HashMapConstants.FETCH_TYPE_VERIFY_PHONE_NUM:{
-                        String voterId, phoneNum;
+                        String voterId, phoneNum, type;
 
                         voterId=(String) inputHashMap.get(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY);
                         phoneNum=(String) inputHashMap.get(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY);
+                        type=(String) inputHashMap.get(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_ROLE_KEY);
 
                         Log.d(TAG,"Verifying Phone Number for "+voterId+" with Number "+phoneNum);
 
-                        ResultSet resultSet=statement.executeQuery(VotersQuery.GetVerifyPhoneNumQuery(voterId,phoneNum));
+                        String verifyQuery;
+                        if(type.equals("VoterR") || type.equals("VoterF")){
+                            verifyQuery=VotersQuery.GetVerifyPhoneNumQuery(voterId,phoneNum);
+                        }
+                        else if(type.equals("Officer")){
+                            verifyQuery=OfficerQuery.GetVerifyPhoneNumQuery(voterId,phoneNum);
+                        }
+                        else {
+                            verifyQuery=AdminQuery.GetVerifyPhoneNumQuery(voterId,phoneNum);
+                        }
+
+                        ResultSet resultSet=statement.executeQuery(verifyQuery);
 
                         Log.d(TAG,"Phone Verification Status for "+voterId+" - "+resultSet.first());
 
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_KEY,resultSet.first());
 
-                        if(resultSet.first()){
+                        if(resultSet.first() && type.equals("VoterR")){
                             boolean isRegistered= resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED) == 1;
                             resultHashMap.put(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_IS_REG_KEY,isRegistered);
                         }

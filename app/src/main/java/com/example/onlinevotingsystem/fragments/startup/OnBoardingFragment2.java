@@ -29,7 +29,7 @@ public class OnBoardingFragment2 extends Fragment {
         Button btnViewCandidates=view.findViewById(R.id.btnOnboarding2ViewCandidates);
 
         btnViewCandidates.setOnClickListener(v -> {
-            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.candidateListFragment);
+            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.pollListFragment);
         });
 
     }

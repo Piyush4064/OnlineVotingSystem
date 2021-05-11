@@ -68,7 +68,7 @@ public class CandidateListViewModel extends ViewModel implements FetchFromDataba
         }
     }
 
-    private ArrayList<Candidate> GetPollCandidateList(int position){
+    public ArrayList<Candidate> GetPollCandidateList(int position){
         return PollList.getValue().get(position).getCandidateList();
     }
 }

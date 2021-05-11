@@ -22,6 +22,10 @@ public class AdminQuery {
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_ADMIN + " WHERE " + TableKeys.KEY_ADMIN_USERNAME + " = '" + username + "' and " + TableKeys.KEY_ADMIN_PASSWORD + " = '" + password + "'";
     }
 
+    public static String GetVerifyPhoneNumQuery(String username, String phoneNum){
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_ADMIN + " WHERE " + TableKeys.KEY_ADMIN_USERNAME + " = '" + username + "' AND " + TableKeys.KEY_ADMIN_PHONE_NO + " = '" + phoneNum + "'";
+    }
+
     public static String GetCheckUserNameExistsQuery(String username){
         return " SELECT *  FROM " + TableKeys.TABLE_NAME_ADMIN + " WHERE " + TableKeys.KEY_ADMIN_USERNAME + " = '" + username +  "'";
     }
