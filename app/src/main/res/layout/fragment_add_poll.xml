@@ -8,35 +8,64 @@
     tools:context=".fragments.admin.AddPollFragment">
 
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Add New Poll"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/head_green"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/b3"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Add New Poll"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/green_wave"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/wave3"
+        app:layout_constraintTop_toBottomOf="@+id/head_green"
+        tools:layout_editor_absoluteX="-16dp" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddPollAddress"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_border2"
+        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="Address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13">
+        app:layout_constraintTop_toBottomOf="@+id/green_wave">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/add_home"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,6 +77,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:text="Election Start Time"
+        android:textSize="20dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toStartOf="@+id/textView15"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,6 +90,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginEnd="16dp"
         android:text="Election End Time"
+        android:textSize="20dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/textView14"
         app:layout_constraintEnd_toEndOf="parent"
@@ -95,6 +126,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Set Election Start Time"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/b3"
         app:layout_constraintEnd_toEndOf="@+id/tvAddPollElectionStartTime"
         app:layout_constraintStart_toStartOf="@+id/tvAddPollElectionStartTime"
         app:layout_constraintTop_toBottomOf="@+id/tvAddPollElectionStartTime" />
@@ -106,6 +140,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Set Election End Time"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/b3"
         app:layout_constraintEnd_toEndOf="@+id/tvAddPollElectionEndTime"
         app:layout_constraintStart_toStartOf="@+id/tvAddPollElectionEndTime"
         app:layout_constraintTop_toBottomOf="@+id/tvAddPollElectionEndTime" />
@@ -119,6 +156,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Add Poll"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/b3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

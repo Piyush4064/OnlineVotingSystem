@@ -31,7 +31,7 @@ public class OfficerCandidateListAdapter extends RecyclerView.Adapter<OfficerCan
             super(itemView);
 
             tvName=itemView.findViewById(R.id.tvCandidateItemName);
-            tvId=itemView.findViewById(R.id.tvCandidateItemID);
+            tvId=itemView.findViewById(R.id.tvPollitemNumber);
         }
     }
 

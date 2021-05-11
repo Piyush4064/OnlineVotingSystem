@@ -7,44 +7,75 @@
     android:layout_height="match_parent"
     tools:context=".fragments.admin.AddAdminFragment">
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Add New Officer"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:id="@+id/head_green"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/b3"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Add New Officer"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/green_wave"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/wave3"
+        app:layout_constraintTop_toBottomOf="@+id/head_green"
+        tools:layout_editor_absoluteX="-16dp" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddOfficerUsername"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_border2"
+        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="Username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11">
+        app:layout_constraintTop_toBottomOf="@+id/green_wave">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/username_green"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddOfficerName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_border2"
+        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -55,15 +86,24 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/person_green"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:inputType="text"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddOfficerPhoneNum"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_border2"
+        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
@@ -74,7 +114,13 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:drawableStart="@drawable/phone_green"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:inputType="phone"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +133,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Add Officer"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/b3"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,8 +161,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:text="Select Poll Number"
+        android:textSize="18dp"
         android:textAlignment="textEnd"
-        android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/spinnerAddOfficerPollNum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ilAddOfficerPhoneNum" />
