@@ -15,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class AdminCandidateListAdapter extends RecyclerView.Adapter<AdminCandidateListAdapter.ViewHolder> {
+public class OfficerCandidateListAdapter extends RecyclerView.Adapter<OfficerCandidateListAdapter.ViewHolder> {
 
     ArrayList<Candidate> CandidateList;
 
-    public AdminCandidateListAdapter(ArrayList<Candidate> candidateList){
+    public OfficerCandidateListAdapter(ArrayList<Candidate> candidateList){
         CandidateList=candidateList;
     }
 
@@ -38,12 +38,12 @@ public class AdminCandidateListAdapter extends RecyclerView.Adapter<AdminCandida
     @NonNull
     @NotNull
     @Override
-    public AdminCandidateListAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public OfficerCandidateListAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.featured_card_design, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull AdminCandidateListAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull OfficerCandidateListAdapter.ViewHolder holder, int position) {
         Candidate candidate=CandidateList.get(position);
         holder.tvId.setText(candidate.getID());
         holder.tvName.setText(candidate.getName());

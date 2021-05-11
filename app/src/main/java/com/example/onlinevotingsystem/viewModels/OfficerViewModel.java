@@ -49,6 +49,12 @@ public class OfficerViewModel extends ViewModel implements FetchFromDatabase.Fet
         return OfficerDetails;
     }
 
+    public LiveData<ArrayList<User>> GetUserList(){
+        if(PollUsersList==null)
+            PollUsersList=new MutableLiveData<>();
+        return PollUsersList;
+    }
+
     public void FetchDetails(String username){
         IsDataLoading.setValue(true);
 
