@@ -27,7 +27,7 @@ public class CandidateQuery {
     }
 
     public static String GetPollWiseResultQuery(int pollno){
-        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_POLL_NO + " = " + pollno + "ORDER BY " + TableKeys.KEY_CANDIDATE_NO_VOTES + " DESC LIMIT 3 )";
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_POLL_NO + " = " + pollno + "ORDER BY " + TableKeys.KEY_CANDIDATE_NO_VOTES + " DESC LIMIT 3";
     }
 
     public static String GetPollWiseCandidateQuery(int pollno){

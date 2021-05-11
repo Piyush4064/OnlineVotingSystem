@@ -35,11 +35,11 @@ public class OfficerQuery {
     }
 
     public static String GetUpdatePasswordQuery(String username , String password){
-        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PASSWORD  + " = " + password +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
+        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PASSWORD  + " = '" + password +  "' WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }
 
     public static String GetUpdatePhotoUrlQuery(String username , String photoUrl){
-        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = " + photoUrl +  " WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = " + username ;
+        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = '" + photoUrl +  "' WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }
 
     public static String GetAllOfficerDataQuery(){

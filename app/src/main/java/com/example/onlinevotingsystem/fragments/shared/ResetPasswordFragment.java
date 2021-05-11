@@ -59,13 +59,10 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
         role=args.getRole();
         id=args.getID();
 
-        tvHeading=view.findViewById(R.id.tvResetPasswordHeading);
         inputPassword=view.findViewById(R.id.ilResetPassword);
         inputPasswordConfirm=view.findViewById(R.id.ilResetPasswordConfirm);
 
         btnSubmit=view.findViewById(R.id.btnSetPassword);
-
-        tvHeading.setText(type);
 
         btnSubmit.setOnClickListener(v -> {
             String password, passwordConfirm;
