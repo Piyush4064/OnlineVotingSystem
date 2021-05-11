@@ -276,7 +276,7 @@
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/voter_recycler"
+                    android:id="@+id/rcvOfficerUserList"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:background="@color/home_background"
@@ -317,9 +317,8 @@
 
                 </RelativeLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"/>
+                <include
+                    layout="@layout/ward_card_design"/>
 
             </LinearLayout>
 

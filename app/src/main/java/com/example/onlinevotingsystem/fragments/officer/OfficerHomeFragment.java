@@ -15,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.onlinevotingsystem.R;
-import com.example.onlinevotingsystem.adapters.AdminCandidateListAdapter;
+import com.example.onlinevotingsystem.adapters.OfficerCandidateListAdapter;
+import com.example.onlinevotingsystem.adapters.OfficerUserListAdapter;
 import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -41,6 +43,9 @@ public class OfficerHomeFragment extends Fragment {
     private NavController navController;
 
     RecyclerView rcvCandidateList;
+    RecyclerView rcvUserList;
+
+    TextView tvPollAddress;
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -50,6 +55,8 @@ public class OfficerHomeFragment extends Fragment {
 
         rlAddCandidate=view.findViewById(R.id.rlBtnAddCandidate);
         rcvCandidateList=view.findViewById(R.id.rcvAdminCandidateList);
+        rcvUserList=view.findViewById(R.id.rcvOfficerUserList);
+        tvPollAddress=view.findViewById(R.id.tvAddressOfficerWardListItem);
 
         navController= Navigation.findNavController(view);
 
@@ -62,10 +69,24 @@ public class OfficerHomeFragment extends Fragment {
         rcvCandidateList.setLayoutManager(linearLayoutManager);
         rcvCandidateList.setHasFixedSize(true);
 
+        LinearLayoutManager linearLayoutManager1=new LinearLayoutManager(requireActivity());
+        linearLayoutManager1.setOrientation(RecyclerView.HORIZONTAL);
+        rcvUserList.setLayoutManager(linearLayoutManager1);
+        rcvUserList.setHasFixedSize(true);
+
         officerViewModel.GetPollDetails().observe(getViewLifecycleOwner(),poll -> {
             if(poll!=null){
-                AdminCandidateListAdapter adapter=new AdminCandidateListAdapter(poll.getCandidateList());
+                OfficerCandidateListAdapter adapter=new OfficerCandidateListAdapter(poll.getCandidateList());
                 rcvCandidateList.setAdapter(adapter);
+
+                tvPollAddress.setText(poll.getAddress());
+            }
+        });
+
+        officerViewModel.GetUserList().observe(getViewLifecycleOwner(),users -> {
+            if(users!=null && users.size()!=0){
+                OfficerUserListAdapter adapter=new OfficerUserListAdapter(users);
+                rcvUserList.setAdapter(adapter);
             }
         });
     }
