@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="8dp"
+    android:layout_margin="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/abstract7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Election End Time"
+            tools:layout_editor_absoluteX="-1dp"
+            tools:layout_editor_absoluteY="121dp" />
+
+        <TextView
+            android:id="@+id/tvPollitemStartTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DD:HH:MM:SS"
+            tools:layout_editor_absoluteX="144dp"
+            tools:layout_editor_absoluteY="121dp" />
+
+        <TextView
+            android:id="@+id/tvPollitemStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DD:HH:MM:SS"
+            tools:layout_editor_absoluteX="144dp"
+            tools:layout_editor_absoluteY="87dp" />
+
+        <TextView
+            android:id="@+id/abstract3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Election Start Time"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="87dp" />
+
+        <TextView
+            android:id="@+id/abstract5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Officer Username:"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <TextView
+            android:id="@+id/tvPollitemOfficer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Officer1"
+            tools:layout_editor_absoluteX="306dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <TextView
+            android:id="@+id/abstract4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No. of Candidate:"
+            tools:layout_editor_absoluteX="191dp"
+            tools:layout_editor_absoluteY="49dp" />
+
+        <TextView
+            android:id="@+id/abstract1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poll Address:"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="53dp" />
+
+        <TextView
+            android:id="@+id/abstract2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Poll Number: "
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="12dp" />
+
+        <TextView
+            android:id="@+id/tvPollitemNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01"
+            tools:layout_editor_absoluteX="115dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <TextView
+            android:id="@+id/tvPollitemCandidateNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            tools:layout_editor_absoluteX="336dp"
+            tools:layout_editor_absoluteY="49dp" />
+
+        <TextView
+            android:id="@+id/tvPollitemAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banaras"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="49dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="68dp"
+            android:layout_height="60dp"
+            app:srcCompat="@drawable/button_img1"
+            tools:layout_editor_absoluteX="289dp"
+            tools:layout_editor_absoluteY="83dp" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
