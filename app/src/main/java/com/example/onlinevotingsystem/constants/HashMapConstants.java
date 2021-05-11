@@ -88,6 +88,13 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_POLLS_ADDRESS_KEY="PollsAddressList";
 
+    //For Fetching the List of all the Users of a Particular Poll
+    public static final String FETCH_TYPE_POLL_VOTERS_LIST="GetPollVotersList";
+
+    public static final String FETCH_PARAM_POLL_VOTERS_LIST_POLL_NUM_KEY="PollNum";
+
+    public static final String FETCH_RESULT_POLL_VOTERS_LIST_KEY="PollVotersList";
+
     public static final String FETCH_RESULT_SUCCESS_KEY="IsFetchSuccess";
     public static final String FETCH_RESULT_ERROR_KEY="ResultError";
 

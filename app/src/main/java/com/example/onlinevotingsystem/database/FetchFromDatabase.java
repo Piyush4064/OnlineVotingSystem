@@ -365,9 +365,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                         break;
                     }
                     case HashMapConstants.FETCH_TYPE_POLL_DETAILS: {
-                        String pollNumStr = (String) inputHashMap.get(HashMapConstants.FETCH_PARAM_POLL_DETAILS_POLL_NUM_KEY);
-                        if (pollNumStr != null) {
-                            int pollNo = Integer.parseInt(pollNumStr);
+                        Integer pollNo = (Integer) inputHashMap.get(HashMapConstants.FETCH_PARAM_POLL_DETAILS_POLL_NUM_KEY);
                             Log.d(TAG,"Fetching the Details of Poll" + pollNo);
                             ResultSet resultSet=statement.executeQuery(PollQuery.GetPollDetailsQuery(pollNo));
                             Log.d(TAG,"Fetch Completed for Poll "+pollNo);
@@ -425,16 +423,10 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                                 resultHashMap.put(HashMapConstants.FETCH_RESULT_POLL_DETAILS_KEY,poll);
                             }
                             else {
-                                resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,false);
-                                resultHashMap.put(HashMapConstants.FETCH_RESULT_ERROR_KEY,"Data Does not Exists");
+                                resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY, false);
+                                resultHashMap.put(HashMapConstants.FETCH_RESULT_ERROR_KEY, "Data Does not Exists");
                                 return resultHashMap;
                             }
-                        }
-                        else {
-                            resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,false);
-                            resultHashMap.put(HashMapConstants.FETCH_RESULT_ERROR_KEY,"Invalid Input");
-                            return resultHashMap;
-                        }
                         break;
                     }
                     case HashMapConstants.FETCH_TYPE_UNASSIGNED_POLLS:{
@@ -481,6 +473,29 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_POLLS_ADDRESS_KEY,pollList);
+                        break;
+                    }
+                    case HashMapConstants.FETCH_TYPE_POLL_VOTERS_LIST:{
+                        Integer pollNum=(Integer)inputHashMap.get(HashMapConstants.FETCH_PARAM_POLL_VOTERS_LIST_POLL_NUM_KEY);
+
+                        Log.d(TAG,"Fetching List of User for Poll Number "+pollNum);
+                        ResultSet resultSet= statement.executeQuery(VotersQuery.GetVoterListAccToPollNoQuery(pollNum));
+                        Log.d(TAG,"Fetch Completed for Poll "+pollNum);
+
+                        ArrayList<User> userList=new ArrayList<>();
+
+                        while (resultSet.next()){
+                            String voterId=resultSet.getString(TableKeys.KEY_VOTERS_ID);
+                            String name=resultSet.getString(TableKeys.KEY_VOTERS_NAME);
+                            boolean isMobileReg=resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED)==1;
+                            String photoUrl=resultSet.getString(TableKeys.KEY_VOTERS_PHOTO_URL);
+                            boolean hasVoted=resultSet.getInt(TableKeys.KEY_VOTERS_HAS_VOTED)==1;
+
+                            userList.add(new User(voterId,name,pollNum,isMobileReg,photoUrl,hasVoted));
+                        }
+
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_POLL_VOTERS_LIST_KEY,userList);
                         break;
                     }
                 }

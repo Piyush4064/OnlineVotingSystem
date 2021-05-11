@@ -31,6 +31,15 @@ public class User {
         DateOfBirth = dateOfBirth;
     }
 
+    public User(String voterID, String name, int pollNumber, boolean isMobileRegistered, String photoURL, boolean hasVoted) {
+        VoterID = voterID;
+        Name = name;
+        PollNumber = pollNumber;
+        IsMobileRegistered = isMobileRegistered;
+        PhotoURL = photoURL;
+        HasVoted = hasVoted;
+    }
+
     public String getVoterID() {
         return VoterID;
     }

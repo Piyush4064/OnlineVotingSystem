@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_officer"
+    app:startDestination="@id/officerHomeFragment">
+
+    <fragment
+        android:id="@+id/officerHomeFragment"
+        android:name="com.example.onlinevotingsystem.fragments.officer.OfficerHomeFragment"
+        android:label="fragment_officer_home"
+        tools:layout="@layout/fragment_officer_home" >
+        <action
+            android:id="@+id/action_officerHomeFragment_to_addCandidateFragment"
+            app:destination="@id/addCandidateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCandidateFragment"
+        android:name="com.example.onlinevotingsystem.fragments.officer.AddCandidateFragment"
+        android:label="fragment_add_candidate"
+        tools:layout="@layout/fragment_add_candidate" >
+        <action
+            android:id="@+id/action_addCandidateFragment_to_officerHomeFragment"
+            app:destination="@id/officerHomeFragment"
+            app:popUpTo="@id/officerHomeFragment"/>
+    </fragment>
+</navigation>

@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
+import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -64,7 +67,13 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
         tvCandidateDob=view.findViewById(R.id.tvAddCandidateDOB);
 
         dob=new Date().getTime();
-        pollNum=1;
+
+        OfficerViewModel viewModel=new ViewModelProvider(requireActivity()).get(OfficerViewModel.class);
+        viewModel.GetOfficerDetails().observe(getViewLifecycleOwner(),officer -> {
+            if(officer!=null){
+                pollNum=officer.getPollNumber();
+            }
+        });
 
         tvCandidateDob.setText(getDisplayTime(dob));
 
@@ -119,6 +128,7 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
                 inputSymbolName.getEditText().setText("");
                 dob=new Date().getTime();
                 Toast.makeText(requireActivity(), "Candidate Added Successfully", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_addCandidateFragment_to_officerHomeFragment);
             }
             else {
                 Toast.makeText(requireActivity(), "Error in Adding Candidate: "+error, Toast.LENGTH_SHORT).show();

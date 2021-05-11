@@ -21,7 +21,7 @@
             android:scaleType="centerCrop"/>
 
         <TextView
-            android:id="@+id/featured_name1"
+            android:id="@+id/tvCandidateItemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Varun Tiwari"
@@ -36,7 +36,7 @@
             style="@style/Widget.AppCompat.RatingBar.Small"/>
 
         <TextView
-            android:id="@+id/featured_info1"
+            android:id="@+id/tvCandidateItemID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Party: BJP Ward: W2 "/>
