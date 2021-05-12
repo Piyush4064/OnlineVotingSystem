@@ -1,5 +1,6 @@
 package com.example.onlinevotingsystem.adapters;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.classes.Poll;
 import com.example.onlinevotingsystem.fragments.officer.OfficerHomeFragmentDirections;
 import com.example.onlinevotingsystem.fragments.shared.PollListFragmentDirections;
+import com.example.onlinevotingsystem.fragments.user.UserPollDetailsFragmentDirections;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
 
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +45,7 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvPollNum, tvOfficer, tvAddress, tvNumOfCandidates, tvElectionStartTime, tvElectionEndTime;
+        TextView tvPollNum, tvOfficer, tvAddress, tvNumOfCandidates, tvElectionStartTime, tvElectionEndTime, tvNumOfVoters, tvNumOfCastedVotes;
         Button btnViewCandidates, btnViewResult;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
@@ -53,6 +56,8 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.ViewHo
             tvNumOfCandidates=itemView.findViewById(R.id.tvPollitemCandidateNo);
             tvElectionStartTime=itemView.findViewById(R.id.tvPollitemStartTime);
             tvElectionEndTime=itemView.findViewById(R.id.tvPollItemEndTime);
+            tvNumOfVoters=itemView.findViewById(R.id.tvPollListNumOfVoters);
+            tvNumOfCastedVotes=itemView.findViewById(R.id.tvPollListVotesCasted);
             btnViewCandidates=itemView.findViewById(R.id.btnPollListViewCandidates);
             btnViewResult=itemView.findViewById(R.id.btnPollListViewResult);
         }
@@ -79,20 +84,29 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.ViewHo
         holder.tvNumOfCandidates.setText(String.format("%d",poll.getNumberOfCandidates()));
         holder.tvElectionStartTime.setText(getDisplayTime(poll.getElectionStartTime()));
         holder.tvElectionEndTime.setText(getDisplayTime(poll.getElectionEndTime()));
+        holder.tvNumOfVoters.setText(String.format("%d",poll.getNumberOfVoters()));
+        holder.tvNumOfCastedVotes.setText(String.format("%d",poll.getNumberOfVotesCasted()));
 
         holder.btnViewResult.setEnabled(poll.getElectionEndTime() <= new Date().getTime());
         holder.btnViewCandidates.setEnabled(poll.getNumberOfCandidates() != 0);
 
-        holder.btnViewResult.setOnClickListener(v -> {
+        if(type.equals("SinglePollUser"))
+            holder.btnViewResult.setVisibility(View.GONE);
 
+        holder.btnViewResult.setOnClickListener(v -> {
+            Bundle args=new Bundle();
+            args.putInt("PollNum",poll.getPollNumber());
+            navController.navigate(R.id.electionResultFragment,args);
         });
 
         holder.btnViewCandidates.setOnClickListener(v -> {
             NavDirections action;
             if(type.equals("AllPolls"))
                 action= PollListFragmentDirections.actionPollListFragmentToCandidateListFragment(position);
-            else
+            else if(type.equals("SinglePollOfficer"))
                 action= OfficerHomeFragmentDirections.actionOfficerHomeFragmentToCandidateListFragment(0);
+            else
+                action= UserPollDetailsFragmentDirections.actionUserPollDetailsFragmentToCandidateListFragment2(0);
             navController.navigate(action);
         });
     }

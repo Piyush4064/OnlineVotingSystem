@@ -22,6 +22,10 @@ public class CandidateQuery {
         return "INSERT INTO `" + TableKeys.TABLE_NAME_CANDIDATE + "` VALUES ('" + name + "','"  + candid + "','" + phoneno + "','" + dob + "', null," + Pollnum + ", '" + elecsymbolname  + "', null, 0)";
     }
 
+    public static String GetUpdateCandidateQuery(String id, String name, String phoneNum, long dob, String symbolName){
+        return "UPDATE "+TableKeys.TABLE_NAME_CANDIDATE + " SET " +TableKeys.KEY_CANDIDATE_NAME + " = '" + name + "' , " + TableKeys.KEY_CANDIDATE_PHONE_NO + " = '" + phoneNum + "' , " + TableKeys.KEY_CANDIDATE_DOB + " = '" + dob + "' , " +TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME + " = '" + symbolName + "' WHERE " + TableKeys.KEY_CANDIDATE_CAND_ID + " = '" + id + "'";
+    }
+
     public static String GetDeleteCandidateQuery(String candid){
         return " DELETE FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_CAND_ID + " = '" + candid +  "'";
     }
@@ -43,7 +47,7 @@ public class CandidateQuery {
     }
 
     public static String GetPollWiseResultQuery(int pollno){
-        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_POLL_NO + " = " + pollno + "ORDER BY " + TableKeys.KEY_CANDIDATE_NO_VOTES + " DESC LIMIT 3";
+        return " SELECT * FROM " + TableKeys.TABLE_NAME_CANDIDATE + " WHERE " + TableKeys.KEY_CANDIDATE_POLL_NO + " = " + pollno + " ORDER BY " + TableKeys.KEY_CANDIDATE_NO_VOTES + " DESC";
     }
 
     public static String GetPollWiseCandidateQuery(int pollno){

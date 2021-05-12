@@ -75,10 +75,10 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
         btnRemovePhoto=view.findViewById(R.id.btnUpdatePhotoRemove);
         btnSubmit=view.findViewById(R.id.btnUpdatePhotoUpload);
 
-//        UpdatePhotoFragmentArgs args=UpdatePhotoFragmentArgs.fromBundle(getArguments());
-//        type=args.getType();
-//        id=args.getId();
-//        defaultPhotoUrl=args.getPhotoUrl();
+        UpdatePhotoFragmentArgs args=UpdatePhotoFragmentArgs.fromBundle(getArguments());
+        type=args.getType();
+        id=args.getId();
+        defaultPhotoUrl=args.getPhotoUrl();
         if(defaultPhotoUrl.equals("null"))
             defaultPhotoUrl=null;
         currentPhotoUrl=defaultPhotoUrl;
@@ -264,6 +264,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Photo Updated Successfully for Admin",Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(requireActivity(),R.id.navHostAdmin).popBackStack(R.id.adminHomeFragment,false);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -274,6 +275,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Photo Updated Successfully for Officer",Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).popBackStack(R.id.officerHomeFragment,false);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -284,6 +286,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Photo Updated Successfully for Voter",Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(requireActivity(),R.id.navHostUser).navigate(R.id.action_updatePhotoFragment3_to_userHomeFragment);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -294,6 +297,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Photo Updated Successfully for Candidate",Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_updateCandidateFragment);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -304,6 +308,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Election Symbol Photo Updated Successfully Candidate",Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_updateCandidateFragment);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -317,22 +322,22 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                     switch (type){
                         case "Admin":{
                             Toast.makeText(requireActivity(), "Photo Removed Successfully", Toast.LENGTH_SHORT).show();
+                            Navigation.findNavController(requireActivity(),R.id.navHostAdmin).popBackStack(R.id.adminHomeFragment,false);
                             break;
                         }
                         case "Officer":{
-
+                            Toast.makeText(requireActivity(), "Photo Removed Successfully", Toast.LENGTH_SHORT).show();
+                            Navigation.findNavController(requireActivity(),R.id.navHostOfficer).popBackStack(R.id.officerHomeFragment,false);
                             break;
                         }
                         case "Voter":{
-
+                            Toast.makeText(requireActivity(),"Photo Removed Successfully",Toast.LENGTH_SHORT).show();
+                            Navigation.findNavController(requireActivity(),R.id.navHostUser).navigate(R.id.action_updatePhotoFragment3_to_userHomeFragment);
                             break;
                         }
-                        case "Candidate":{
-
-                            break;
-                        }
-                        case "CandidateSymbol":{
-
+                        case "Candidate":
+                        case "CandidateSymbol": {
+                            Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_updateCandidateFragment);
                             break;
                         }
                     }

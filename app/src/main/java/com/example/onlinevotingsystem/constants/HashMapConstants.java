@@ -79,6 +79,13 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_POLL_DETAILS_KEY="PollDetails";
 
+    //For Fetching the Election Result of a Particular Poll
+    public static final String FETCH_TYPE_POLL_RESULT="GetPollResult";
+
+    public static final String FETCH_PARAM_POLL_RESULT_POLL_NUM_KEY="PollNumber";
+
+    public static final String FETCH_RESULT_POLL_RESULT_CANDIDATE_LIST_KEY="PollResult";
+
     //For Fetching List of Unassigned Polls
     public static final String FETCH_TYPE_UNASSIGNED_POLLS="GetUnassignedPolls";
 
@@ -189,6 +196,15 @@ public class HashMapConstants {
     public static final String UPDATE_TYPE_ADD_CANDIDATE="AddCandidate";
 
     public static final String UPDATE_PARAM_CANDIDATE_KEY="InputCandidate";
+
+    //For Updating the Details of the Candidate
+    public static final String UPDATE_TYPE_UPDATE_CANDIDATE="UpdateCandidateDetails";
+
+    public static final String UPDATE_PARAM_UPDATE_CANDIDATE_ID_KEY="CandidateID";
+    public static final String UPDATE_PARAM_UPDATE_CANDIDATE_NAME_KEY="CandidateName";
+    public static final String UPDATE_PARAM_UPDATE_CANDIDATE_PHONE_NUM_KEY="CandidatePhoneNum";
+    public static final String UPDATE_PARAM_UPDATE_CANDIDATE_DOB_KEY="CandidateDob";
+    public static final String UPDATE_PARAM_UPDATE_CANDIDATE_SYMBOL_NAME_KEY="CandidateSymbol";
 
     //For Updating the Photo of a Candidate
     public static final String UPDATE_TYPE_CANDIDATE_PHOTO="UpdateCandidatePhoto";

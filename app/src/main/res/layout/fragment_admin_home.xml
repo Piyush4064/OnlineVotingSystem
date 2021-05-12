@@ -7,22 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".fragments.admin.AdminHomeFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/linearLayout2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:orientation="vertical"
-            android:padding="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdminAddUser">
+            app:layout_constraintBottom_toTopOf="@+id/cmAdminHome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -40,23 +43,25 @@
                 android:id="@+id/rcvAdminOfficerList"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_margin="8dp"
                 android:background="@color/home_background" />
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/cmAdminHome">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -74,112 +79,24 @@
                 android:id="@+id/rcvAdminUsersList"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_margin="8dp"
                 android:background="@color/home_background" />
 
         </LinearLayout>
 
         <com.hitomi.cmlibrary.CircleMenu
-            android:id="@+id/cmUserHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/cmAdminHome"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        <Button
-            android:id="@+id/btnNavigateToAddAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Add a New Admin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdminUpdatePhoto" />
-
-        <Button
-            android:id="@+id/btnNavigateToAddPoll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Add a New Poll"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnNavigateToAddAdmin" />
-
-        <Button
-            android:id="@+id/btnUpdateElectionTimeOfPoll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Update Election Time of a Poll"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnNavigateToAddPoll" />
-
-        <Button
-            android:id="@+id/btnAdminViewPollList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/bg6"
-            android:text="View List of Polls"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnUpdateElectionTimeOfPoll" />
-
-        <Button
-            android:id="@+id/btnAdminAddOfficer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Add New Officer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdminViewPollList" />
-
-        <Button
-            android:id="@+id/btnAdminAddUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Add New User"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdminAddOfficer" />
-
-        <Button
-            android:id="@+id/btnAdminChangePassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Change Password"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-        <Button
-            android:id="@+id/btnAdminUpdatePhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/bg6"
-            android:text="Update Photo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnAdminChangePassword" />
-
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </ScrollView>

@@ -17,55 +17,14 @@
 
 
             //Intro and Search
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/app_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome Officer "
-                    android:textSize="28dp"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_centerHorizontal="true"/>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_below="@id/app_name"
-                    android:background="@color/white"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:elevation="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Search..."
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="15dp"/>
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/search2"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="15dp"/>
-
-
-                </RelativeLayout>
-
-            </RelativeLayout>
 
             //cards
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -94,9 +53,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
                         android:text="Add"
-                        android:textAlignment="center"
-                        android:gravity="center_horizontal"/>
+                        android:textAlignment="center" />
 
 
                 </LinearLayout>
@@ -126,9 +85,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
                         android:text="Edit"
-                        android:textAlignment="center"
-                        android:gravity="center_horizontal"/>
+                        android:textAlignment="center" />
 
 
                 </LinearLayout>
@@ -158,9 +117,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
                         android:text="Remove"
-                        android:textAlignment="center"
-                        android:gravity="center_horizontal"/>
+                        android:textAlignment="center" />
 
 
                 </LinearLayout>
@@ -190,9 +149,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
                         android:text="Update"
-                        android:textAlignment="center"
-                        android:gravity="center_horizontal"/>
+                        android:textAlignment="center" />
 
 
                 </LinearLayout>
@@ -246,47 +205,9 @@
             </RelativeLayout>
 
             //voter's list
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="30dp"
-                android:padding="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Voter's List"
-                        android:textSize="20dp"
-                        android:textColor="@color/black"
-                        android:textAllCaps="true"
-                        android:fontFamily="@font/montserrat"
-                        android:textStyle="bold"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="view all"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"/>
-
-
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvOfficerUserList"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@color/home_background"
-                    />
-
-            </LinearLayout>
 
             //ward Info
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -320,7 +241,44 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical"
+                android:padding="20dp">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Voter's List"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="view all" />
+
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvOfficerUserList"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/home_background" />
+
+            </LinearLayout>
 
 
         </LinearLayout>

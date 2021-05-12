@@ -4,11 +4,14 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.onlinevotingsystem.classes.Candidate;
 import com.example.onlinevotingsystem.classes.Poll;
 import com.example.onlinevotingsystem.classes.User;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class UserViewModel extends ViewModel implements FetchFromDatabase.FetchDbInterface {
@@ -35,6 +38,26 @@ public class UserViewModel extends ViewModel implements FetchFromDatabase.FetchD
         if(PollDetails==null)
             PollDetails=new MutableLiveData<>();
         return PollDetails;
+    }
+
+    public ArrayList<Candidate> GetCandidateList(){
+        return PollDetails.getValue().getCandidateList();
+    }
+
+    public String GetVoterId(){
+        return UserDetails.getValue().getVoterID();
+    }
+
+    public boolean hasElectionEnd(){
+        return PollDetails.getValue().getElectionEndTime() < new Date().getTime();
+    }
+
+    public boolean hasUserVoted(){
+        return UserDetails.getValue().isHasVoted();
+    }
+
+    public User GetUser(){
+        return UserDetails.getValue();
     }
 
     private MutableLiveData<String> Error;

@@ -20,6 +20,7 @@ import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.adapters.CandidateListAdapter;
 import com.example.onlinevotingsystem.classes.Candidate;
 import com.example.onlinevotingsystem.viewModels.CandidateListViewModel;
+import com.example.onlinevotingsystem.viewModels.UserViewModel;
 import com.google.android.material.card.MaterialCardView;
 
 import org.jetbrains.annotations.NotNull;
@@ -52,12 +53,16 @@ public class CandidateListFragment extends Fragment {
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CandidateListViewModel listViewModel=new ViewModelProvider(requireActivity()).get(CandidateListViewModel.class);
-
         CandidateListFragmentArgs args=CandidateListFragmentArgs.fromBundle(getArguments());
         int position=args.getPosition();
 
-        candidateList=listViewModel.GetPollCandidateList(position);
+        CandidateListViewModel listViewModel=new ViewModelProvider(requireActivity()).get(CandidateListViewModel.class);
+        if(listViewModel.IsViewModelUsed())
+            candidateList=listViewModel.GetPollCandidateList(position);
+        else {
+            UserViewModel viewModel=new ViewModelProvider(requireActivity()).get(UserViewModel.class);
+            candidateList=viewModel.GetCandidateList();
+        }
 
         tvNoCandidateFound=view.findViewById(R.id.tvCandidateListNotFound);
         mcvCandidateList=view.findViewById(R.id.mcvCandidateList);

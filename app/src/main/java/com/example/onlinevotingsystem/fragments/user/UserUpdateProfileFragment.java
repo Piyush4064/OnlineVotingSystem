@@ -1,4 +1,4 @@
-package com.example.onlinevotingsystem.fragments.officer;
+package com.example.onlinevotingsystem.fragments.user;
 
 import android.os.Bundle;
 
@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.onlinevotingsystem.R;
-import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
+import com.example.onlinevotingsystem.viewModels.UserViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class UpdateOfficerProfileFragment extends Fragment {
+public class UserUpdateProfileFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,35 +31,34 @@ public class UpdateOfficerProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_update_officer_profile, container, false);
+        return inflater.inflate(R.layout.fragment_user_update_profile, container, false);
     }
 
-    Button btnUpdatePhoto,btnChangePassword;
+    UserViewModel userViewModel;
+    Button btnChangePassword, btnUpdatePhoto;
     NavController navController;
-
-    OfficerViewModel officerViewModel;
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        btnChangePassword=view.findViewById(R.id.btnOfficerChangePassword);
-        btnUpdatePhoto=view.findViewById(R.id.btnOfficerUpdatePhoto);
+        userViewModel=new ViewModelProvider(requireActivity()).get(UserViewModel.class);
 
-        officerViewModel=new ViewModelProvider(requireActivity()).get(OfficerViewModel.class);
+        btnChangePassword=view.findViewById(R.id.btnUserUpdateProfileChangePassword);
+        btnUpdatePhoto=view.findViewById(R.id.btnUserUpdateProfileUpdatePhoto);
 
         navController= Navigation.findNavController(view);
 
         btnChangePassword.setOnClickListener(v -> {
-            NavDirections action=UpdateOfficerProfileFragmentDirections.actionUpdateOfficerProfileFragmentToChangePasswordFragment("Officer",officerViewModel.GetOfficerUsername());
+            NavDirections action=UserUpdateProfileFragmentDirections.actionUserUpdateProfileFragmentToChangePasswordFragment3("Voter",userViewModel.GetVoterId());
             navController.navigate(action);
         });
 
         btnUpdatePhoto.setOnClickListener(v -> {
             String currentPhoto="null";
-            if(officerViewModel.GetPhotoUrl()!=null)
-                currentPhoto=officerViewModel.GetPhotoUrl();
-            NavDirections action=UpdateOfficerProfileFragmentDirections.actionUpdateOfficerProfileFragmentToUpdatePhotoFragment2("Officer",officerViewModel.GetOfficerUsername(),currentPhoto);
+            if(userViewModel.GetUser().getPhotoURL()!=null)
+                currentPhoto=userViewModel.GetUser().getPhotoURL();
+            NavDirections action=UserUpdateProfileFragmentDirections.actionUserUpdateProfileFragmentToUpdatePhotoFragment3("Voter",userViewModel.GetVoterId(),currentPhoto);
             navController.navigate(action);
         });
     }

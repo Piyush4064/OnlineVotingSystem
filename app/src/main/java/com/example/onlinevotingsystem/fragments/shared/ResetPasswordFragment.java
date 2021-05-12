@@ -55,10 +55,10 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        ResetPasswordFragmentArgs args=ResetPasswordFragmentArgs.fromBundle(getArguments());
-//        type=args.getType();
-//        role=args.getRole();
-//        id=args.getID();
+        ResetPasswordFragmentArgs args=ResetPasswordFragmentArgs.fromBundle(getArguments());
+        type=args.getType();
+        role=args.getRole();
+        id=args.getID();
 
         inputPassword=view.findViewById(R.id.ilResetPassword);
         inputPasswordConfirm=view.findViewById(R.id.ilResetPasswordConfirm);
@@ -153,7 +153,7 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                         requireActivity().finish();
                     }
                     else {
-
+                        Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(R.id.action_resetPasswordFragment3_to_adminHomeFragment);
                     }
                 }
                 else {
@@ -172,7 +172,7 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                         requireActivity().finish();
                     }
                     else {
-
+                        Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_resetPasswordFragment2_to_updateOfficerProfileFragment);
                     }
                 }
                 else {
@@ -191,7 +191,7 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                         requireActivity().finish();
                     }
                     else {
-
+                        Navigation.findNavController(requireActivity(),R.id.navHostUser).navigate(R.id.action_resetPasswordFragment4_to_userHomeFragment);
                     }
                 }
                 else {

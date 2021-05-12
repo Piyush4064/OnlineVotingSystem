@@ -57,9 +57,14 @@ public class AdminActivity extends AppCompatActivity {
 
             return false;
         });
+    }
 
-        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
-
-        });
+    @Override
+    public void onBackPressed() {
+        if(navController.getCurrentDestination().getId()==R.id.pollListFragment){
+            navController.navigate(R.id.userLoginFragment);
+        }
+        else
+            super.onBackPressed();
     }
 }

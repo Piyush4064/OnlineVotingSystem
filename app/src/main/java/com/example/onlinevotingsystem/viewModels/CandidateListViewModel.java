@@ -83,6 +83,10 @@ public class CandidateListViewModel extends ViewModel implements FetchFromDataba
         }
     }
 
+    public boolean IsViewModelUsed(){
+        return PollList != null;
+    }
+
     public ArrayList<Candidate> GetPollCandidateList(int position){
         return PollList.getValue().get(position).getCandidateList();
     }

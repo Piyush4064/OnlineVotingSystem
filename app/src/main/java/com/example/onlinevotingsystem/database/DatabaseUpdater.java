@@ -335,6 +335,21 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                 }
 
                 //Implemented
+                case HashMapConstants.UPDATE_TYPE_UPDATE_CANDIDATE:{
+                    String id=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_UPDATE_CANDIDATE_ID_KEY);
+                    String name=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_UPDATE_CANDIDATE_NAME_KEY);
+                    String phoneNum=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_UPDATE_CANDIDATE_PHONE_NUM_KEY);
+                    Long dob=(Long) inputHashMap.get(HashMapConstants.UPDATE_PARAM_UPDATE_CANDIDATE_DOB_KEY);
+                    String symbolName=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_UPDATE_CANDIDATE_SYMBOL_NAME_KEY);
+
+                    Log.d(TAG,"Updating Candidate Information");
+                    statement.execute(CandidateQuery.GetUpdateCandidateQuery(id,name,phoneNum,dob,symbolName));
+                    Log.d(TAG,"Candidate Information Updated Successfully");
+
+                    break;
+                }
+
+                //Implemented
                 case HashMapConstants.UPDATE_TYPE_CANDIDATE_PHOTO:{
                     String id=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_CANDIDATE_PHOTO_ID_KEY);
                     String photo=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_CANDIDATE_PHOTO_URL_KEY);
@@ -358,14 +373,15 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                     break;
                 }
 
+                //Implemented
                 case HashMapConstants.UPDATE_TYPE_DELETE_CANDIDATE:{
                     String candidateId=(String)inputHashMap.get(HashMapConstants.UPDATE_PARAM_DELETE_CANDIDATE_ID_KEY);
                     Integer pollNum=(Integer)inputHashMap.get(HashMapConstants.UPDATE_PARAM_DELETE_CANDIDATE_POLL_NUM_KEY);
 
                     if(pollNum!=null){
                         Log.d(TAG,"Deleting Candidate "+candidateId);
-                        statement.executeQuery(CandidateQuery.GetDeleteCandidateQuery(candidateId));
-                        statement.executeQuery(PollQuery.GetDecrementNoOfCandidatesQuery(pollNum));
+                        statement.execute(CandidateQuery.GetDeleteCandidateQuery(candidateId));
+                        statement.execute(PollQuery.GetDecrementNoOfCandidatesQuery(pollNum));
                         Log.d(TAG,"Candidate Deleted Successfully");
                     }
                     else {

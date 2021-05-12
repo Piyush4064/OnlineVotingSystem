@@ -41,7 +41,7 @@ public class CandidateListAdapter extends RecyclerView.Adapter<CandidateListAdap
             tvDob=itemView.findViewById(R.id.tvCandidateItemDOB);
             tvSymbol=itemView.findViewById(R.id.tvCandidateItemSymbolName);
 
-            imgCandidate=itemView.findViewById(R.id.imgCandidateItem);
+            imgCandidate=itemView.findViewById(R.id.imgCandidateList);
             imgSymbol=itemView.findViewById(R.id.imgCandidateItemSymbol);
         }
     }

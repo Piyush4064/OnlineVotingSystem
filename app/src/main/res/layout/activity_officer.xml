@@ -14,36 +14,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarOfficer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
+            app:menu="@menu/menu_admin"
+            android:background="@color/bg4">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:src="@drawable/loo2" />
 
             <TextView
                 android:id="@+id/head_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Digi8 Vote"
+                android:text="VoteIt"
                 android:textSize="28dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
                 android:fontFamily="@font/montserrat"
                 android:layout_centerHorizontal="true"/>
 
-            <ImageView
-                android:background="@color/banner_background"
-                android:layout_centerVertical="true"
-                android:layout_height="40dp"
-                android:layout_width="40dp"
-                android:src="@drawable/loo2" />
-
-            <ImageView
-                android:background="@color/banner_background"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_height="40dp"
-                android:layout_width="40dp"
-                android:padding="5dp"
-                android:src="@drawable/loo2" />
-        </RelativeLayout>
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

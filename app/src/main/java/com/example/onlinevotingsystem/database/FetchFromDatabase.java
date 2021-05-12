@@ -442,6 +442,35 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                             }
                         break;
                     }
+                    case HashMapConstants.FETCH_TYPE_POLL_RESULT:{
+                        Integer pollNum=(Integer)inputHashMap.get(HashMapConstants.FETCH_PARAM_POLL_RESULT_POLL_NUM_KEY);
+
+                        Log.d(TAG,"Getting Election Results of Poll "+pollNum);
+                        String query=CandidateQuery.GetPollWiseResultQuery(pollNum);
+                        Log.d(TAG,"Query: "+query);
+                        ResultSet candidateListResult=statement.executeQuery(query);
+                        Log.d(TAG,"Fetch Completed");
+
+                        ArrayList<Candidate> candidateArrayList=new ArrayList<>();
+
+                        while (candidateListResult.next()){
+                            String name=candidateListResult.getString(TableKeys.KEY_CANDIDATE_NAME);
+                            String id=candidateListResult.getString(TableKeys.KEY_CANDIDATE_CAND_ID);
+                            String phoneNum=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHONE_NO);
+                            String dob=candidateListResult.getString(TableKeys.KEY_CANDIDATE_DOB);
+                            String photoUrl=candidateListResult.getString(TableKeys.KEY_CANDIDATE_PHOTO_URL);
+                            String symbolName=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_NAME);
+                            String symbolPhoto=candidateListResult.getString(TableKeys.KEY_CANDIDATE_ELEC_SYMBOL_PHOTO);
+                            int numOfVotes=candidateListResult.getInt(TableKeys.KEY_CANDIDATE_NO_VOTES);
+
+                            Candidate candidate=new Candidate(id,name,Long.parseLong(dob),photoUrl,phoneNum,symbolName,symbolPhoto,pollNum,numOfVotes);
+                            candidateArrayList.add(candidate);
+                        }
+
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_POLL_RESULT_CANDIDATE_LIST_KEY,candidateArrayList);
+                        break;
+                    }
                     case HashMapConstants.FETCH_TYPE_UNASSIGNED_POLLS:{
                         Log.d(TAG,"Fetching the List of Unassigned Polls");
                         ResultSet resultSet= statement.executeQuery(OfficerPollNumQuery.GetUnassignedPolls());

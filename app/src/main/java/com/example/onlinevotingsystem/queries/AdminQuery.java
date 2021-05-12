@@ -41,4 +41,8 @@ public class AdminQuery {
     public static String GetRemovePhotoQuery(String username){
         return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHOTO_URL  + " = null WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = '" + username +"'" ;
     }
+
+    public static String GetCheckIfAnyAdminExistsQuery(){
+        return "SELECT * FROM "+TableKeys.TABLE_NAME_ADMIN;
+    }
 }

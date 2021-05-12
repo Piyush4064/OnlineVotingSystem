@@ -85,6 +85,9 @@
         <action
             android:id="@+id/action_pollListFragment_to_candidateListFragment"
             app:destination="@id/candidateListFragment" />
+        <action
+            android:id="@+id/action_pollListFragment_to_electionResultFragment"
+            app:destination="@id/electionResultFragment" />
     </fragment>
     <fragment
         android:id="@+id/candidateListFragment"
@@ -103,5 +106,14 @@
         <action
             android:id="@+id/action_forgotPasswordFragment_to_resetPasswordFragment"
             app:destination="@id/resetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/electionResultFragment"
+        android:name="com.example.onlinevotingsystem.fragments.shared.ElectionResultFragment"
+        android:label="fragment_election_result"
+        tools:layout="@layout/fragment_election_result" >
+        <argument
+            android:name="PollNum"
+            app:argType="integer" />
     </fragment>
 </navigation>

@@ -46,4 +46,9 @@
     <color name="card3">#f7c59f</color>
     <color name="card4">#b8d7f5</color>
 
+    <color name="resultGold">#C9B037</color>
+    <color name="resultSilver">#b4b4b4</color>
+    <color name="resultBronze">#ad8a56</color>
+    <color name="resultRest">#dfcdc2</color>
+
 </resources>

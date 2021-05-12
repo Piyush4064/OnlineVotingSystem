@@ -15,6 +15,7 @@ import com.example.onlinevotingsystem.queries.VotersQuery;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -47,6 +48,17 @@ public class ConnectionEstablisher extends AsyncTask<Void,Void,Boolean> {
 
             showTableCheckLog(TableKeys.TABLE_NAME_ADMIN);
             statement.execute(AdminQuery.getCreateQuery());
+
+            Log.d(TAG,"Checking if any Admin exists or not");
+            ResultSet resultSet= statement.executeQuery(AdminQuery.GetCheckIfAnyAdminExistsQuery());
+            if(resultSet.first()){
+                Log.d(TAG,"Admin Already Exists");
+            }
+            else {
+                Log.d(TAG,"No Admin exists! Adding a new Test Admin");
+                statement.execute(AdminQuery.GetAddAdminQuery("testAdmin","abcd1234","Test Admin","+919580132139"));
+                Log.d(TAG,"Sample Admin Added");
+            }
 
             showTableCheckLog(TableKeys.TABLE_NAME_CANDIDATE);
             statement.execute(CandidateQuery.getCreateQuery());

@@ -60,7 +60,7 @@ public class VotersQuery {
     }
 
     public static String GetUpdateHasVotedQuery(String voterid){
-        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_VOTERS_HAS_VOTED + " = " + 1 +  " WHERE "+ TableKeys.KEY_VOTERS_ID + " = '" + voterid + "'" ;
+        return " UPDATE " + TableKeys.TABLE_NAME_VOTERS + " SET " + TableKeys.KEY_VOTERS_HAS_VOTED + " = " + 1 +  " WHERE "+ TableKeys.KEY_VOTERS_ID + " = '" + voterid + "'" ;
     }
 
     public static String GetAllVotersQuery(){

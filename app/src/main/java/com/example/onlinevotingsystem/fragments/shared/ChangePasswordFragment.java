@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
+import androidx.navigation.NavGraph;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -55,9 +57,9 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        ChangePasswordFragmentArgs args=ChangePasswordFragmentArgs.fromBundle(getArguments());
-//        type=args.getRole();
-//        id=args.getId();
+        ChangePasswordFragmentArgs args=ChangePasswordFragmentArgs.fromBundle(getArguments());
+        type=args.getType();
+        id=args.getId();
 
         tvHeading=view.findViewById(R.id.tvChangePasswordHeading);
         inputPassword=view.findViewById(R.id.ilChangePasswordInput);
@@ -110,7 +112,14 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY)){
-
+                    String type="ChangePassword";
+                    String role="Admin";
+                    String Id=id;
+                    Bundle bundle=new Bundle();
+                    bundle.putString("Type",type);
+                    bundle.putString("Role",role);
+                    bundle.putString("ID",Id);
+                    navController.navigate(R.id.resetPasswordFragment3,bundle);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Wrong Password, Please Enter the Current Password",Toast.LENGTH_SHORT).show();
@@ -127,7 +136,14 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY)){
-
+                    String type="ChangePassword";
+                    String role="Officer";
+                    String Id=id;
+                    Bundle bundle=new Bundle();
+                    bundle.putString("Type",type);
+                    bundle.putString("Role",role);
+                    bundle.putString("ID",Id);
+                    navController.navigate(R.id.resetPasswordFragment2,bundle);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Wrong Password, Please Enter the Current Password",Toast.LENGTH_SHORT).show();
@@ -144,7 +160,14 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY)){
-
+                    String type="ChangePassword";
+                    String role="Voter";
+                    String Id=id;
+                    Bundle bundle=new Bundle();
+                    bundle.putString("Type",type);
+                    bundle.putString("Role",role);
+                    bundle.putString("ID",Id);
+                    navController.navigate(R.id.resetPasswordFragment4,bundle);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Wrong Password, Please Enter the Current Password",Toast.LENGTH_SHORT).show();

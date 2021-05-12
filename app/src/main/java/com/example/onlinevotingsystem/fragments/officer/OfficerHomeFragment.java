@@ -77,6 +77,14 @@ public class OfficerHomeFragment extends Fragment {
             navController.navigate(R.id.updateOfficerProfileFragment);
         });
 
+        rlEditCandidate.setOnClickListener(v -> {
+            navController.navigate(R.id.updateCandidateFragment);
+        });
+
+        rlRemoveCandidate.setOnClickListener(v -> {
+            navController.navigate(R.id.removeCandidateFragment);
+        });
+
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(requireActivity());
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         rcvCandidateList.setLayoutManager(linearLayoutManager);
@@ -101,7 +109,7 @@ public class OfficerHomeFragment extends Fragment {
 
                 ArrayList<Poll> pollArrayList=new ArrayList<>();
                 pollArrayList.add(poll);
-                PollListAdapter pollListAdapter=new PollListAdapter(pollArrayList,navController,"SinglePoll");
+                PollListAdapter pollListAdapter=new PollListAdapter(pollArrayList,navController,"SinglePollOfficer");
                 rcvPollList.setAdapter(pollListAdapter);
             }
         });
