@@ -7,6 +7,41 @@
     android:layout_height="match_parent"
     tools:context=".fragments.officer.UpdateOfficerProfileFragment">
 
+    <RelativeLayout
+        android:id="@+id/head_green"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/bg6"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Update Profile"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/green_wave"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/wave7"
+        app:layout_constraintTop_toBottomOf="@+id/head_green"
+        tools:layout_editor_absoluteX="-16dp" />
+
 
     <Button
         android:id="@+id/btnOfficerChangePassword"
@@ -14,9 +49,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Change Password"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:backgroundTint="@color/b6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/green_wave"/>
 
     <Button
         android:id="@+id/btnOfficerUpdatePhoto"
@@ -24,6 +63,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Update Photo"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:backgroundTint="@color/b6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
