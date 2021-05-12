@@ -46,7 +46,6 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
     }
 
     private String type,role,id;
-    TextView tvHeading;
     TextInputLayout inputPassword, inputPasswordConfirm;
     Button btnSubmit;
 
@@ -154,8 +153,7 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                         requireActivity().finish();
                     }
                     else {
-                        NavDirections action=ResetPasswordFragmentDirections.actionResetPasswordFragment2ToAdminHomeFragment();
-                        Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
+
                     }
                 }
                 else {

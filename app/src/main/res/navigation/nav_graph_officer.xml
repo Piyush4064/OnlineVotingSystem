@@ -6,25 +6,6 @@
     app:startDestination="@id/officerHomeFragment">
 
     <fragment
-        android:id="@+id/updatePhotoFragment"
-        android:name="com.example.onlinevotingsystem.fragments.shared.UpdatePhotoFragment"
-        android:label="fragment_update_photo"
-        tools:layout="@layout/fragment_update_photo">
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="photoUrl"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_updatePhotoFragment_to_officerHomeFragment"
-            app:destination="@id/officerHomeFragment"
-            app:popUpTo="@id/officerHomeFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/candidateListFragment"
         android:name="com.example.onlinevotingsystem.fragments.shared.CandidateListFragment"
         android:label="fragment_candidate_list"
@@ -88,46 +69,5 @@
         android:id="@+id/updateOfficerProfileFragment"
         android:name="com.example.onlinevotingsystem.fragments.officer.UpdateOfficerProfileFragment"
         android:label="fragment_update_officer_profile"
-        tools:layout="@layout/fragment_update_officer_profile" >
-        <action
-            android:id="@+id/action_updateOfficerProfileFragment_to_updatePhotoFragment"
-            app:destination="@id/updatePhotoFragment" />
-        <action
-            android:id="@+id/action_updateOfficerProfileFragment_to_changePasswordFragment2"
-            app:destination="@id/changePasswordFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/changePasswordFragment2"
-        android:name="com.example.onlinevotingsystem.fragments.shared.ChangePasswordFragment"
-        android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" >
-        <argument
-            android:name="role"
-            app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_changePasswordFragment2_to_resetPasswordFragment3"
-            app:destination="@id/resetPasswordFragment3" />
-    </fragment>
-    <fragment
-        android:id="@+id/resetPasswordFragment3"
-        android:name="com.example.onlinevotingsystem.fragments.shared.ResetPasswordFragment"
-        android:label="fragment_reset_password"
-        tools:layout="@layout/fragment_reset_password" >
-        <argument
-            android:name="Type"
-            app:argType="string" />
-        <argument
-            android:name="Role"
-            app:argType="string" />
-        <argument
-            android:name="ID"
-            app:argType="string"/>
-        <action
-            android:id="@+id/action_resetPasswordFragment3_to_officerHomeFragment2"
-            app:destination="@id/officerHomeFragment"
-            app:popUpTo="@id/officerHomeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_update_officer_profile" />
 </navigation>

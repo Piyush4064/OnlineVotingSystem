@@ -68,6 +68,9 @@ public class AddAdminFragment extends Fragment implements DatabaseUpdater.Databa
             if(username.isEmpty() || name.isEmpty() || phoneNum.isEmpty()){
                 Toast.makeText(requireActivity(),"Please Enter all the Details", Toast.LENGTH_SHORT).show();
             }
+            else if(phoneNum.length()!=10){
+                Toast.makeText(requireActivity(),"Please Enter a Valid Phone Number",Toast.LENGTH_SHORT).show();
+            }
             else {
                 AlertDialog alertDialog=new MaterialAlertDialogBuilder(requireActivity())
                         .setTitle("Alert")
@@ -75,7 +78,8 @@ public class AddAdminFragment extends Fragment implements DatabaseUpdater.Databa
                         .setPositiveButton("YES", (dialog, which) -> {
                             HashMap<String,Object> hashMap=new HashMap<>();
                             hashMap.put(HashMapConstants.UPDATE_TYPE_KEY,HashMapConstants.UPDATE_TYPE_ADD_ADMIN);
-                            Admin admin=new Admin(username,name,phoneNum);
+                            String phone="+91"+phoneNum;
+                            Admin admin=new Admin(username,name,phone);
                             hashMap.put(HashMapConstants.UPDATE_PARAM_ADMIN_KEY,admin);
 
                             adminViewModel.SetDatabaseProcess(true);

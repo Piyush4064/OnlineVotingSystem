@@ -99,9 +99,9 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
         });
 
         btnSubmit.setOnClickListener(v -> {
+            FirebaseStorage firebaseStorage=FirebaseStorage.getInstance();
+            StorageReference storageReference=firebaseStorage.getReference().child(type+"/"+id);
             if(currentPhotoUrl!=null){
-                FirebaseStorage firebaseStorage=FirebaseStorage.getInstance();
-                StorageReference storageReference=firebaseStorage.getReference().child(type+"/"+id);
                 progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Uploading","Uploading Photo");
                 progressIndicatorFragment.show(getParentFragmentManager(),"UploadPhotoProcess");
                 storageReference
@@ -121,8 +121,6 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                         });
             }
             else {
-                FirebaseStorage firebaseStorage=FirebaseStorage.getInstance();
-                StorageReference storageReference=firebaseStorage.getReference().child(type+"/"+id);
                 progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Updating","Removing Photo");
                 progressIndicatorFragment.show(getParentFragmentManager(),"RemovePhotoProcess");
                 storageReference
@@ -266,9 +264,6 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Photo Updated Successfully for Admin",Toast.LENGTH_SHORT).show();
-                    NavDirections action=UpdatePhotoFragmentDirections.actionUpdatePhotoFragmentToAdminHomeFragment();
-                    Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
-                    new ViewModelProvider(requireActivity()).get(AdminViewModel.class).reloadData();
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -318,13 +313,10 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
             case HashMapConstants.UPDATE_TYPE_REMOVE_PHOTO:{
                 progressIndicatorFragment.dismiss();
                 if(result){
-                    Toast.makeText(requireActivity(), "Photo Removed SUccessfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireActivity(), "Photo Removed Successfully", Toast.LENGTH_SHORT).show();
                     switch (type){
                         case "Admin":{
                             Toast.makeText(requireActivity(), "Photo Removed Successfully", Toast.LENGTH_SHORT).show();
-                            NavDirections action=UpdatePhotoFragmentDirections.actionUpdatePhotoFragmentToAdminHomeFragment();
-                            Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
-                            new ViewModelProvider(requireActivity()).get(AdminViewModel.class).reloadData();
                             break;
                         }
                         case "Officer":{
