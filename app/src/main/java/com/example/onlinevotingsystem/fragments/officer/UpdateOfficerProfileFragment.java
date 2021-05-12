@@ -51,13 +51,13 @@ public class UpdateOfficerProfileFragment extends Fragment {
         navController= Navigation.findNavController(view);
 
         btnChangePassword.setOnClickListener(v -> {
-            NavDirections action=UpdateOfficerProfileFragmentDirections.actionUpdateOfficerProfileFragmentToChangePasswordFragment2("Officer",officerViewModel.GetOfficerUsername());
-            navController.navigate(action);
+
+
         });
 
         btnUpdatePhoto.setOnClickListener(v -> {
-            NavDirections action=UpdateOfficerProfileFragmentDirections.actionUpdateOfficerProfileFragmentToUpdatePhotoFragment("Officer",officerViewModel.GetOfficerUsername(),officerViewModel.GetPhotoUrl());
-            navController.navigate(action);
+
+
         });
     }
 }

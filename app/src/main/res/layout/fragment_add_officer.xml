@@ -69,7 +69,8 @@
             android:foregroundGravity="center"
             android:gravity="center_vertical"
             android:hint="Username"
-            android:inputType="text" />
+            android:inputType="text"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -99,7 +100,8 @@
             android:foregroundGravity="center"
             android:gravity="center_vertical"
             android:hint="Name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +131,8 @@
             android:foregroundGravity="center"
             android:gravity="center_vertical"
             android:hint="Phone Number"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

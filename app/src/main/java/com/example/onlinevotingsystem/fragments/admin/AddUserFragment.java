@@ -114,12 +114,16 @@ public class AddUserFragment extends Fragment implements
             if(name.isEmpty() || phoneNum.isEmpty() || PollNumber==-1){
                 Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
             }
+            else if(phoneNum.length()!=10){
+                Toast.makeText(requireActivity(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
+            }
             else {
                 AlertDialog alertDialog=new MaterialAlertDialogBuilder(requireActivity())
                         .setTitle("Alert")
                         .setMessage("Are you sure you want to add the new User")
                         .setPositiveButton("YES", (dialog, which) -> {
-                            User user=new User(name,phoneNum,PollNumber,dob);
+                            String phone="+91"+phoneNum;
+                            User user=new User(name,phone,PollNumber,dob);
 
                             HashMap<String,Object> hashMap1=new HashMap<>();
                             hashMap1.put(HashMapConstants.UPDATE_TYPE_KEY,HashMapConstants.UPDATE_TYPE_ADD_USER);

@@ -46,13 +46,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddCandidateName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_height="wrap_content"
         android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        app:boxBackgroundMode="none"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/green_wave">
@@ -61,28 +63,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:hint="Name"
             android:background="@drawable/round_border3"
             android:drawableStart="@drawable/new5"
             android:drawablePadding="10dp"
             android:foregroundGravity="center"
             android:gravity="center_vertical"
-            android:inputType="text"/>
+            android:hint="Name"
+            android:inputType="text"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddCandidatePhoneNum"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_height="wrap_content"
         android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/round_border3"
-        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Phone Number"
+        app:boxBackgroundMode="none"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ilAddCandidateName">
@@ -91,26 +94,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:background="@drawable/round_border3"
             android:drawableStart="@drawable/new2"
             android:drawablePadding="10dp"
             android:foregroundGravity="center"
             android:gravity="center_vertical"
-            android:inputType="phone"/>
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ilAddCandidateSymbolName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_height="wrap_content"
         android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/round_border3"
-        app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Election Symbol Name"
+        app:boxBackgroundMode="none"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ilAddCandidatePhoneNum">
@@ -119,11 +125,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:background="@drawable/round_border3"
             android:drawableStart="@drawable/new1"
             android:drawablePadding="10dp"
             android:foregroundGravity="center"
             android:gravity="center_vertical"
-            android:inputType="phone"/>
+            android:hint="Election Symbol Name"
+            android:inputType="text"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -160,14 +169,16 @@
         android:id="@+id/btnAddCandidateSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:layout_gravity="center"
         android:backgroundTint="@color/bg6"
-        android:textColor="@color/black"
         android:text="Add Candidate"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

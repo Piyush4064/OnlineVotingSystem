@@ -23,6 +23,8 @@ import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
 import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -77,7 +79,17 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
         tvCandidateDob.setText(getDisplayTime(dob));
 
         btnChooseDob.setOnClickListener(v -> {
+            MaterialDatePicker datePicker=MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Set your Birthday")
+                    .setSelection(dob)
+                    .build();
 
+            datePicker.addOnPositiveButtonClickListener(selection -> {
+                dob=(Long) selection;
+                tvCandidateDob.setText(DateTimeUtils.getDisplayDate(dob));
+            });
+
+            datePicker.show(getParentFragmentManager(),"ChooseDob");
         });
 
         btnSubmit.setOnClickListener(v -> {
@@ -88,12 +100,16 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
             if(name.isEmpty() || phoneNum.isEmpty() || symbolName.isEmpty()){
                 Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
             }
+            else if(phoneNum.length()!=10){
+                Toast.makeText(requireActivity(), "Please enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
+            }
             else {
                 AlertDialog alertDialog=new MaterialAlertDialogBuilder(requireActivity())
                         .setTitle("Alert")
                         .setMessage("Are you sure you want to add the new User")
                         .setPositiveButton("YES", (dialog, which) -> {
-                            Candidate candidate=new Candidate(name,dob,phoneNum,symbolName,pollNum);
+                            String phone="+91"+phoneNum;
+                            Candidate candidate=new Candidate(name,dob,phone,symbolName,pollNum);
 
                             HashMap<String,Object> hashMap=new HashMap<>();
                             hashMap.put(HashMapConstants.UPDATE_TYPE_KEY,HashMapConstants.UPDATE_TYPE_ADD_CANDIDATE);

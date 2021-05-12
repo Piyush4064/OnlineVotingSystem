@@ -84,12 +84,16 @@ public class AddOfficerFragment extends Fragment implements
             if(username.isEmpty() || name.isEmpty() || phoneNum.isEmpty() || PollNumber==-1){
                 Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
             }
+            else if(phoneNum.length()!=10){
+                Toast.makeText(requireActivity(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
+            }
             else {
                 AlertDialog alertDialog=new MaterialAlertDialogBuilder(requireActivity())
                         .setTitle("Alert")
                         .setMessage("Are you sure you want to add this Officer")
                         .setPositiveButton("YES", (dialog, which) -> {
-                            Officer officer=new Officer(username,name,phoneNum,PollNumber);
+                            String phone="+91"+phoneNum;
+                            Officer officer=new Officer(username,name,phone,PollNumber);
 
                             HashMap<String,Object> hashMap1=new HashMap<>();
                             hashMap1.put(HashMapConstants.UPDATE_TYPE_KEY,HashMapConstants.UPDATE_TYPE_ADD_OFFICER);

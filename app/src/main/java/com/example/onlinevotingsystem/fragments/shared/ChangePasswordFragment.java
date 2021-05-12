@@ -55,9 +55,9 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ChangePasswordFragmentArgs args=ChangePasswordFragmentArgs.fromBundle(getArguments());
-        type=args.getRole();
-        id=args.getId();
+//        ChangePasswordFragmentArgs args=ChangePasswordFragmentArgs.fromBundle(getArguments());
+//        type=args.getRole();
+//        id=args.getId();
 
         tvHeading=view.findViewById(R.id.tvChangePasswordHeading);
         inputPassword=view.findViewById(R.id.ilChangePasswordInput);
@@ -110,8 +110,7 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY)){
-                    NavDirections action=ChangePasswordFragmentDirections.actionChangePasswordFragmentToResetPasswordFragment2("ChangePassword","Admin",id);
-                    navController.navigate(action);
+
                 }
                 else {
                     Toast.makeText(requireActivity(),"Wrong Password, Please Enter the Current Password",Toast.LENGTH_SHORT).show();
@@ -128,8 +127,7 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY)){
-                    NavDirections action=ChangePasswordFragmentDirections.actionChangePasswordFragmentToResetPasswordFragment2("ChangePassword","Officer",id);
-                    navController.navigate(action);
+
                 }
                 else {
                     Toast.makeText(requireActivity(),"Wrong Password, Please Enter the Current Password",Toast.LENGTH_SHORT).show();
@@ -146,8 +144,7 @@ public class ChangePasswordFragment extends Fragment implements FetchFromDatabas
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_LOGIN_IS_SUCCESSFUL_KEY)){
-                    NavDirections action=ChangePasswordFragmentDirections.actionChangePasswordFragmentToResetPasswordFragment2("ChangePassword","Voter",id);
-                    navController.navigate(action);
+
                 }
                 else {
                     Toast.makeText(requireActivity(),"Wrong Password, Please Enter the Current Password",Toast.LENGTH_SHORT).show();
