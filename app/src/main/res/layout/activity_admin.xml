@@ -17,8 +17,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg6"
-            app:menu="@menu/menu_admin"
-            app:title="Admin Dashboard" />
+            app:menu="@menu/menu_admin">
+
+            <ImageView
+                android:background="@color/banner_backgroundlt"
+                android:layout_centerVertical="true"
+                android:layout_height="40dp"
+                android:layout_width="40dp"
+                android:src="@drawable/loo2" />
+
+            <TextView
+                android:id="@+id/head_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VoteIt"
+                android:textSize="28dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="100dp"
+                android:fontFamily="@font/montserrat"
+                android:layout_centerHorizontal="true"/>
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView2"
