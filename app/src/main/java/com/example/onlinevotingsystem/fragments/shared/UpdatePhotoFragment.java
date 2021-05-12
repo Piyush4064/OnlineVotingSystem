@@ -75,10 +75,10 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
         btnRemovePhoto=view.findViewById(R.id.btnUpdatePhotoRemove);
         btnSubmit=view.findViewById(R.id.btnUpdatePhotoUpload);
 
-        UpdatePhotoFragmentArgs args=UpdatePhotoFragmentArgs.fromBundle(getArguments());
-        type=args.getType();
-        id=args.getId();
-        defaultPhotoUrl=args.getPhotoUrl();
+//        UpdatePhotoFragmentArgs args=UpdatePhotoFragmentArgs.fromBundle(getArguments());
+//        type=args.getType();
+//        id=args.getId();
+//        defaultPhotoUrl=args.getPhotoUrl();
         if(defaultPhotoUrl.equals("null"))
             defaultPhotoUrl=null;
         currentPhotoUrl=defaultPhotoUrl;

@@ -55,10 +55,10 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ResetPasswordFragmentArgs args=ResetPasswordFragmentArgs.fromBundle(getArguments());
-        type=args.getType();
-        role=args.getRole();
-        id=args.getID();
+//        ResetPasswordFragmentArgs args=ResetPasswordFragmentArgs.fromBundle(getArguments());
+//        type=args.getType();
+//        role=args.getRole();
+//        id=args.getID();
 
         inputPassword=view.findViewById(R.id.ilResetPassword);
         inputPasswordConfirm=view.findViewById(R.id.ilResetPasswordConfirm);

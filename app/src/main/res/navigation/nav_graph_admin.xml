@@ -86,9 +86,6 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_pollListFragment"
             app:destination="@id/pollListFragment" />
-        <action
-            android:id="@+id/action_adminHomeFragment_to_updatePhotoFragment"
-            app:destination="@id/updatePhotoFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateElectionTimeFragment"
@@ -99,24 +96,5 @@
             android:id="@+id/action_updateElectionTimeFragment_to_adminHomeFragment"
             app:destination="@id/adminHomeFragment"
             app:popUpTo="@id/adminHomeFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/updatePhotoFragment"
-        android:name="com.example.onlinevotingsystem.fragments.shared.UpdatePhotoFragment"
-        android:label="fragment_update_photo"
-        tools:layout="@layout/fragment_update_photo" >
-        <action
-            android:id="@+id/action_updatePhotoFragment_to_adminHomeFragment"
-            app:destination="@id/adminHomeFragment"
-            app:popUpTo="@id/adminHomeFragment" />
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <argument
-            android:name="id"
-            app:argType="string" />
-        <argument
-            android:name="photoUrl"
-            app:argType="string" />
     </fragment>
 </navigation>

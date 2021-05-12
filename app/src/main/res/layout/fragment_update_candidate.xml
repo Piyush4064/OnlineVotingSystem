@@ -1,14 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.officer.UpdateCandidateFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Candidate Details"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Candidate"
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="105dp" />
+
+    <Spinner
+        android:id="@+id/spinnerUpdateCandidateList"
+        android:layout_width="179dp"
+        android:layout_height="37dp"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="95dp" />
+
+    <Button
+        android:id="@+id/btnUpdateCandidateLoadCandidateDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Load Candidate Details"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="146dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilUpdateCandidateName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="374dp"
+        android:layout_height="67dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="216dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/round_border3"
+            android:drawableStart="@drawable/new1"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:hint="Name"
+            android:inputType="text"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilUpdateCandidatePhoneNum"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="374dp"
+        android:layout_height="67dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="300dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/round_border3"
+            android:drawableStart="@drawable/new1"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:hint="Phone Number"
+            android:inputType="text|phone"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ilUpdateCandidateSymbolName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="374dp"
+        android:layout_height="67dp"
+        tools:layout_editor_absoluteX="18dp"
+        tools:layout_editor_absoluteY="400dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@drawable/round_border3"
+            android:drawableStart="@drawable/new1"
+            android:drawablePadding="10dp"
+            android:foregroundGravity="center"
+            android:gravity="center_vertical"
+            android:hint="Symbol Name"
+            android:inputType="text"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
