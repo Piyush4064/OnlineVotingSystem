@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +29,8 @@ import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -75,7 +79,7 @@ public class AddUserFragment extends Fragment implements
         spinnerAddUserPoll=view.findViewById(R.id.spinnerAddUserPollNum);
 
         dob=new Date().getTime();
-        tvUserDob.setText(getDisplayTime(dob));
+        tvUserDob.setText(DateTimeUtils.getDisplayDate(dob));
 
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_POLLS_ADDRESS);
@@ -86,7 +90,20 @@ public class AddUserFragment extends Fragment implements
         new FetchFromDatabase(this,hashMap).execute();
 
         btnChooseDob.setOnClickListener(v -> {
+            MaterialDatePicker datePicker=MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Set your Birthday")
+                    .setSelection(dob)
+                    .build();
 
+            datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                @Override
+                public void onPositiveButtonClick(Object selection) {
+                    dob=(Long) selection;
+                    tvUserDob.setText(DateTimeUtils.getDisplayDate(dob));
+                }
+            });
+
+            datePicker.show(getParentFragmentManager(),"ChooseDob");
         });
 
         btnSubmit.setOnClickListener(v -> {
@@ -122,10 +139,6 @@ public class AddUserFragment extends Fragment implements
         });
     }
 
-    private String  getDisplayTime(long time){
-        return DateTimeUtils.getDisplayDate(time)+" "+DateTimeUtils.getDisplayTime(time);
-    }
-
     @Override
     public void onDataUpdated(String type, boolean result, String error) {
         if(type.equals(HashMapConstants.UPDATE_TYPE_ADD_USER)){
@@ -137,6 +150,9 @@ public class AddUserFragment extends Fragment implements
                 spinnerAddUserPoll.setSelection(0);
                 dob=new Date().getTime();
                 Toast.makeText(requireActivity(), "User Added Successfully", Toast.LENGTH_SHORT).show();
+
+                NavDirections action=AddUserFragmentDirections.actionAddUserFragmentToAdminHomeFragment();
+                Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
             }
             else {
                 Toast.makeText(requireActivity(), "Error in Adding User: "+error, Toast.LENGTH_SHORT).show();

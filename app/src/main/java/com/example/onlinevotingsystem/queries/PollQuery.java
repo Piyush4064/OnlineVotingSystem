@@ -16,7 +16,7 @@ public class PollQuery {
     }
 
     public static String GetInsertQuery(int Pollnum, long elecendtime , long elecstarttime){
-        return "INSERT INTO `" + TableKeys.TABLE_NAME_POLL + "`  ( " + TableKeys.KEY_POLL_NUMBER +","  + TableKeys.KEY_POLL_ELEC_START_TIME +"," + TableKeys.KEY_POLL_ELEC_END_TIME +" ) VALUES ('" + Pollnum + "','"  + elecendtime  + "','" + elecstarttime + "')";
+        return "INSERT INTO `" + TableKeys.TABLE_NAME_POLL + "`  ( " + TableKeys.KEY_POLL_NUMBER +","  + TableKeys.KEY_POLL_ELEC_START_TIME +"," + TableKeys.KEY_POLL_ELEC_END_TIME +" ) VALUES ('" + Pollnum + "','"  + elecstarttime  + "','" + elecendtime + "')";
     }
 
     public static String GetPollDetailsQuery(int pollno) {
@@ -28,7 +28,7 @@ public class PollQuery {
     }
 
     public static String GetUpdateElecTimeQuery(int pollno , long elecendtime ,  long elecstarttime){
-        return " UPDATE " + TableKeys.TABLE_NAME_POLL + " SET " + TableKeys.KEY_POLL_ELEC_END_TIME  + " = " + elecendtime + " AND " + TableKeys.KEY_POLL_ELEC_START_TIME  + " = " + elecstarttime+  " WHERE "+ TableKeys.KEY_POLL_NUMBER + " = " + pollno ;
+        return " UPDATE " + TableKeys.TABLE_NAME_POLL + " SET " + TableKeys.KEY_POLL_ELEC_END_TIME  + " = '" + elecendtime + "', " + TableKeys.KEY_POLL_ELEC_START_TIME  + " = '" + elecstarttime+  "' WHERE "+ TableKeys.KEY_POLL_NUMBER + " = " + pollno ;
     }
 
     public static String GetIncrementNoOfVotersQuery(int pollno) {

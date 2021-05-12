@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,6 +99,9 @@ public class AddAdminFragment extends Fragment implements DatabaseUpdater.Databa
                 inputName.getEditText().setText("");
                 inputPhoneNum.getEditText().setText("");
                 Toast.makeText(requireActivity(),"Admin Added Successfully",Toast.LENGTH_SHORT).show();
+
+                NavDirections action=AddAdminFragmentDirections.actionAddAdminFragmentToAdminHomeFragment();
+                Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
             }
             else {
                 Toast.makeText(requireActivity(),"Error In Adding Admin "+error,Toast.LENGTH_LONG).show();

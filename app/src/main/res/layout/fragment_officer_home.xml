@@ -107,17 +107,18 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rlBtnEditCandidate"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_margin="10dp"
                         android:background="@drawable/card1"
-                        android:elevation="8dp"
-                        android:layout_margin="10dp">
+                        android:elevation="8dp">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/edit"
-                            android:layout_centerInParent="true"/>
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/edit" />
 
 
                     </RelativeLayout>
@@ -138,17 +139,18 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rlBtnRemoveCandidate"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_margin="10dp"
                         android:background="@drawable/card1"
-                        android:elevation="8dp"
-                        android:layout_margin="10dp">
+                        android:elevation="8dp">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/remove"
-                            android:layout_centerInParent="true"/>
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/remove" />
 
 
                     </RelativeLayout>
@@ -169,17 +171,18 @@
                     android:orientation="vertical">
 
                     <RelativeLayout
+                        android:id="@+id/rlBtnUpdateProfile"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
+                        android:layout_margin="10dp"
                         android:background="@drawable/card1"
-                        android:elevation="8dp"
-                        android:layout_margin="10dp">
+                        android:elevation="8dp">
 
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/update"
-                            android:layout_centerInParent="true"/>
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/update" />
 
 
                     </RelativeLayout>
@@ -248,8 +251,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="30dp"
-                android:padding="20dp"
-                >
+                android:padding="20dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -309,8 +311,12 @@
 
                 </RelativeLayout>
 
-                <include
-                    layout="@layout/ward_card_design"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvOfficerPollList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/home_background"
+                    />
 
             </LinearLayout>
 

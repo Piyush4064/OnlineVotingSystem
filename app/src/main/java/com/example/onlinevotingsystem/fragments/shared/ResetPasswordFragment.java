@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavArgs;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,7 +154,8 @@ public class ResetPasswordFragment extends Fragment implements DatabaseUpdater.D
                         requireActivity().finish();
                     }
                     else {
-
+                        NavDirections action=ResetPasswordFragmentDirections.actionResetPasswordFragment2ToAdminHomeFragment();
+                        Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
                     }
                 }
                 else {

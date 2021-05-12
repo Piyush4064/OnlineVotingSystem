@@ -1,14 +1,12 @@
 package com.example.onlinevotingsystem.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
@@ -27,7 +25,11 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        Intent startIntent=getIntent();
+        String username=startIntent.getStringExtra("username");
+
         AdminViewModel adminViewModel=new ViewModelProvider(this).get(AdminViewModel.class);
+        adminViewModel.SetUsername(username);
 
         toolbar=findViewById(R.id.toolbarAdmin);
         navController= Navigation.findNavController(this,R.id.navHostAdmin);
@@ -54,6 +56,10 @@ public class AdminActivity extends AppCompatActivity {
             }
 
             return false;
+        });
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+
         });
     }
 }

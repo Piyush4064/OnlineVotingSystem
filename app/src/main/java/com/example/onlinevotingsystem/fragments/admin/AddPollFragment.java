@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,10 +20,15 @@ import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -65,18 +72,84 @@ public class AddPollFragment extends Fragment implements DatabaseUpdater.Databas
         tvElectionStartTime.setText(getDisplayTime(electionStartTime));
         tvElectionEndTime.setText(getDisplayTime(electionEndTime));
 
-        btnSetElectionStartTime.setOnClickListener(v -> {
+        Calendar calendar=Calendar.getInstance();
 
+        btnSetElectionStartTime.setOnClickListener(v -> {
+            calendar.setTimeInMillis(electionStartTime);
+            MaterialDatePicker datePicker=MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Set Election Starting Date")
+                    .setSelection(electionStartTime)
+                    .build();
+
+            datePicker.addOnPositiveButtonClickListener(selection -> {
+                electionStartTime=(Long) selection;
+                calendar.setTimeInMillis(electionStartTime);
+                tvElectionStartTime.setText(getDisplayTime(electionStartTime));
+
+                MaterialTimePicker timePicker=new MaterialTimePicker.Builder()
+                        .setTimeFormat(TimeFormat.CLOCK_12H)
+                        .setHour(calendar.get(Calendar.HOUR_OF_DAY))
+                        .setMinute(calendar.get(Calendar.MINUTE))
+                        .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
+                        .setTitleText("Choose Election Start Time")
+                        .build();
+
+                timePicker.addOnPositiveButtonClickListener(v1 -> {
+                    calendar.set(Calendar.HOUR_OF_DAY,timePicker.getHour());
+                    calendar.set(Calendar.MINUTE,timePicker.getMinute());
+                    calendar.set(Calendar.SECOND,0);
+
+                    electionStartTime=calendar.getTimeInMillis();
+                    tvElectionStartTime.setText(getDisplayTime(electionStartTime));
+                });
+                timePicker.show(getParentFragmentManager(),"SelectElectionStartTime");
+            });
+            datePicker.show(getParentFragmentManager(),"SelectElectionStartDate");
         });
 
         btnSetElectionEndTime.setOnClickListener(v -> {
+            calendar.setTimeInMillis(electionEndTime);
+            MaterialDatePicker datePicker=MaterialDatePicker.Builder.datePicker()
+                    .setTitleText("Set Election Ending Date")
+                    .setSelection(electionEndTime)
+                    .build();
 
+            datePicker.addOnPositiveButtonClickListener(selection -> {
+                electionEndTime=(Long) selection;
+                calendar.setTimeInMillis(electionEndTime);
+                tvElectionEndTime.setText(getDisplayTime(electionEndTime));
+
+                MaterialTimePicker timePicker=new MaterialTimePicker.Builder()
+                        .setTimeFormat(TimeFormat.CLOCK_12H)
+                        .setHour(calendar.get(Calendar.HOUR_OF_DAY))
+                        .setMinute(calendar.get(Calendar.MINUTE))
+                        .setInputMode(MaterialTimePicker.INPUT_MODE_CLOCK)
+                        .setTitleText("Choose Election End Time")
+                        .build();
+
+                timePicker.addOnPositiveButtonClickListener(v1 -> {
+                    calendar.set(Calendar.HOUR_OF_DAY,timePicker.getHour());
+                    calendar.set(Calendar.MINUTE,timePicker.getMinute());
+                    calendar.set(Calendar.SECOND,0);
+
+                    electionEndTime=calendar.getTimeInMillis();
+                    tvElectionEndTime.setText(getDisplayTime(electionEndTime));
+                });
+                timePicker.show(getParentFragmentManager(),"SelectElectionEndTime");
+            });
+            datePicker.show(getParentFragmentManager(),"SelectElectionEndDate");
         });
 
         btnAddPoll.setOnClickListener(v -> {
             String address=ilAddress.getEditText().getText().toString();
             if(address.isEmpty()){
                 Toast.makeText(requireActivity(),"Address Cannot be Empty",Toast.LENGTH_SHORT).show();
+            }
+            else if(electionStartTime<new Date().getTime()){
+                Toast.makeText(requireActivity(), "Starting Time cannot be in Past", Toast.LENGTH_SHORT).show();
+            }
+            else if(electionStartTime>=electionEndTime){
+                Toast.makeText(requireActivity(), "Starting Time should be before the Ending Time", Toast.LENGTH_SHORT).show();
             }
             else {
                 HashMap<String,Object> hashMap=new HashMap<>();
@@ -104,6 +177,9 @@ public class AddPollFragment extends Fragment implements DatabaseUpdater.Databas
             if(result){
                 Toast.makeText(requireActivity(), "Poll Added Successfully", Toast.LENGTH_SHORT).show();
                 ilAddress.getEditText().setText("");
+
+                NavDirections action=AddPollFragmentDirections.actionAddPollFragmentToAdminHomeFragment();
+                Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
             }
             else {
                 Toast.makeText(requireActivity(), "Error in Adding Poll: "+error, Toast.LENGTH_SHORT).show();

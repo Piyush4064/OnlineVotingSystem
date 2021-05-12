@@ -32,19 +32,33 @@ public class ProgressIndicatorFragment extends DialogFragment {
         return inflater.inflate(R.layout.progress_indicator_fragment,container);
     }
 
+    LinearProgressIndicator progressIndicator;
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         TextView tvTitle = view.findViewById(R.id.tvTitle);
         TextView tvMessage = view.findViewById(R.id.tvMessage);
-        LinearProgressIndicator progressIndicator = view.findViewById(R.id.progress_indicator);
+        progressIndicator = view.findViewById(R.id.progress_indicator);
+
+        progressIndicator.setIndeterminate(true);
 
         tvTitle.setText(getArguments().getString("TITLE"));
         tvMessage.setText(getArguments().getString("MESSAGE"));
 
         getDialog().setCanceledOnTouchOutside(false);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
+    public void SetProgress(int progress, int max){
+        progressIndicator.setIndeterminate(false);
+        progressIndicator.setMax(max);
+        progressIndicator.setProgressCompat(progress,true);
+    }
+
+    public void UnsetProcess(){
+        progressIndicator.setIndeterminate(true);
     }
 }
 

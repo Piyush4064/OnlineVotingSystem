@@ -20,7 +20,22 @@ public class CandidateListViewModel extends ViewModel implements FetchFromDataba
     private MutableLiveData<Boolean> IsListLoading;
     private MutableLiveData<Pair<String,String>> ExceptionError;
 
+    private boolean IsSinglePoll;
+
+    public boolean CheckIsSinglePoll(){
+        return IsSinglePoll;
+    }
+
+    public void SetSinglePollDetails(Poll poll){
+        IsSinglePoll=true;
+        PollList=new MutableLiveData<>();
+        ArrayList<Poll> arrayList=new ArrayList<>();
+        arrayList.add(poll);
+        PollList.setValue(arrayList);
+    }
+
     public LiveData<ArrayList<Poll>> GetPollList(){
+        IsSinglePoll=false;
         if(PollList==null){
             PollList=new MutableLiveData<>();
         }

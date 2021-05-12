@@ -7,12 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".fragments.officer.AddCandidateFragment">
 
+
     <RelativeLayout
         android:id="@+id/head_green"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@color/bg6"
-        android:padding="20dp">
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView16"
@@ -22,14 +26,13 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="Add New Candidate"
-            android:textSize="30sp"
             android:textColor="@color/black"
+            android:textSize="30sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </RelativeLayout>
-
 
     <ImageView
         android:id="@+id/green_wave"
@@ -46,12 +49,10 @@
         android:layout_height="wrap_content"
         android:layout_width="300dp"
         android:layout_gravity="center"
-        android:background="@drawable/round_border3"
         app:boxBackgroundMode="none"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/green_wave">
@@ -60,6 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:hint="Name"
+            android:background="@drawable/round_border3"
             android:drawableStart="@drawable/new5"
             android:drawablePadding="10dp"
             android:foregroundGravity="center"

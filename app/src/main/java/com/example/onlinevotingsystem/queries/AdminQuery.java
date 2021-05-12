@@ -9,7 +9,7 @@ public class AdminQuery {
                 "(`"+TableKeys.KEY_ADMIN_USERNAME+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_ADMIN_NAME+"`  varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_ADMIN_PASSWORD+"`  varchar(50) NOT NULL," +
-                "`"+TableKeys.KEY_ADMIN_PHOTO_URL+"` varchar(50) ," +
+                "`"+TableKeys.KEY_ADMIN_PHOTO_URL+"` varchar(200) ," +
                 "`"+TableKeys.KEY_ADMIN_PHONE_NO+"`  varchar(50) NOT NULL," +
                 "PRIMARY KEY (`"+TableKeys.KEY_ADMIN_USERNAME+"`))";
     }
@@ -36,5 +36,9 @@ public class AdminQuery {
 
     public static String GetUpdatePhotoUrlQuery(String username , String photoUrl){
         return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHOTO_URL  + " = '" + photoUrl +  "' WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = '" + username +"'" ;
+    }
+
+    public static String GetRemovePhotoQuery(String username){
+        return " UPDATE " + TableKeys.TABLE_NAME_ADMIN + " SET " + TableKeys.KEY_ADMIN_PHOTO_URL  + " = null WHERE "+ TableKeys.KEY_ADMIN_USERNAME + " = '" + username +"'" ;
     }
 }

@@ -96,6 +96,12 @@ public class HashMapConstants {
 
     public static final String FETCH_RESULT_POLL_VOTERS_LIST_KEY="PollVotersList";
 
+    //For Fetching the List of All the Users
+    public static final String FETCH_TYPE_ALL_VOTERS_LIST="GetAllVotersList";
+
+    public static final String FETCH_RESULT_ALL_VOTERS_LIST_KEY="AllVotersList";
+
+
     public static final String FETCH_RESULT_SUCCESS_KEY="IsFetchSuccess";
     public static final String FETCH_RESULT_ERROR_KEY="ResultError";
 
@@ -184,6 +190,18 @@ public class HashMapConstants {
 
     public static final String UPDATE_PARAM_CANDIDATE_KEY="InputCandidate";
 
+    //For Updating the Photo of a Candidate
+    public static final String UPDATE_TYPE_CANDIDATE_PHOTO="UpdateCandidatePhoto";
+
+    public static final String UPDATE_PARAM_CANDIDATE_PHOTO_ID_KEY="CandidateId";
+    public static final String UPDATE_PARAM_CANDIDATE_PHOTO_URL_KEY="PhotoUrl";
+
+    //For Updating the Election Symbol Photo of a Candidate
+    public static final String UPDATE_TYPE_CANDIDATE_SYMBOL_PHOTO="UpdateCandidateSymbolPhoto";
+
+    public static final String UPDATE_PARAM_CANDIDATE_SYMBOL_PHOTO_ID_KEY="CandidateId";
+    public static final String UPDATE_PARAM_CANDIDATE_SYMBOL_PHOTO_URL_KEY="PhotoUrl";
+
     //For Deleting an Existing Candidate
     public static final String UPDATE_TYPE_DELETE_CANDIDATE="DeleteCandidate";
 
@@ -195,4 +213,10 @@ public class HashMapConstants {
 
     public static final String UPDATE_PARAM_REGISTER_USER_VOTER_ID="VoterID";
     public static final String UPDATE_PARAM_REGISTER_USER_PASSWORD="Password";
+
+    //For Removing Photo
+    public static final String UPDATE_TYPE_REMOVE_PHOTO="RemovePhoto";
+
+    public static final String UPDATE_PARAM_REMOVE_PHOTO_ROLE_KEY="RemovePhotoRole";
+    public static final String UPDATE_PARAM_REMOVE_PHOTO_ID_KEY="RemovePhotoId";
 }

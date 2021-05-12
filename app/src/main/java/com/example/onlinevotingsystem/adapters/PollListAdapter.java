@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.classes.Poll;
+import com.example.onlinevotingsystem.fragments.officer.OfficerHomeFragmentDirections;
 import com.example.onlinevotingsystem.fragments.shared.PollListFragmentDirections;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
 
@@ -25,10 +26,18 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.ViewHo
 
     ArrayList<Poll> PollList;
     NavController navController;
+    String type;
 
     public PollListAdapter(ArrayList<Poll> pollList, NavController navController) {
         PollList = pollList;
         this.navController = navController;
+        type="AllPolls";
+    }
+
+    public PollListAdapter(ArrayList<Poll> pollList, NavController navController, String type) {
+        PollList = pollList;
+        this.navController = navController;
+        this.type = type;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -79,7 +88,11 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.ViewHo
         });
 
         holder.btnViewCandidates.setOnClickListener(v -> {
-            NavDirections action= PollListFragmentDirections.actionPollListFragmentToCandidateListFragment(position);
+            NavDirections action;
+            if(type.equals("AllPolls"))
+                action= PollListFragmentDirections.actionPollListFragmentToCandidateListFragment(position);
+            else
+                action= OfficerHomeFragmentDirections.actionOfficerHomeFragmentToCandidateListFragment(0);
             navController.navigate(action);
         });
     }

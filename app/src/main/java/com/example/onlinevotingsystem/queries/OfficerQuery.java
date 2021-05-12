@@ -8,7 +8,7 @@ public class OfficerQuery {
         return "CREATE TABLE  IF NOT EXISTS "+ TableKeys.TABLE_NAME_OFFICER+
                 "(`"+TableKeys.KEY_OFFICER_USERNAME+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_OFFICER_PASSWORD+"`  varchar(50) NOT NULL," +
-                "`"+TableKeys.KEY_OFFICER_PHOTO_URL+"` varchar(50) ," +
+                "`"+TableKeys.KEY_OFFICER_PHOTO_URL+"` varchar(200) ," +
                 "`"+TableKeys.KEY_OFFICER_NAME+"` varchar(50) NOT NULL," +
                 "`"+TableKeys.KEY_OFFICER_PHONE_NO+"` varchar(50) NOT NULL," +
                 "PRIMARY KEY (`"+TableKeys.KEY_OFFICER_USERNAME+"`))";
@@ -40,6 +40,10 @@ public class OfficerQuery {
 
     public static String GetUpdatePhotoUrlQuery(String username , String photoUrl){
         return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = '" + photoUrl +  "' WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
+    }
+
+    public static String GetRemovePhotoQuery(String username){
+        return " UPDATE " + TableKeys.TABLE_NAME_OFFICER + " SET " + TableKeys.KEY_OFFICER_PHOTO_URL  + " = null WHERE "+ TableKeys.KEY_OFFICER_USERNAME + " = '" + username + "'";
     }
 
     public static String GetAllOfficerDataQuery(){

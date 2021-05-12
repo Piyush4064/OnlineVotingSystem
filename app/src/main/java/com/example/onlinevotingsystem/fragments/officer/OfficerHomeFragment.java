@@ -20,9 +20,14 @@ import android.widget.TextView;
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.adapters.OfficerCandidateListAdapter;
 import com.example.onlinevotingsystem.adapters.OfficerUserListAdapter;
+import com.example.onlinevotingsystem.adapters.PollListAdapter;
+import com.example.onlinevotingsystem.classes.Poll;
+import com.example.onlinevotingsystem.viewModels.CandidateListViewModel;
 import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
 
 public class OfficerHomeFragment extends Fragment {
 
@@ -39,29 +44,37 @@ public class OfficerHomeFragment extends Fragment {
     }
 
     private OfficerViewModel officerViewModel;
-    private RelativeLayout rlAddCandidate;
+    private CandidateListViewModel candidateListViewModel;
+    private RelativeLayout rlAddCandidate, rlEditCandidate, rlRemoveCandidate, rlUpdateProfile;
     private NavController navController;
 
     RecyclerView rcvCandidateList;
     RecyclerView rcvUserList;
-
-    TextView tvPollAddress;
+    RecyclerView rcvPollList;
 
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         officerViewModel=new ViewModelProvider(requireActivity()).get(OfficerViewModel.class);
+        candidateListViewModel=new ViewModelProvider(requireActivity()).get(CandidateListViewModel.class);
 
         rlAddCandidate=view.findViewById(R.id.rlBtnAddCandidate);
+        rlEditCandidate=view.findViewById(R.id.rlBtnEditCandidate);
+        rlRemoveCandidate=view.findViewById(R.id.rlBtnRemoveCandidate);
+        rlUpdateProfile=view.findViewById(R.id.rlBtnUpdateProfile);
         rcvCandidateList=view.findViewById(R.id.rcvAdminCandidateList);
         rcvUserList=view.findViewById(R.id.rcvOfficerUserList);
-        tvPollAddress=view.findViewById(R.id.tvAddressOfficerWardListItem);
+        rcvPollList=view.findViewById(R.id.rcvOfficerPollList);
 
         navController= Navigation.findNavController(view);
 
         rlAddCandidate.setOnClickListener(v -> {
             navController.navigate(R.id.addCandidateFragment);
+        });
+
+        rlUpdateProfile.setOnClickListener(v -> {
+            navController.navigate(R.id.updateOfficerProfileFragment);
         });
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(requireActivity());
@@ -74,12 +87,22 @@ public class OfficerHomeFragment extends Fragment {
         rcvUserList.setLayoutManager(linearLayoutManager1);
         rcvUserList.setHasFixedSize(true);
 
+        LinearLayoutManager linearLayoutManager2=new LinearLayoutManager(requireActivity());
+        linearLayoutManager2.setOrientation(RecyclerView.HORIZONTAL);
+        rcvPollList.setLayoutManager(linearLayoutManager2);
+        rcvPollList.setHasFixedSize(true);
+
         officerViewModel.GetPollDetails().observe(getViewLifecycleOwner(),poll -> {
             if(poll!=null){
                 OfficerCandidateListAdapter adapter=new OfficerCandidateListAdapter(poll.getCandidateList());
                 rcvCandidateList.setAdapter(adapter);
 
-                tvPollAddress.setText(poll.getAddress());
+                candidateListViewModel.SetSinglePollDetails(poll);
+
+                ArrayList<Poll> pollArrayList=new ArrayList<>();
+                pollArrayList.add(poll);
+                PollListAdapter pollListAdapter=new PollListAdapter(pollArrayList,navController,"SinglePoll");
+                rcvPollList.setAdapter(pollListAdapter);
             }
         });
 

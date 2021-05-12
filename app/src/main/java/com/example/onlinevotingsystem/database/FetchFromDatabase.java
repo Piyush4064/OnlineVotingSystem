@@ -240,6 +240,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                             resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,false);
                             resultHashMap.put(HashMapConstants.FETCH_RESULT_ERROR_KEY,"Data Does not Exists");
                         }
+                        break;
                     }
                     case HashMapConstants.FETCH_TYPE_OFFICER_DETAILS:{
                         String username=(String)inputHashMap.get(HashMapConstants.FETCH_PARAM_OFFICER_DETAILS_USERNAME_KEY);
@@ -508,6 +509,28 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
 
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_POLL_VOTERS_LIST_KEY,userList);
+                        break;
+                    }
+                    case HashMapConstants.FETCH_TYPE_ALL_VOTERS_LIST:{
+                        Log.d(TAG,"Fetching List of All Users=");
+                        ResultSet resultSet= statement.executeQuery(VotersQuery.GetAllVotersQuery());
+                        Log.d(TAG,"Fetch of All VOters Completed");
+
+                        ArrayList<User> userList=new ArrayList<>();
+
+                        while (resultSet.next()){
+                            String voterId=resultSet.getString(TableKeys.KEY_VOTERS_ID);
+                            String name=resultSet.getString(TableKeys.KEY_VOTERS_NAME);
+                            int pollNum=resultSet.getInt(TableKeys.KEY_VOTERS_POLL_NUM);
+                            boolean isMobileReg=resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED)==1;
+                            String photoUrl=resultSet.getString(TableKeys.KEY_VOTERS_PHOTO_URL);
+                            boolean hasVoted=resultSet.getInt(TableKeys.KEY_VOTERS_HAS_VOTED)==1;
+
+                            userList.add(new User(voterId,name,pollNum,isMobileReg,photoUrl,hasVoted));
+                        }
+
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
+                        resultHashMap.put(HashMapConstants.FETCH_RESULT_ALL_VOTERS_LIST_KEY,userList);
                         break;
                     }
                 }

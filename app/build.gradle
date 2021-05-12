@@ -48,6 +48,7 @@ dependencies {
 
     //Circle Menu Animation
     implementation "com.github.Hitomis:CircleMenu:v1.1.0"
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
 
     //liquid screen Animation
     ext.kotlin_version = '1.4.10'

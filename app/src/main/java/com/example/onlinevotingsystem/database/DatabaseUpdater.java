@@ -9,6 +9,7 @@ import com.example.onlinevotingsystem.classes.Officer;
 import com.example.onlinevotingsystem.classes.User;
 import com.example.onlinevotingsystem.constants.ConnectionConstants;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
+import com.example.onlinevotingsystem.constants.TableKeys;
 import com.example.onlinevotingsystem.queries.AdminQuery;
 import com.example.onlinevotingsystem.queries.CandidateQuery;
 import com.example.onlinevotingsystem.queries.OfficerPollNumQuery;
@@ -197,13 +198,15 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                     break;
                 }
 
+                //Implemented
                 case HashMapConstants.UPDATE_TYPE_POLL_ELECTION_TIME:{
                     Integer pollNum=(Integer)inputHashMap.get(HashMapConstants.UPDATE_PARAM_POLL_ELECTION_TIME_POLL_NUM_KEY);
                     Long startTime=(Long)inputHashMap.get(HashMapConstants.UPDATE_PARAM_POLL_ELECTION_TIME_START_KEY);
                     Long endTime=(Long)inputHashMap.get(HashMapConstants.UPDATE_PARAM_POLL_ELECTION_TIME_END_KEY);
                     if(pollNum!=null && endTime!=null && startTime!=null){
                         Log.d(TAG,"Updating Election Time of Poll "+pollNum);
-                        statement.executeQuery(PollQuery.GetUpdateElecTimeQuery(pollNum,endTime,startTime));
+                        String query=PollQuery.GetUpdateElecTimeQuery(pollNum,endTime,startTime);
+                        statement.execute(query);
                         Log.d(TAG,"Election Time updated Successfully");
                     }
                     else {
@@ -307,8 +310,10 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                         ResultSet resultSet=statement.executeQuery(CandidateQuery.GetPollWiseCandidateQuery(PollNum));
 
                         int currPos=1;
-                        while (resultSet.next())
-                            currPos++;
+                        while (resultSet.next()){
+                            currPos=Integer.parseInt(resultSet.getString(TableKeys.KEY_CANDIDATE_CAND_ID).substring(1,3));
+                        }
+                        currPos++;
 
                         String id=generateCandidateId(PollNum,currPos);
 
@@ -326,6 +331,30 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                         error="Invalid Input";
                         return false;
                     }
+                    break;
+                }
+
+                //Implemented
+                case HashMapConstants.UPDATE_TYPE_CANDIDATE_PHOTO:{
+                    String id=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_CANDIDATE_PHOTO_ID_KEY);
+                    String photo=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_CANDIDATE_PHOTO_URL_KEY);
+
+                    Log.d(TAG,"Updating Photo for "+id);
+                    statement.execute(CandidateQuery.GetUpdateCandidatePhotoQuery(id,photo));
+                    Log.d(TAG,"Photo Updated Successfully");
+
+                    break;
+                }
+
+                //Implemented
+                case HashMapConstants.UPDATE_TYPE_CANDIDATE_SYMBOL_PHOTO:{
+                    String id=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_CANDIDATE_SYMBOL_PHOTO_ID_KEY);
+                    String photo=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_CANDIDATE_SYMBOL_PHOTO_URL_KEY);
+
+                    Log.d(TAG,"Updating Symbol Photo for "+id);
+                    statement.execute(CandidateQuery.GetUpdateCandidateSymbolPhotoQuery(id,photo));
+                    Log.d(TAG,"Photo Updated Successfully");
+
                     break;
                 }
 
@@ -347,6 +376,42 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                     break;
                 }
 
+                //Implemented
+                case HashMapConstants.UPDATE_TYPE_REMOVE_PHOTO:{
+                    String role=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_REMOVE_PHOTO_ROLE_KEY);
+                    String id=(String) inputHashMap.get(HashMapConstants.UPDATE_PARAM_REMOVE_PHOTO_ID_KEY);
+
+                    String query="";
+
+                    switch (role){
+                        case "Admin":{
+                            query=AdminQuery.GetRemovePhotoQuery(id);
+                            break;
+                        }
+                        case "Officer":{
+                            query=OfficerQuery.GetRemovePhotoQuery(id);
+                            break;
+                        }
+                        case "Voter":{
+                            query=VotersQuery.GetRemovePhotoQuery(id);
+                            break;
+                        }
+                        case "Candidate":{
+                            query=CandidateQuery.GetRemoveCandidatePhotoQuery(id);
+                            break;
+                        }
+                        case "CandidateSymbol":{
+                            query=CandidateQuery.GetRemoveCandidateSymbolPhotoQuery(id);
+                            break;
+                        }
+                    }
+
+                    Log.d(TAG,"Removing Photo for "+id);
+                    statement.execute(query);
+                    Log.d(TAG,"Photo Removed Successfully");
+
+                    break;
+                }
             }
             return true;
         }

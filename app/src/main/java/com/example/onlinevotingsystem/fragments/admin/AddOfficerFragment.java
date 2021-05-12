@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,6 +119,9 @@ public class AddOfficerFragment extends Fragment implements
                 inputPhoneNum.getEditText().setText("");
                 PollNumber=-1;
                 Toast.makeText(requireActivity(), "Officer Added Successfully", Toast.LENGTH_SHORT).show();
+
+                NavDirections action=AddOfficerFragmentDirections.actionAddOfficerFragmentToAdminHomeFragment();
+                Navigation.findNavController(requireActivity(),R.id.navHostAdmin).navigate(action);
             }
             else {
                 Toast.makeText(requireActivity(), "Error in Adding Officer: "+error, Toast.LENGTH_SHORT).show();

@@ -55,6 +55,14 @@ public class OfficerViewModel extends ViewModel implements FetchFromDatabase.Fet
         return PollUsersList;
     }
 
+    public String GetOfficerUsername(){
+        return OfficerDetails.getValue().getUsername();
+    }
+
+    public String GetPhotoUrl(){
+        return OfficerDetails.getValue().getPhotoURL();
+    }
+
     public void FetchDetails(String username){
         IsDataLoading.setValue(true);
 
