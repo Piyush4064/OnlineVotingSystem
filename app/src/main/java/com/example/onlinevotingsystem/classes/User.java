@@ -40,6 +40,17 @@ public class User {
         HasVoted = hasVoted;
     }
 
+    public User(String voterID, String name, int pollNumber, boolean isMobileRegistered,long dob, String photoURL, boolean hasVoted, String phoneNum) {
+        VoterID = voterID;
+        Name = name;
+        PollNumber = pollNumber;
+        IsMobileRegistered = isMobileRegistered;
+        DateOfBirth=dob;
+        PhotoURL = photoURL;
+        HasVoted = hasVoted;
+        PhoneNumber=phoneNum;
+    }
+
     public String getVoterID() {
         return VoterID;
     }

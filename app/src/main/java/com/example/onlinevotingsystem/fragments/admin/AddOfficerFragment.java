@@ -25,6 +25,7 @@ import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -84,7 +85,7 @@ public class AddOfficerFragment extends Fragment implements
             if(username.isEmpty() || name.isEmpty() || phoneNum.isEmpty() || PollNumber==-1){
                 Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
             }
-            else if(phoneNum.length()!=10){
+            else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
                 Toast.makeText(requireActivity(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
             }
             else {
@@ -153,7 +154,7 @@ public class AddOfficerFragment extends Fragment implements
     private void UpdateInterface(ArrayList<PollAddress> pollList){
         if(pollList.size()==0){
             btnSubmit.setEnabled(false);
-            Snackbar.make(requireActivity().getWindow().getDecorView().getRootView(),"No Unassigned Poll Available",BaseTransientBottomBar.LENGTH_INDEFINITE).show();
+            Snackbar.make(requireActivity().getWindow().getDecorView().getRootView(),"No Unassigned Poll Available",4000).show();
         }
         else {
             btnSubmit.setEnabled(true);
@@ -162,7 +163,7 @@ public class AddOfficerFragment extends Fragment implements
             for(int i=0;i<pollList.size();i++)
                 addressList.add(pollList.get(i).getPollAddress());
 
-            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(requireActivity(),R.layout.address_spinner_item,addressList);
+            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_spinner_dropdown_item,addressList);
             spinnerChoosePoll.setAdapter(arrayAdapter);
 
             spinnerChoosePoll.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

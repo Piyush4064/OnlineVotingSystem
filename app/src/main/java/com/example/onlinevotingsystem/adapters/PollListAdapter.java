@@ -96,7 +96,10 @@ public class PollListAdapter extends RecyclerView.Adapter<PollListAdapter.ViewHo
         holder.btnViewResult.setOnClickListener(v -> {
             Bundle args=new Bundle();
             args.putInt("PollNum",poll.getPollNumber());
-            navController.navigate(R.id.electionResultFragment,args);
+            if(type.equals("SinglePollOfficer"))
+                navController.navigate(R.id.action_officerHomeFragment_to_electionResultFragment3,args);
+            else if(type.equals("AllPolls"))
+                navController.navigate(R.id.electionResultFragment,args);
         });
 
         holder.btnViewCandidates.setOnClickListener(v -> {

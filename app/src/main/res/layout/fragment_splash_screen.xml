@@ -31,15 +31,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="Digi8 Vote "
+        android:text="VoteIt"
         android:textAlignment="center"
-        android:transitionName="logo_name"
         android:textSize="70sp"
+        android:transitionName="logo_name"
+        app:layout_constraintBottom_toTopOf="@id/tvSplashScreenSlogan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgSplashScreenLogo"
-        app:layout_constraintBottom_toTopOf="@id/tvSplashScreenSlogan"/>
+        app:layout_constraintTop_toBottomOf="@+id/imgSplashScreenLogo" />
 
     <TextView
         android:id="@+id/tvSplashScreenSlogan"

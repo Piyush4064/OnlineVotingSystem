@@ -20,7 +20,7 @@ import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.database.ConnectionEstablisher;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 
-public class SplashScreenFragment extends Fragment implements ConnectionEstablisher.ConnectionInterface {
+public class SplashScreenFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,6 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
     private Animation topAnimation, bottomAnimation;
     private ImageView imgLogo;
     private TextView tvName, tvSlogan;
-    private ProgressIndicatorFragment progressIndicatorFragment;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -54,25 +53,5 @@ public class SplashScreenFragment extends Fragment implements ConnectionEstablis
         tvName.setAnimation(topAnimation);
         tvSlogan.setAnimation(topAnimation);
 
-        new Handler().postDelayed(() -> {
-            progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Syncing","Establishing connection with the Server");
-            progressIndicatorFragment.show(getParentFragmentManager(),"ConnectionProgress");
-            new ConnectionEstablisher(SplashScreenFragment.this).execute();
-        },3000);
-
     }
-
-    @Override
-    public void onConnectionResult(boolean result, String error) {
-        progressIndicatorFragment.dismiss();
-        if(result){
-            Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.onBoardingFragment);
-        }
-        else {
-            Toast.makeText(requireActivity(),"Error in establishing connection: "+error,Toast.LENGTH_LONG).show();
-            requireActivity().finish();
-        }
-    }
-
-
 }

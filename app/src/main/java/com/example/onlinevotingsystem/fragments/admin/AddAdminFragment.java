@@ -20,6 +20,7 @@ import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.classes.Admin;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.example.onlinevotingsystem.viewModels.AdminViewModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
@@ -68,7 +69,7 @@ public class AddAdminFragment extends Fragment implements DatabaseUpdater.Databa
             if(username.isEmpty() || name.isEmpty() || phoneNum.isEmpty()){
                 Toast.makeText(requireActivity(),"Please Enter all the Details", Toast.LENGTH_SHORT).show();
             }
-            else if(phoneNum.length()!=10){
+            else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
                 Toast.makeText(requireActivity(),"Please Enter a Valid Phone Number",Toast.LENGTH_SHORT).show();
             }
             else {

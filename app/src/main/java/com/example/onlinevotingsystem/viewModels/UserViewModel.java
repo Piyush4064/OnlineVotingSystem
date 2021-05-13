@@ -16,6 +16,11 @@ import java.util.HashMap;
 
 public class UserViewModel extends ViewModel implements FetchFromDatabase.FetchDbInterface {
 
+    public UserViewModel() {
+        super();
+        IsDataLoading=new MutableLiveData<>();
+    }
+
     private MutableLiveData<Boolean> IsDataLoading;
 
     public LiveData<Boolean> CheckIsDataLoading(){
@@ -52,6 +57,10 @@ public class UserViewModel extends ViewModel implements FetchFromDatabase.FetchD
         return PollDetails.getValue().getElectionEndTime() < new Date().getTime();
     }
 
+    public boolean hasElectionStarted(){
+        return PollDetails.getValue().getElectionStartTime() < new Date().getTime();
+    }
+
     public boolean hasUserVoted(){
         return UserDetails.getValue().isHasVoted();
     }
@@ -63,12 +72,16 @@ public class UserViewModel extends ViewModel implements FetchFromDatabase.FetchD
     private MutableLiveData<String> Error;
 
     public void FetchDetails(String voterId){
-        IsDataLoading=new MutableLiveData<>();
         IsDataLoading.setValue(true);
 
-        UserDetails=new MutableLiveData<>();
-        PollDetails=new MutableLiveData<>();
-        Error=new MutableLiveData<>();
+        if(UserDetails==null)
+            UserDetails=new MutableLiveData<>();
+
+        if(PollDetails==null)
+            PollDetails=new MutableLiveData<>();
+
+        if(Error==null)
+            Error=new MutableLiveData<>();
 
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_EXISTING_DATA_FROM_ID);

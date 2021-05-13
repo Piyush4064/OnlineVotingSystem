@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_splash_screen" >
         <action
             android:id="@+id/action_splashScreenFragment_to_home2"
-            app:destination="@id/onBoardingFragment" />
+            app:destination="@id/onBoardingFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/userLoginFragment"
@@ -28,6 +30,14 @@
         <action
             android:id="@+id/action_userLoginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_onBoardingFragment2"
+            app:destination="@id/onBoardingFragment"
+            app:popUpTo="@id/userLoginFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_userLoginFragment_to_publicVoterListFragment"
+            app:destination="@id/publicVoterListFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminOfficerLoginFragment"
@@ -57,10 +67,14 @@
         android:label="Home" >
         <action
             android:id="@+id/action_home2_to_userLoginFragment"
-            app:destination="@id/userLoginFragment" />
+            app:destination="@id/userLoginFragment"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_onBoardingFragment_to_pollListFragment"
-            app:destination="@id/pollListFragment" />
+            app:destination="@id/pollListFragment"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
@@ -88,6 +102,11 @@
         <action
             android:id="@+id/action_pollListFragment_to_electionResultFragment"
             app:destination="@id/electionResultFragment" />
+        <action
+            android:id="@+id/action_pollListFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment"
+            app:popUpTo="@id/onBoardingFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/candidateListFragment"
@@ -116,4 +135,9 @@
             android:name="PollNum"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/publicVoterListFragment"
+        android:name="com.example.onlinevotingsystem.fragments.startup.PublicVoterListFragment"
+        android:label="fragment_public_voter_list"
+        tools:layout="@layout/fragment_public_voter_list" />
 </navigation>

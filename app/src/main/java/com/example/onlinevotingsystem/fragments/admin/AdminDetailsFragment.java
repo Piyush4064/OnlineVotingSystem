@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.viewModels.AdminViewModel;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -55,11 +57,18 @@ public class AdminDetailsFragment extends Fragment {
             if(admin!=null){
                 tvName.setText(admin.getName());
                 tvUsername.setText(admin.getUsername());
-                tvPhoneNum.setText(admin.getPhoneNum());
-                if(admin.getPhotoURL()!=null)
-                    Picasso.get().load(Uri.parse(admin.getPhotoURL())).into(imgAdmin);
-                else
+                tvPhoneNum.setText(admin.getPhoneNum().substring(3));
+                if(admin.getPhotoURL()!=null){
+                    Picasso
+                            .get()
+                            .load(Uri.parse(admin.getPhotoURL()))
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .into(imgAdmin);
+                }
+                else{
                     imgAdmin.setImageDrawable(ContextCompat.getDrawable(requireActivity(),R.drawable.man2));
+                }
             }
         });
     }

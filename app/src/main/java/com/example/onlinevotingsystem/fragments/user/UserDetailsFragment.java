@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -16,6 +17,8 @@ import android.widget.TextView;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.viewModels.UserViewModel;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -54,7 +57,14 @@ public class UserDetailsFragment extends Fragment {
                 tvVoterId.setText(user.getVoterID());
 
                 if(user.getPhotoURL()!=null)
-                    Picasso.get().load(Uri.parse(user.getPhotoURL())).into(imgUser);
+                    Picasso
+                            .get()
+                            .load(Uri.parse(user.getPhotoURL()))
+                            .memoryPolicy(MemoryPolicy.NO_CACHE)
+                            .networkPolicy(NetworkPolicy.NO_CACHE)
+                            .into(imgUser);
+                else
+                    imgUser.setImageDrawable(ContextCompat.getDrawable(requireActivity(),R.drawable.user2));
             }
         });
 

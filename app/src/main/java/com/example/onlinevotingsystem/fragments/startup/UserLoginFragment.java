@@ -53,6 +53,7 @@ public class UserLoginFragment extends Fragment implements FetchFromDatabase.Fet
         Button btnForgotPassword = view.findViewById(R.id.btnUserForgotPassword);
         Button btnOpenRegister = view.findViewById(R.id.btnLoginToRegister);
         Button btnOpenAdminLogin = view.findViewById(R.id.btnLoginToAdminOfficerLogin);
+        Button btnViewVoterList=view.findViewById(R.id.btnViewPublicVoterList);
 
         btnSubmit.setOnClickListener(v -> {
             voterID=inputLayoutVoterID.getEditText().getText().toString();
@@ -79,6 +80,8 @@ public class UserLoginFragment extends Fragment implements FetchFromDatabase.Fet
         btnOpenRegister.setOnClickListener(v -> Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.registerFragment));
 
         btnOpenAdminLogin.setOnClickListener(v -> Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.adminOfficerLoginFragment));
+
+        btnViewVoterList.setOnClickListener(v -> Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(R.id.publicVoterListFragment));
     }
 
     @Override

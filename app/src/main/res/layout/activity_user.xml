@@ -16,7 +16,7 @@
 
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView"
+            android:id="@+id/fragmentUserDetails"
             android:name="com.example.onlinevotingsystem.fragments.user.UserDetailsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

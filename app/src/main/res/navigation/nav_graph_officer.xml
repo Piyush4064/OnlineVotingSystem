@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_officerHomeFragment_to_updateOfficerProfileFragment"
             app:destination="@id/updateOfficerProfileFragment" />
+        <action
+            android:id="@+id/action_officerHomeFragment_to_electionResultFragment3"
+            app:destination="@id/electionResultFragment3" />
     </fragment>
     <fragment
         android:id="@+id/addCandidateFragment"
@@ -136,5 +139,14 @@
             android:id="@+id/action_resetPasswordFragment2_to_updateOfficerProfileFragment"
             app:destination="@id/updateOfficerProfileFragment"
             app:popUpTo="@id/updateOfficerProfileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/electionResultFragment3"
+        android:name="com.example.onlinevotingsystem.fragments.shared.ElectionResultFragment"
+        android:label="fragment_election_result"
+        tools:layout="@layout/fragment_election_result" >
+        <argument
+            android:name="PollNum"
+            app:argType="integer" />
     </fragment>
 </navigation>

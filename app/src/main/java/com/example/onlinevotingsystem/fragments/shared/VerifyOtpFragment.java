@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 public class VerifyOtpFragment extends DialogFragment {
 
     public interface VerifyOtpInterface{
-        void onOtpVerified(boolean result);
+        void onOtpVerified(boolean result, String error);
     }
 
     private VerifyOtpInterface otpInterface;
@@ -90,14 +90,14 @@ public class VerifyOtpFragment extends DialogFragment {
                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                     @Override
                     public void onVerificationCompleted(@NonNull @NotNull PhoneAuthCredential phoneAuthCredential) {
-                        otpInterface.onOtpVerified(true);
+                        otpInterface.onOtpVerified(true,null);
                         getDialog().dismiss();
                     }
 
                     @Override
                     public void onVerificationFailed(@NonNull @NotNull FirebaseException e) {
                         Log.e("OtpVerify",e.getLocalizedMessage());
-                        otpInterface.onOtpVerified(false);
+                        otpInterface.onOtpVerified(false,e.getLocalizedMessage());
                         getDialog().dismiss();
                     }
 
@@ -132,7 +132,7 @@ public class VerifyOtpFragment extends DialogFragment {
                                 if(task.isSuccessful()){
                                     FirebaseAuth.getInstance().signOut();
                                     getDialog().dismiss();
-                                    otpInterface.onOtpVerified(true);
+                                    otpInterface.onOtpVerified(true,null);
                                 }
                                 else {
                                     Toast.makeText(requireActivity(),"Wrong OTP",Toast.LENGTH_LONG).show();

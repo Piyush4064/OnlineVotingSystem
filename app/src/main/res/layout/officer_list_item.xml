@@ -17,13 +17,11 @@
         <ImageView
             android:id="@+id/imgOfficerListItem"
             android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="0dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvOfficerListItemUsername"
+            app:layout_constraintBottom_toBottomOf="@+id/tvOfficerListItemUsername"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvOfficerListItemName"
             app:srcCompat="@drawable/man2" />
 
         <TextView
@@ -31,8 +29,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="4dp"
             android:text="Name"
             android:textColor="@color/black"
             android:textSize="18sp"
@@ -40,19 +39,20 @@
             app:layout_constraintBottom_toTopOf="@+id/textView23"
             app:layout_constraintEnd_toStartOf="@+id/imgOfficerListItem"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imgOfficerListItem" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:text="Poll Number"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Poll Number:"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imgOfficerListItem"
+            app:layout_constraintBottom_toTopOf="@+id/textView30"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvOfficerListItemName" />
 
@@ -63,7 +63,8 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="8dp"
             android:text="PollNum"
-            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView23"
             app:layout_constraintEnd_toStartOf="@+id/imgOfficerListItem"
             app:layout_constraintStart_toEndOf="@+id/textView23"
@@ -74,54 +75,58 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
             android:text="username"
-            app:layout_constraintBottom_toTopOf="@+id/textView28"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView30"
+            app:layout_constraintEnd_toStartOf="@+id/imgOfficerListItem"
             app:layout_constraintStart_toEndOf="@+id/textView30"
-            app:layout_constraintTop_toBottomOf="@+id/imgOfficerListItem" />
+            app:layout_constraintTop_toTopOf="@+id/textView30" />
 
         <TextView
             android:id="@+id/textView28"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Phone Number"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="Phone Number:"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvOfficerListItemPhoneNum"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvOfficerListItemPhoneNum" />
+            app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
         <TextView
             android:id="@+id/tvOfficerListItemPhoneNum"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:text="phoneNum"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView28"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView28"
-            app:layout_constraintTop_toBottomOf="@+id/tvOfficerListItemUsername" />
+            app:layout_constraintTop_toTopOf="@+id/textView28" />
 
         <TextView
             android:id="@+id/textView30"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Username"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Username:"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tvOfficerListItemUsername"
+            app:layout_constraintBottom_toTopOf="@+id/textView28"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvOfficerListItemUsername" />
+            app:layout_constraintTop_toBottomOf="@+id/textView23" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

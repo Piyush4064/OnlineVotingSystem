@@ -7,9 +7,12 @@ import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.onlinevotingsystem.R;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
+import com.example.onlinevotingsystem.fragments.user.UserDetailsFragment;
 import com.example.onlinevotingsystem.viewModels.UserViewModel;
 
 public class UserActivity extends AppCompatActivity {
@@ -19,9 +22,15 @@ public class UserActivity extends AppCompatActivity {
 
     NavController navController;
 
+    UserDetailsFragment detailsFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_user);
 
         Intent intent=getIntent();
@@ -45,9 +54,21 @@ public class UserActivity extends AppCompatActivity {
 
         navController=Navigation.findNavController(this,R.id.navHostUser);
 
+        detailsFragment=(UserDetailsFragment)getSupportFragmentManager().findFragmentById(R.id.fragmentUserDetails);
+
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if(destination.getId()==R.id.userHomeFragment){
                 userViewModel.reloadData();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .show(detailsFragment)
+                        .commit();
+            }
+            else {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .hide(detailsFragment)
+                        .commit();
             }
         });
 

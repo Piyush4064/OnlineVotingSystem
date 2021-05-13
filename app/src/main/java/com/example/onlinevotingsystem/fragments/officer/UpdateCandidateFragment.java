@@ -25,6 +25,7 @@ import com.example.onlinevotingsystem.classes.Candidate;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
 import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -141,7 +142,7 @@ public class UpdateCandidateFragment extends Fragment implements DatabaseUpdater
             dob=candidate.getDateOfBirth();
             tvDob.setText(DateTimeUtils.getDisplayDate(candidate.getDateOfBirth()));
             inputName.getEditText().setText(candidate.getName());
-            inputPhoneNum.getEditText().setText(candidate.getPhoneNumber().substring(2));
+            inputPhoneNum.getEditText().setText(candidate.getPhoneNumber().substring(3));
             inputSymbol.getEditText().setText(candidate.getElectionSymbolName());
 
             btnChooseDob.setOnClickListener(v -> {
@@ -168,8 +169,8 @@ public class UpdateCandidateFragment extends Fragment implements DatabaseUpdater
 
             btnUpdateSymbolPhoto.setOnClickListener(v -> {
                 String currentPhoto="null";
-                if(candidate.getPhotoURL()!=null)
-                    currentPhoto=candidate.getPhotoURL();
+                if(candidate.getElectionSymbolPhotoURL()!=null)
+                    currentPhoto=candidate.getElectionSymbolPhotoURL();
                 NavDirections action=UpdateCandidateFragmentDirections.actionUpdateCandidateFragmentToUpdatePhotoFragment2("CandidateSymbol",candidate.getID(),currentPhoto);
                 Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(action);
             });
@@ -182,7 +183,7 @@ public class UpdateCandidateFragment extends Fragment implements DatabaseUpdater
                 if(name.isEmpty() || phoneNum.isEmpty() || symbolName.isEmpty()){
                     Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
                 }
-                else if(phoneNum.length()!=10){
+                else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
                     Toast.makeText(requireActivity(), "Please enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
                 }
                 else {

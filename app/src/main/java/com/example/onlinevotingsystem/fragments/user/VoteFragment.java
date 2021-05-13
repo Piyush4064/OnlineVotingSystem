@@ -137,8 +137,11 @@ public class VoteFragment extends Fragment implements DatabaseUpdater.DatabaseUp
     }
 
     @Override
-    public void onOtpVerified(boolean result) {
+    public void onOtpVerified(boolean result,String error) {
         if(result)
             castVote();
+        else {
+            Toast.makeText(requireActivity(), "Error in Verifying OTP "+error, Toast.LENGTH_SHORT).show();
+        }
     }
 }

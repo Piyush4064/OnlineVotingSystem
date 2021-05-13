@@ -56,7 +56,7 @@ public class UpdateElectionTimeFragment extends Fragment implements DatabaseUpda
 
     Boolean isPollSet;
     int PollNum;
-    long startTime, endTime;
+    long startTime, endTime, originalStartTime, originalEndTime;
     ArrayList<Poll> pollList;
 
     ProgressIndicatorFragment progressIndicatorFragment;
@@ -120,7 +120,9 @@ public class UpdateElectionTimeFragment extends Fragment implements DatabaseUpda
                 else {
                     PollNum=pollNum;
                     startTime=pollList.get(pollNum-1).getElectionStartTime();
+                    originalStartTime=startTime;
                     endTime=pollList.get(pollNum-1).getElectionEndTime();
+                    originalEndTime=endTime;
                     isPollSet=true;
                     updateInterface();
                 }
@@ -197,13 +199,7 @@ public class UpdateElectionTimeFragment extends Fragment implements DatabaseUpda
         });
 
         btnSubmit.setOnClickListener(v -> {
-            if(startTime<new Date().getTime()){
-                Toast.makeText(requireActivity(), "Starting Time cannot be in Past", Toast.LENGTH_SHORT).show();
-            }
-            else if(startTime>=endTime){
-                Toast.makeText(requireActivity(), "Starting Time should be before the Ending Time", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            if(isTimeValid()) {
                 HashMap<String, Object> hashMap = new HashMap<>();
                 hashMap.put(HashMapConstants.UPDATE_TYPE_KEY, HashMapConstants.UPDATE_TYPE_POLL_ELECTION_TIME);
                 hashMap.put(HashMapConstants.UPDATE_PARAM_POLL_ELECTION_TIME_POLL_NUM_KEY, PollNum);
@@ -216,6 +212,26 @@ public class UpdateElectionTimeFragment extends Fragment implements DatabaseUpda
                 new DatabaseUpdater(hashMap, this).execute();
             }
         });
+    }
+
+    private boolean isTimeValid(){
+        if((startTime<originalStartTime) || (startTime>originalStartTime && startTime<new Date().getTime())){
+            showToast("You can only Update the Start Time to a Time in Future or leave it Unchanged");
+            return false;
+        }
+        else if(endTime<new Date().getTime()){
+            showToast("Election End Time cannot be in Past");
+            return false;
+        }
+        else if(startTime>=endTime){
+            showToast("Election End Time should be after the Start Time");
+            return false;
+        }
+        return true;
+    }
+
+    private void showToast(String message){
+        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();
     }
 
     private void updateInterface(){

@@ -15,6 +15,11 @@ import java.util.HashMap;
 
 public class AdminViewModel extends ViewModel implements FetchFromDatabase.FetchDbInterface {
 
+    public AdminViewModel() {
+        super();
+        IsDatabaseProcessPerformed=new MutableLiveData<>();
+    }
+
     private MutableLiveData<Boolean> IsDatabaseProcessPerformed;
 
     public LiveData<Boolean> CheckIsProcessPerformed(){
@@ -69,28 +74,28 @@ public class AdminViewModel extends ViewModel implements FetchFromDatabase.Fetch
     }
 
     public void reloadData(){
-        FetchData();
+        if(AdminDetails!=null && AdminDetails.getValue()!=null){
+            FetchData();
+        }
     }
 
-    private boolean IsProcessPerformed=false;
-
     public void FetchData(){
-        if(!IsProcessPerformed){
-            IsProcessPerformed=true;
-            IsDatabaseProcessPerformed=new MutableLiveData<>();
+        IsDatabaseProcessPerformed.setValue(true);
+
+        if(AdminDetails==null)
             AdminDetails=new MutableLiveData<>();
+        if(OfficerList==null)
             OfficerList=new MutableLiveData<>();
+        if(UserList==null)
             UserList=new MutableLiveData<>();
+        if(Error==null)
             Error=new MutableLiveData<>();
 
-            IsDatabaseProcessPerformed.setValue(true);
+        HashMap<String,Object> hashMap=new HashMap<>();
+        hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_ADMIN_DETAILS);
+        hashMap.put(HashMapConstants.FETCH_PARAM_ADMIN_DETAILS_USERNAME_KEY,adminUsername);
 
-            HashMap<String,Object> hashMap=new HashMap<>();
-            hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_ADMIN_DETAILS);
-            hashMap.put(HashMapConstants.FETCH_PARAM_ADMIN_DETAILS_USERNAME_KEY,adminUsername);
-
-            new FetchFromDatabase(this,hashMap).execute();
-        }
+        new FetchFromDatabase(this,hashMap).execute();
     }
 
     public void SetDatabaseProcess(boolean process) {
@@ -110,8 +115,6 @@ public class AdminViewModel extends ViewModel implements FetchFromDatabase.Fetch
             }
             else {
                 String error=resultHashMap.get(HashMapConstants.FETCH_RESULT_ERROR_KEY).toString();
-                if(Error==null)
-                    Error=new MutableLiveData<>();
                 Error.setValue(error);
             }
         }
@@ -124,8 +127,6 @@ public class AdminViewModel extends ViewModel implements FetchFromDatabase.Fetch
             }
             else {
                 String error=resultHashMap.get(HashMapConstants.FETCH_RESULT_ERROR_KEY).toString();
-                if(Error==null)
-                    Error=new MutableLiveData<>();
                 Error.setValue(error);
             }
         }
@@ -135,12 +136,9 @@ public class AdminViewModel extends ViewModel implements FetchFromDatabase.Fetch
                 UserList.setValue(userList);
 
                 IsDatabaseProcessPerformed.setValue(false);
-                IsProcessPerformed=false;
             }
             else {
                 String error=resultHashMap.get(HashMapConstants.FETCH_RESULT_ERROR_KEY).toString();
-                if(Error==null)
-                    Error=new MutableLiveData<>();
                 Error.setValue(error);
             }
         }

@@ -19,6 +19,7 @@ import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 import com.example.onlinevotingsystem.fragments.shared.VerifyOtpFragment;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;
@@ -61,11 +62,16 @@ public class RegisterFragment extends Fragment implements FetchFromDatabase.Fetc
             if(voterID.isEmpty() || phoneNum.isEmpty()){
                 Toast.makeText(requireActivity(),"Voter ID or Phone Number cannot be Empty!",Toast.LENGTH_SHORT).show();
             }
+            else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
+                Toast.makeText(requireActivity(),"Please Enter a Valid Phone Number (10 Digits Only)",Toast.LENGTH_SHORT).show();
+            }
             else {
+                String phone="+91"+phoneNum;
+
                 HashMap<String,Object> hashMap=new HashMap<>();
                 hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_VERIFY_PHONE_NUM);
                 hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY,voterID);
-                hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY,phoneNum);
+                hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY,phone);
                 hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_ROLE_KEY,"VoterR");
 
                 progressIndicatorFragment=ProgressIndicatorFragment.newInstance("Syncing","Verifying Given Credentials");
@@ -104,11 +110,14 @@ public class RegisterFragment extends Fragment implements FetchFromDatabase.Fetc
     }
 
     @Override
-    public void onOtpVerified(boolean result) {
+    public void onOtpVerified(boolean result, String error) {
         if(result){
             Toast.makeText(requireActivity(),"OTP Verified",Toast.LENGTH_SHORT).show();
             NavDirections action=RegisterFragmentDirections.actionRegisterSetPassword("RegisterUser","Voter",voterID);
             Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(action);
+        }
+        else {
+            Toast.makeText(requireActivity(), "Error in Verifying OTP: "+error, Toast.LENGTH_SHORT).show();
         }
     }
 }

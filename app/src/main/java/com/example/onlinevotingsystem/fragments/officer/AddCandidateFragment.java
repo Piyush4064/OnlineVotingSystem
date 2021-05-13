@@ -21,6 +21,7 @@ import com.example.onlinevotingsystem.classes.Candidate;
 import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
 import com.example.onlinevotingsystem.viewModels.OfficerViewModel;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -76,7 +77,7 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
             }
         });
 
-        tvCandidateDob.setText(getDisplayTime(dob));
+        tvCandidateDob.setText(DateTimeUtils.getDisplayDate(dob));
 
         btnChooseDob.setOnClickListener(v -> {
             MaterialDatePicker datePicker=MaterialDatePicker.Builder.datePicker()
@@ -100,7 +101,7 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
             if(name.isEmpty() || phoneNum.isEmpty() || symbolName.isEmpty()){
                 Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
             }
-            else if(phoneNum.length()!=10){
+            else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
                 Toast.makeText(requireActivity(), "Please enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
             }
             else {
@@ -127,10 +128,6 @@ public class AddCandidateFragment extends Fragment implements DatabaseUpdater.Da
                 alertDialog.show();
             }
         });
-    }
-
-    private String  getDisplayTime(long time){
-        return DateTimeUtils.getDisplayDate(time)+" "+DateTimeUtils.getDisplayTime(time);
     }
 
     @Override

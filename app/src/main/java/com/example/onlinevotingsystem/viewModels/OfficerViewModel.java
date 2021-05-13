@@ -66,10 +66,14 @@ public class OfficerViewModel extends ViewModel implements FetchFromDatabase.Fet
     public void FetchDetails(String username){
         IsDataLoading.setValue(true);
 
-        OfficerPoll=new MutableLiveData<>();
-        OfficerDetails=new MutableLiveData<>();
-        PollUsersList=new MutableLiveData<>();
-        Error=new MutableLiveData<>();
+        if(OfficerPoll==null)
+            OfficerPoll=new MutableLiveData<>();
+        if(OfficerDetails==null)
+            OfficerDetails=new MutableLiveData<>();
+        if(PollUsersList==null)
+            PollUsersList=new MutableLiveData<>();
+        if(Error==null)
+            Error=new MutableLiveData<>();
 
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_OFFICER_DETAILS);

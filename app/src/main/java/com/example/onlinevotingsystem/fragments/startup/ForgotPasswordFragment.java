@@ -22,6 +22,7 @@ import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
 import com.example.onlinevotingsystem.fragments.shared.VerifyOtpFragment;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +70,7 @@ public class ForgotPasswordFragment extends Fragment implements
         roleList.add("Officer");
         roleList.add("Admin");
 
-        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(requireActivity(), R.layout.address_spinner_item, roleList);
+        ArrayAdapter<String> arrayAdapter= new ArrayAdapter<>(requireActivity(), android.R.layout.simple_spinner_dropdown_item, roleList);
         spinnerRole.setAdapter(arrayAdapter);
 
         spinnerRole.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -91,11 +92,16 @@ public class ForgotPasswordFragment extends Fragment implements
             if(id.isEmpty() || phoneNum.isEmpty() || roll==null){
                 Toast.makeText(requireActivity(), "Please Enter all the Fields", Toast.LENGTH_SHORT).show();
             }
+            else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
+                Toast.makeText(requireActivity(), "Please Enter a Valid Phone Number (10 Digits onlt)", Toast.LENGTH_SHORT).show();
+            }
             else {
+                String phone="+91"+phoneNum;
+
                 HashMap<String,Object> hashMap=new HashMap<>();
                 hashMap.put(HashMapConstants.FETCH_PARAM_TYPE_KEY,HashMapConstants.FETCH_TYPE_VERIFY_PHONE_NUM);
                 hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_VOTER_ID_KEY,id);
-                hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY,phoneNum);
+                hashMap.put(HashMapConstants.FETCH_PARAM_VERIFY_PHONE_NUM_NUMBER_KEY,phone);
 
                 String inputRoll=roll;
                 if(roll.equals("Voter"))
@@ -111,11 +117,14 @@ public class ForgotPasswordFragment extends Fragment implements
     }
 
     @Override
-    public void onOtpVerified(boolean result) {
+    public void onOtpVerified(boolean result,String error) {
         if(result){
             Toast.makeText(requireActivity(),"OTP Verified",Toast.LENGTH_SHORT).show();
             NavDirections action=ForgotPasswordFragmentDirections.actionForgotPasswordFragmentToResetPasswordFragment("Forget",roll,id);
             Navigation.findNavController(requireActivity(),R.id.navHostStartup).navigate(action);
+        }
+        else {
+            Toast.makeText(requireActivity(), "Error in Verifying OTP! "+error, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -127,7 +136,8 @@ public class ForgotPasswordFragment extends Fragment implements
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_KEY)){
-                    VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phoneNum,ForgotPasswordFragment.this);
+                    String phone="+91"+phoneNum;
+                    VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phone,ForgotPasswordFragment.this);
                     verifyOtpFragment.show(getParentFragmentManager(),"OtpFragment");
                 }
                 else {

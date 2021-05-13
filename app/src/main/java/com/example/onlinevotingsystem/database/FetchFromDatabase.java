@@ -531,9 +531,11 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                             String name=resultSet.getString(TableKeys.KEY_VOTERS_NAME);
                             boolean isMobileReg=resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED)==1;
                             String photoUrl=resultSet.getString(TableKeys.KEY_VOTERS_PHOTO_URL);
+                            String phoneNum=resultSet.getString(TableKeys.KEY_VOTERS_PHONE_NUM);
+                            long dob=Long.parseLong(resultSet.getString(TableKeys.KEY_VOTERS_DOB));
                             boolean hasVoted=resultSet.getInt(TableKeys.KEY_VOTERS_HAS_VOTED)==1;
 
-                            userList.add(new User(voterId,name,pollNum,isMobileReg,photoUrl,hasVoted));
+                            userList.add(new User(voterId,name,pollNum,isMobileReg,dob,photoUrl,hasVoted,phoneNum));
                         }
 
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
@@ -553,9 +555,11 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                             int pollNum=resultSet.getInt(TableKeys.KEY_VOTERS_POLL_NUM);
                             boolean isMobileReg=resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED)==1;
                             String photoUrl=resultSet.getString(TableKeys.KEY_VOTERS_PHOTO_URL);
+                            String phoneNum=resultSet.getString(TableKeys.KEY_VOTERS_PHONE_NUM);
+                            long dob=Long.parseLong(resultSet.getString(TableKeys.KEY_VOTERS_DOB));
                             boolean hasVoted=resultSet.getInt(TableKeys.KEY_VOTERS_HAS_VOTED)==1;
 
-                            userList.add(new User(voterId,name,pollNum,isMobileReg,photoUrl,hasVoted));
+                            userList.add(new User(voterId,name,pollNum,isMobileReg,dob,photoUrl,hasVoted,phoneNum));
                         }
 
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);

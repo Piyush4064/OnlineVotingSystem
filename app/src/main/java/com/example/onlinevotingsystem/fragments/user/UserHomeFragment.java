@@ -73,6 +73,9 @@ public class UserHomeFragment extends Fragment {
                             else if(userViewModel.hasElectionEnd()){
                                 Toast.makeText(requireActivity(), "Election has Already Ended!", Toast.LENGTH_SHORT).show();
                             }
+                            else if(!userViewModel.hasElectionStarted()){
+                                Toast.makeText(requireActivity(), "Election has not yet started", Toast.LENGTH_SHORT).show();
+                            }
                             else
                                 navController.navigate(R.id.voteFragment);
                             break;
@@ -92,7 +95,7 @@ public class UserHomeFragment extends Fragment {
                             break;
                         }
                         case 3: {
-                            navController.navigate(R.id.userPollDetailsFragment);
+                            navController.navigate(R.id.action_userHomeFragment_to_userPollDetailsFragment);
                             break;
                         }
                         case 4: {
@@ -101,6 +104,7 @@ public class UserHomeFragment extends Fragment {
                                     .setMessage("Do you want to Logout?")
                                     .setPositiveButton("YES", (dialog, which) -> {
                                         Intent intent=new Intent(requireActivity(), StartupActivity.class);
+                                        intent.putExtra("AfterLogout",true);
                                         startActivity(intent);
                                         requireActivity().finish();
                                     })

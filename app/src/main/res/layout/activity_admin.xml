@@ -8,6 +8,7 @@
     tools:context=".activities.AdminActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
@@ -20,27 +21,27 @@
             app:menu="@menu/menu_admin">
 
             <ImageView
-                android:background="@color/banner_backgroundlt"
-                android:layout_centerVertical="true"
-                android:layout_height="40dp"
                 android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="@color/banner_backgroundlt"
                 android:src="@drawable/loo2" />
 
             <TextView
                 android:id="@+id/head_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="VoteIt"
-                android:textSize="28dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginLeft="100dp"
                 android:layout_marginRight="100dp"
                 android:fontFamily="@font/montserrat"
-                android:layout_centerHorizontal="true"/>
+                android:text="VoteIt"
+                android:textSize="28dp" />
 
         </com.google.android.material.appbar.MaterialToolbar>
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView2"
+            android:id="@+id/fragmentAdminDetails"
             android:name="com.example.onlinevotingsystem.fragments.admin.AdminDetailsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

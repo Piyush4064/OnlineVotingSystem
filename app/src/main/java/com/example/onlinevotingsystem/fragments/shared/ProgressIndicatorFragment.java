@@ -52,13 +52,11 @@ public class ProgressIndicatorFragment extends DialogFragment {
     }
 
     public void SetProgress(int progress, int max){
-        progressIndicator.setIndeterminate(false);
-        progressIndicator.setMax(max);
-        progressIndicator.setProgressCompat(progress,true);
-    }
-
-    public void UnsetProcess(){
-        progressIndicator.setIndeterminate(true);
+        if(progress>0){
+            progressIndicator.setIndeterminate(false);
+            progressIndicator.setMax(max);
+            progressIndicator.setProgressCompat(progress,true);
+        }
     }
 }
 

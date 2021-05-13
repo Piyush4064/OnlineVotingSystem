@@ -28,6 +28,7 @@ import com.example.onlinevotingsystem.constants.HashMapConstants;
 import com.example.onlinevotingsystem.database.DatabaseUpdater;
 import com.example.onlinevotingsystem.database.FetchFromDatabase;
 import com.example.onlinevotingsystem.fragments.shared.ProgressIndicatorFragment;
+import com.example.onlinevotingsystem.utils.CheckPhoneUtil;
 import com.example.onlinevotingsystem.utils.DateTimeUtils;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
@@ -114,7 +115,7 @@ public class AddUserFragment extends Fragment implements
             if(name.isEmpty() || phoneNum.isEmpty() || PollNumber==-1){
                 Toast.makeText(requireActivity(), "Please Fill all the Details", Toast.LENGTH_SHORT).show();
             }
-            else if(phoneNum.length()!=10){
+            else if(!CheckPhoneUtil.IsValidPhone(phoneNum)){
                 Toast.makeText(requireActivity(), "Please Enter a Valid Phone Number", Toast.LENGTH_SHORT).show();
             }
             else {
@@ -191,7 +192,7 @@ public class AddUserFragment extends Fragment implements
             for(int i=0;i<pollList.size();i++)
                 addressList.add(pollList.get(i).getPollAddress());
 
-            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(requireActivity(),R.layout.address_spinner_item,addressList);
+            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_spinner_dropdown_item,addressList);
             spinnerAddUserPoll.setAdapter(arrayAdapter);
 
             spinnerAddUserPoll.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

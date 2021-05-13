@@ -33,6 +33,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -175,7 +177,12 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
         }
         else {
             btnRemovePhoto.setEnabled(true);
-            Picasso.get().load(Uri.parse(currentPhotoUrl)).into(imgPhoto);
+            Picasso
+                    .get()
+                    .load(Uri.parse(currentPhotoUrl))
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .into(imgPhoto);
         }
         if(currentPhotoUrl==null && defaultPhotoUrl!=null)
             btnSubmit.setEnabled(true);
@@ -297,7 +304,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Photo Updated Successfully for Candidate",Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_updateCandidateFragment);
+                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_officerHomeFragment);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -308,7 +315,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                 progressIndicatorFragment.dismiss();
                 if(result){
                     Toast.makeText(requireActivity(),"Election Symbol Photo Updated Successfully Candidate",Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_updateCandidateFragment);
+                    Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_officerHomeFragment);
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Updating Photo",Toast.LENGTH_SHORT).show();
@@ -337,7 +344,7 @@ public class UpdatePhotoFragment extends Fragment implements DatabaseUpdater.Dat
                         }
                         case "Candidate":
                         case "CandidateSymbol": {
-                            Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_updateCandidateFragment);
+                            Navigation.findNavController(requireActivity(),R.id.navHostOfficer).navigate(R.id.action_updatePhotoFragment2_to_officerHomeFragment);
                             break;
                         }
                     }
