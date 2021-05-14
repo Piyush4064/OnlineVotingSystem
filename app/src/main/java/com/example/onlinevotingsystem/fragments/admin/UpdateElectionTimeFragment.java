@@ -215,7 +215,7 @@ public class UpdateElectionTimeFragment extends Fragment implements DatabaseUpda
     }
 
     private boolean isTimeValid(){
-        if((startTime<originalStartTime) || (startTime>originalStartTime && startTime<new Date().getTime())){
+        if((startTime<originalStartTime && originalStartTime<new Date().getTime()) || (startTime>originalStartTime && startTime<new Date().getTime())){
             showToast("You can only Update the Start Time to a Time in Future or leave it Unchanged");
             return false;
         }

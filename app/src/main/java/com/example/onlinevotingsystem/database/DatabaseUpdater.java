@@ -310,6 +310,9 @@ public class DatabaseUpdater extends AsyncTask<Void,Void,Boolean> {
                         ResultSet resultSet=statement.executeQuery(CandidateQuery.GetPollWiseCandidateQuery(PollNum));
 
                         int currPos=1;
+                        if(!resultSet.first()){
+                            currPos=0;
+                        }
                         while (resultSet.next()){
                             currPos=Integer.parseInt(resultSet.getString(TableKeys.KEY_CANDIDATE_CAND_ID).substring(1,3));
                         }

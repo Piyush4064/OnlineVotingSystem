@@ -94,7 +94,8 @@ public class RegisterFragment extends Fragment implements FetchFromDatabase.Fetc
                         Toast.makeText(requireActivity(),"User Already Registered, Please Login to Continue!",Toast.LENGTH_LONG).show();
                     }
                     else {
-                        VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phoneNum,RegisterFragment.this);
+                        String phone="+91"+phoneNum;
+                        VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phone,RegisterFragment.this);
                         verifyOtpFragment.show(getParentFragmentManager(),"OtpFragment");
                     }
                 }
