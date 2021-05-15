@@ -137,7 +137,7 @@ public class FetchFromDatabase extends AsyncTask<Void,Void, HashMap<String,Objec
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_SUCCESS_KEY,true);
                         resultHashMap.put(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_KEY,resultSet.first());
 
-                        if(resultSet.first() && type.equals("VoterR")){
+                        if(resultSet.first() && (type.equals("VoterR") || type.equals("VoterF"))){
                             boolean isRegistered= resultSet.getInt(TableKeys.KEY_VOTERS_IS_MOBILE_REGISTERED) == 1;
                             resultHashMap.put(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_IS_REG_KEY,isRegistered);
                         }

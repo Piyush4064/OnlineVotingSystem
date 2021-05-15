@@ -136,9 +136,21 @@ public class ForgotPasswordFragment extends Fragment implements
 
             if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_SUCCESS_KEY)){
                 if((Boolean) resultHashMap.get(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_KEY)){
-                    String phone="+91"+phoneNum;
-                    VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phone,ForgotPasswordFragment.this);
-                    verifyOtpFragment.show(getParentFragmentManager(),"OtpFragment");
+                    if(roll.equals("Voter")){
+                        if(!(Boolean)resultHashMap.get(HashMapConstants.FETCH_RESULT_VERIFY_PHONE_NUM_IS_REG_KEY)){
+                            Toast.makeText(requireActivity(), "You are not registered as a Mobile Voter!", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            String phone="+91"+phoneNum;
+                            VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phone,ForgotPasswordFragment.this);
+                            verifyOtpFragment.show(getParentFragmentManager(),"OtpFragment");
+                        }
+                    }
+                    else {
+                        String phone="+91"+phoneNum;
+                        VerifyOtpFragment verifyOtpFragment=VerifyOtpFragment.newInstance(phone,ForgotPasswordFragment.this);
+                        verifyOtpFragment.show(getParentFragmentManager(),"OtpFragment");
+                    }
                 }
                 else {
                     Toast.makeText(requireActivity(),"Error in Verifying Credentials",Toast.LENGTH_LONG).show();
